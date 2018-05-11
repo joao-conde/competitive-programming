@@ -1,3 +1,5 @@
+//http://www.spoj.com/problems/PRIME1/
+
 #include <iostream>
 #include <cstdio>
 

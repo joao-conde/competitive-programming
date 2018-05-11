@@ -1,5 +1,7 @@
+//http://www.spoj.com/problems/ADDREV/
+
 #include <cstdio>
-#include <string>
+#include <cstdlib>
 
 #define MAX_DIGITS 256
 
@@ -16,7 +18,7 @@ int reverse(int number){
     for(int i = 0; i < ndigits; i++)
         reversed_str[ndigits-i-1] = str[i];
         
-    return stoi(reversed_str);
+    return atoi(reversed_str);
 }
 
 int main(){

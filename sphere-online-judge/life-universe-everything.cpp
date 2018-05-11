@@ -1,3 +1,5 @@
+//http://www.spoj.com/problems/TEST/
+
 #include <cstdio>
 #include <iostream>
 
