@@ -8,28 +8,37 @@ using namespace std;
 /*
 *   Nao funciona mas a ideia é converter o input numa string ou array 1D e usar basicamente algo como SIZE*LINE+COL para ir ler a letra certa
 *   Há claramente um padrao de leitura
-*   É necessario construir a string da forma correta tho. Ou se calhar nao, tenho de pensar melhor*
+*   tty  -> thisistheeasyoneab - this is the easy one
+    hho     -> ttyohhieneesiaabss
+    ien     -> 2*size - 1  e dps +1 , alternando
+    see
+    iaa         0 + 2*size -1 
+    ssb
+
 */
-string rearrange(string input, int size){
+string decrypt(string cypher, int size){
+    
+    string decrypted = "";
+    int step = 2*size-1, read = 0, idx = -1;
 
-    string result = "wat";
-    int i = 0, flip = 0;
+    while(read < cypher.size()){
+        
+        idx++;
+        decrypted += cypher[idx];
+        idx += step;
+        decrypted += cypher[idx];
 
-    while(i < input.size() - size){
-
-        result += input[i] + input[i+1] + input[i+2];
-        cout << result << endl;
-        i += 3;
+        read += 2;
     }
+    
 
-
-    return result;
+    return decrypted;
 }
 
 int main(){
 
     int size;
-    string input = "", cypher;
+    string cypher = "";
 
     while(true){
         cin >> size;
@@ -37,13 +46,9 @@ int main(){
             break;
 
         
-        cin >> input;
-        
-        
-        
-        cypher = rearrange(input, size);
-
-        cout << "CYPHER: " << cypher << endl;
+        cin >> cypher;
+    
+        cout << decrypt(cypher, size) << endl;
         
     }
 
