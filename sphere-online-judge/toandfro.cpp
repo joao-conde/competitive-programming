@@ -57,7 +57,7 @@ int main(){
         
         cin >> cypher;
     
-        cout << decrypt(cypher, size) << "END" << endl;
+        cout << decrypt(cypher, size);
         
     }
 
