@@ -6,26 +6,29 @@
 using namespace std;
 
 /*
-*   começa num ponto, le, anda para a direita, le, anda para a esquerda, repete
-*   anda o que sobrar para a direita * 2 + 1 e o que sobrar para a esquerda + 1
-*   dá duas voltas por assim dizer mais a casa de "descer a coluna"
+*   Reads a "column" of the "matrix".
+*   Reads the first "line" element of the "column", moves to the right 2*X + 1, reads that element, moves to the left
+*   2*Y+1 and reads that element. Does this cycle untill no more string to process.
+*   X = number of "columns" to the right
+*   Y = number of "columns" to the left
 */
 string read_chypher_col(string cypher, int size, int col){
     string decrypted = "";
 
     int step_l = col * 2 + 1;
     int step_r = (size - col - 1)*2 + 1;
-    int col_length = cypher.size() / size, read = 0, idx = col;
+    int cypher_size = cypher.size(), idx = col;
 
-    while(read < col_length){
+    while(idx < cypher_size){
+
         decrypted += cypher[idx];
 
         idx += step_r;
+        if(idx >= cypher_size) break; //no more string
+
         decrypted += cypher[idx];
         
         idx += step_l;
-
-        read += 2;
     }
 
 
@@ -34,8 +37,8 @@ string read_chypher_col(string cypher, int size, int col){
 
 string decrypt(string cypher, int size){
     string decrypted = "";
+    
     int i = 0;
-
     while(i < size){
         decrypted += read_chypher_col(cypher, size, i);
         i++;
@@ -50,6 +53,7 @@ int main(){
     string cypher = "";
 
     while(true){
+        
         cin >> size;
         if(size == 0)
             break;
@@ -57,7 +61,7 @@ int main(){
         
         cin >> cypher;
     
-        cout << decrypt(cypher, size);
+        cout << decrypt(cypher, size) << endl;
         
     }
 
