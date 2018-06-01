@@ -7,7 +7,10 @@
 
 using namespace std;
 
-//TODO: solve this, getting WA
+/* TLDR:
+*   1 - store large data in the heap (make it a global variable)
+*   2 - Eratosthenes' Sieve: calculate all the prime numbers up to an integer N
+*/
 
 //Eratosthenes' Sieve
 vector<int> generate_primes_upto(int n){
@@ -42,7 +45,6 @@ int main(){
     
     primes = generate_primes_upto(1000000);
 
-    
     for(int i = 0; i < test_cases; i++){
         cin >> n;
 

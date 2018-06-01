@@ -4,6 +4,13 @@
 
 using namespace std;
 
+
+
+/* TLDR:
+*   1 - Simply watching the pattern gets you there, but it can be probably more efficient to find 
+*   the functions equation and use that (linear time)
+*/
+
 /*
  *  Receives the coordinates of the point
  *  Returns the number located at (x,y) or -1 if none found

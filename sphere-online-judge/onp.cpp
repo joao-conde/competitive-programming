@@ -12,6 +12,13 @@
 
 using namespace std;
 
+
+/* TLDR:
+*   1 - RPN = Reverse Polish Notation
+*       operands first operators after, useful to use a stack
+*/
+
+
 string to_RPN(string str){
 
     string rpn = "";

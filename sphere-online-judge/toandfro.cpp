@@ -5,6 +5,12 @@
 
 using namespace std;
 
+
+/* TLDR:
+*   1 - matrix representations are obvious but not necessary => look to reduce complexity by going 2D to 1D
+*/
+
+
 /*
 *   Reads a "column" of the "matrix".
 *   Reads the first "line" element of the "column", moves to the right 2*X + 1, reads that element, moves to the left

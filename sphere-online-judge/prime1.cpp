@@ -7,6 +7,11 @@
 
 using namespace std;
 
+
+/* TLDR:
+*   1 - to check if a number is prime we need only to check up till the sqrt of it's number
+*/
+
 int is_prime(unsigned int number) {
     if (number <= 1) return 0; // zero and one are not prime
     
