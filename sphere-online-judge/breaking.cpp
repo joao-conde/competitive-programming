@@ -13,8 +13,9 @@ using namespace std;
 vector<int> generate_primes_upto(int n){
     vector<int> primes_upto_n; 
     
-    int sqrt_n = sqrt(n);
-    int not_prime[sqrt_n] = {}; //all inititated as '0' = prime, '1' = not prime
+    //int sqrt_n = sqrt(n);
+    int sqrt_n = 1000000;
+    int not_prime[sqrt_n]; //all inititated as '0' = prime, '1' = not prime
 
     for(int i = 2; i < sqrt_n; i++){
 
