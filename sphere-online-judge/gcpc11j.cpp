@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <algorithm>
 
 
 using namespace std;
@@ -37,30 +38,40 @@ void bfs(const vector< vector<int> > &g, int source, vector<int>& dist) {
 
 int main(){
 
-    int test_cases, ttl, computers, src, dest;
+    int test_cases, computers, src, dest;
     cin >> test_cases;
 
     for(int i = 0; i < test_cases; i++){
-        ttl = -1;
+        
         cin >> computers;
-        //use belman ford, get maximum value, that = TTL, that node is router, if next iter has smaller ttl, thats the router
-        //do untill no more nodes, print TTL
-
         vector< vector<int> > network(computers);
+        
 
+        //build network from user input
         for(int j = 0; j < computers - 1; j++){
             cin >> src; cin >> dest;
             network[src].push_back(dest);
         }
 
-        vector<int> dist(network.size(), INF);
         
+        int networkTTL = INF;
+        vector<int> dist(network.size(), INF);  
+        
+        //calculate maximum ttl assuming a router, choose the router assumption with smaller TTL
         for(int l = 0; l < computers; l++){
             bfs(network, l, dist); 
-            if(dist[l] > ttl) ttl = dist[l];
+
+            if(networkTTL > *max_element(dist.begin(), dist.end()))
+                networkTTL = *max_element(dist.begin(), dist.end());
+
+            cout << "---ROUTER ON " << l << "---" << endl; 
+            for(int distancia: dist){
+                cout << "DIST: " << distancia << endl;
+            }
+            
         }
         
-        cout << "TEST CASE " << i+1 << ": " << ttl << endl;
+        cout << "TEST CASE " << i+1 << ": " << networkTTL << endl;
       
     }
     
