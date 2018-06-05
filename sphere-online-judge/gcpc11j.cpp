@@ -12,13 +12,6 @@ using namespace std;
 #define MAX 100000 //10⁵ which is max number of nodes, so edges is that -1 (roughly the same)
 #define INF 1000000000 //high value simmulating infinity
 
-/*
-*   Since every edge of an elGraph is basically a pair<int,pair<int,int>>:
-*       - COST is given by pair.first
-*       - SRC is given by pair.second.first
-*       - DEST is given by pair.second.second
-*/
-
 
 void bfs(const vector< vector<int> > &g, int source, vector<int>& dist) {
   queue<int> q;
@@ -51,14 +44,16 @@ int main(){
         for(int j = 0; j < computers - 1; j++){
             cin >> src; cin >> dest;
             network[src].push_back(dest);
+            network[dest].push_back(src);
         }
 
         
         int networkTTL = INF;
-        vector<int> dist(network.size(), INF);  
+          
         
         //calculate maximum ttl assuming a router, choose the router assumption with smaller TTL
         for(int l = 0; l < computers; l++){
+            vector<int> dist(network.size(), INF);
             bfs(network, l, dist); 
 
             if(networkTTL > *max_element(dist.begin(), dist.end()))
