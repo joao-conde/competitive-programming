@@ -14,6 +14,7 @@ using namespace std;
 
 
 void bfs(const vector< vector<int> > &g, int source, vector<int>& dist) {
+  
   queue<int> q;
   dist[source] = 0;
   q.push(source);
@@ -26,6 +27,7 @@ void bfs(const vector< vector<int> > &g, int source, vector<int>& dist) {
         q.push(e);
       }
   }
+
 }
 
 
@@ -59,14 +61,15 @@ int main(){
             if(networkTTL > *max_element(dist.begin(), dist.end()))
                 networkTTL = *max_element(dist.begin(), dist.end());
 
-            cout << "---ROUTER ON " << l << "---" << endl; 
+            // cout << "---ROUTER ON " << l << "---" << endl; 
+            /*
             for(int distancia: dist){
                 cout << "DIST: " << distancia << endl;
-            }
+            }*/
             
         }
         
-        cout << "TEST CASE " << i+1 << ": " << networkTTL << endl;
+        cout << networkTTL << endl;
       
     }
     
