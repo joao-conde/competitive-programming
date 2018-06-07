@@ -4,8 +4,6 @@
 #include <algorithm>
 #include <vector>
 #include <queue>
-#include <cmath>
-
 
 using namespace std;
 
@@ -34,15 +32,17 @@ void bfs(const vector< vector<int> > &g, int source, vector<int>& dist) {
 
 int main(){
 
-    int test_cases, computers, src, dest, furthestNode;
-    float networkTTL;
+    ios::sync_with_stdio(0); // Input and output become more efficient.
+    cin.tie();
+
+    int test_cases, computers, src, dest, furthestNode, treeDiam;
     cin >> test_cases;
 
     for(int i = 0; i < test_cases; i++){
         
         cin >> computers;
         
-        vector< vector<int> > network(computers);
+        vector<vector<int>> network(computers);
         vector<int> dist(network.size(), INF), dist2(network.size(), INF);
 
         //build network from user input
@@ -59,10 +59,14 @@ int main(){
         bfs(network, 0, dist); 
         furthestNode = *max_element(dist.begin(), dist.end());
 
-        bfs(network, furthestNode, dist2);
-        networkTTL = *max_element(dist2.begin(),dist2.end());
 
-        cout << ceil(networkTTL/2) << endl;
+
+        bfs(network, furthestNode, dist2);
+        treeDiam = *max_element(dist2.begin(),dist2.end());
+
+
+        cout << "FURTHESTNODE " << furthestNode << " treeDiam " << treeDiam << endl;
+        cout << treeDiam / 2 + treeDiam % 2 << endl;
     }
     
     return 0;
