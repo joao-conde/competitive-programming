@@ -1,8 +1,13 @@
 //http://www.spoj.com/problems/CANDY/
 
-#include <bits/stdc++.h> //Includes ALL c++ headers
+#include <bits/stdc++.h> //Includes ALL c++ files needed
 
 using namespace std;
+
+/* TLDR:
+*   1 - #include <bits/stdc++.h> includes ALL c++ files needed
+*/
+
 
 int main(){
 
