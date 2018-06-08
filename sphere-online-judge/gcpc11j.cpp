@@ -8,9 +8,7 @@
 using namespace std;
 
 
-#define MAX 100000 //10⁵ which is max number of nodes, so edges is that -1 (roughly the same)
 #define INF 1000000000 //high value simmulating infinity
-
 
 /* TLDR:
 *   1 - bfs calculates all shortest distances from a node
@@ -39,7 +37,7 @@ void bfs(const vector< vector<int> > &g, int source, vector<int>& dist) {
 
 int main(){
 
-    ios::sync_with_stdio(0); // Input and output become more efficient.
+    ios::sync_with_stdio(0); //Input and output become more efficient.
     cin.tie();
 
     int test_cases, computers, src, dest, treeDiam;
