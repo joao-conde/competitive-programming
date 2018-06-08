@@ -1,17 +1,15 @@
-#include <iostream>
-#include <vector>
+//http://www.spoj.com/problems/CANDY/
+
+#include <bits/stdc++.h> //Includes ALL c++ headers
 
 using namespace std;
-
-
-//-1 output terminates own program? X?D!?
 
 int main(){
 
     ios::sync_with_stdio(0); //Input and output become more efficient.
     cin.tie();
 
-    int moves, goal, ncandys, npackets = 0;
+    int moves, goal, ncandies, npackets = 0;
     while(true){
         cin >> npackets;
 
@@ -19,20 +17,20 @@ int main(){
 
         //Reading packets candy and computing total
         vector<int> packets(npackets);
-        ncandys = 0;
+        ncandies = 0;
         for(int i = 0; i < npackets; i++){
             cin >> packets[i];
-            ncandys += packets[i];
+            ncandies += packets[i];
         }
 
         //No possible equal distribution of candy
-        if(ncandys % npackets != 0){
+        if(ncandies % npackets != 0){
             cout << -1 << endl;
-            break;
+            continue;
         }
 
         //Desired number of candy per packet
-        goal = ncandys/npackets;
+        goal = ncandies/npackets;
         
         //Compute minimum candy moves required
         moves = 0;
