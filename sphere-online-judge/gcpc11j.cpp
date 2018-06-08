@@ -29,19 +29,19 @@ void bfs(const vector< vector<int> > &g, int source, vector<int>& dist) {
 
 }
 
-
 int main(){
 
     ios::sync_with_stdio(0); // Input and output become more efficient.
     cin.tie();
 
-    int test_cases, computers, src, dest, furthestNode, treeDiam;
+    int test_cases, computers, src, dest, treeDiam;
     cin >> test_cases;
 
     for(int i = 0; i < test_cases; i++){
         
         cin >> computers;
         
+        int maxIdx = -1, max = -1;
         vector<vector<int>> network(computers);
         vector<int> dist(network.size(), INF), dist2(network.size(), INF);
 
@@ -49,23 +49,24 @@ int main(){
         for(int j = 0; j < computers - 1; j++){
             cin >> src; cin >> dest;
 
-            //bi-directional edges
+            //bi-directional edges so bfs calculates
             network[src].push_back(dest);
             network[dest].push_back(src);
         }
 
-
         //use bfs to calculate distances from first node and discover furthest node from root
         bfs(network, 0, dist); 
-        furthestNode = *max_element(dist.begin(), dist.end());
-
-
-
-        bfs(network, furthestNode, dist2);
+        for(int k = 0; k < dist.size(); k++){
+            if(dist[k] > max){
+                max = dist[k];
+                maxIdx = k;
+            }      
+        }
+        
+        //use bfs to calculate biggest distance for furthest node = tree diameter
+        bfs(network, maxIdx, dist2);
         treeDiam = *max_element(dist2.begin(),dist2.end());
 
-
-        cout << "FURTHESTNODE " << furthestNode << " treeDiam " << treeDiam << endl;
         cout << treeDiam / 2 + treeDiam % 2 << endl;
     }
     
