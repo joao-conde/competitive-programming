@@ -12,6 +12,14 @@ using namespace std;
 #define INF 1000000000 //high value simmulating infinity
 
 
+/* TLDR:
+*   1 - bfs calculates all shortest distances from a node
+*   2 - graph can have bi-directional edges
+*   3 - to find the middle of a tree, find the maximum distance from the source, then find
+    the maximum distance from that furthest node ; dividing the diameter in half you get the 
+    middle of the tree
+*/
+
 void bfs(const vector< vector<int> > &g, int source, vector<int>& dist) {
   
   queue<int> q;
