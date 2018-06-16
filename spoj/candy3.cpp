@@ -4,6 +4,10 @@
 
 using namespace std;
 
+/* TLDR:
+*   1 - module operation properties TODO: UNDERSTAND THIS
+*/
+
 int main(){
 
     ios::sync_with_stdio(0); //Input and output become more efficient.
@@ -19,7 +23,7 @@ int main(){
 
         for(int k = 0; k < children; k++){
             cin >> dummy;
-            candies += dummy;
+            candies = (candies + dummy) % children;
         }
 
         cout << ((candies % children != 0) ? "NO" : "YES") << endl;
