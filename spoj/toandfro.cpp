@@ -6,7 +6,7 @@
 using namespace std;
 
 
-/* TLDR:
+/* TIL:
 *   1 - matrix representations are obvious but not necessary => look to reduce complexity by going 2D to 1D
 */
 

@@ -13,7 +13,7 @@
 using namespace std;
 
 
-/* TLDR:
+/* TIL:
 *   1 - RPN = Reverse Polish Notation
 *       operands first operators after, useful to use a stack
 */

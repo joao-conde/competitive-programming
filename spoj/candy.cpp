@@ -4,7 +4,7 @@
 
 using namespace std;
 
-/* TLDR:
+/* TIL:
 *   1 - #include <bits/stdc++.h> includes ALL c++ files needed
 */
 

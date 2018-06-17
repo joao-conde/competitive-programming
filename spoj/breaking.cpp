@@ -7,7 +7,7 @@
 
 using namespace std;
 
-/* TLDR:
+/* TIL:
 *   1 - store large data in the heap (make it a global variable)
 *   2 - Eratosthenes' Sieve: calculate all the prime numbers up to an integer N
 */

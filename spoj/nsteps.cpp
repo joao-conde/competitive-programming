@@ -6,7 +6,7 @@ using namespace std;
 
 
 
-/* TLDR:
+/* TIL:
 *   1 - Simply watching the pattern gets you there, but it can be probably more efficient to find 
 *   the functions equation and use that (linear time)
 */

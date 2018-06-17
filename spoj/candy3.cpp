@@ -4,7 +4,7 @@
 
 using namespace std;
 
-/* TLDR:
+/* TIL:
 *   1 - modulo operation: rather than summing all then applying modulo it is possible to
 *   apply modulo to each of the components you're adding and sum the modulos instead.
 *   In the end add the modulos and do modulo of the sum of modulos.

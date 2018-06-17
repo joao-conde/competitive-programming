@@ -8,7 +8,7 @@
 using namespace std;
 
 
-/* TLDR:
+/* TIL:
 *   1 - to check if a number is prime we need only to check up till the sqrt of it's number
 */
 
