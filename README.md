@@ -11,3 +11,7 @@ The solutions implemented are my own and they are often a product of quick think
 ## Repository Structure
 
 The repository contains:
+
+1. A folder with solutions for each online judge
+2. A book about competitive programming (freely distributed by the author)
+3. A template cpp file for competitive programming solutions
