@@ -4,20 +4,24 @@
 using namespace std;
 
 
-/*
-https://en.wikipedia.org/wiki/Pigeonhole_principle
-
-https://www.quora.com/What-is-the-correct-approach-to-solve-the-SPOJ-problem-Aggressive-cow
-
-
-use binary search to find largest min distance
-basically we know the answer ranges from 0 (all cows together) to N-1 (2 cows one at each edge)
-so using binary search we find that value X 
-thus we need a function to determine if with C cows you can place them spaced by X (or more)
+/* TIL:
+*   1 - binary search algorithm for problems like this, well explained at:
+*		https://www.quora.com/What-is-the-correct-approach-to-solve-the-SPOJ-problem-Aggressive-cow
+*
+*	2 - we know the possible smallest value (0, all cows in sequential stalls) and the biggest one
+*		(max distance stall minus the first, simulatng 2 cows at each edge)
+*
+*	3 - we also know that if a value X of distance cannot be satisfied then for any Y > X
+*		Y cannot be satisfied aswell -> this property is called monotonicity condition and 
+*		it is necessary for binary search
+*
+*	4 - all we need is a function that checks if a given X can be satisfied given the number of cows
+*		and stalls and each of their distances
 */
 
+
 /*
- *	Checks wether or not C cows fit separated by at least dis from each other.
+ *	Checks wether or not C cows fit the stalls separated by at least dis from each other.
  */
 bool canSeparateCowsBy(int dis, vector<int> stalls, int cows){
 
@@ -60,10 +64,27 @@ int main() {
     		stalls.push_back(dummy);
     	}
 
+    	//sort stalls to properly calculate distances
     	sort(stalls.begin(), stalls.end());
 
-    	cout << "CAN SEPARATE COWS: " << canSeparateCowsBy(4, stalls, cows) << "\n";
-    	//TODO: binary search between 0 and N
+    	//binary search: min = 0, max = distance from first to last stall
+        int lb = 0, hb = stalls[nStalls - 1] - stalls[0], mid;
+ 
+        //find the last occurence of a possible minimum value - maximized minimum distance
+        while(hb - lb > 1){
+			
+			//sum of lb avoids overflow
+            mid = lb + (hb - lb) / 2;
+ 
+            if(canSeparateCowsBy(mid, stalls, cows)){
+                lb = mid;
+            } else {
+                hb = mid;
+            }
+        }
+ 
+        cout << lb << "\n";
+
     }
 
 }
