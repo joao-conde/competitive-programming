@@ -20,12 +20,12 @@ the last row of the DP table and check the first value DP[n][i] that is equal to
 
 int knapsack01_bottomUp(int val[], int wt[], int c, int n){
 
-	//value for knapsack with c capacity and n weights selected (+1 because 0 case is evaluated)
+	//value for knapsack with c capacity and n weights selected (+1 because '0' case is evaluated)
 	int dp[n+1][c+1];
 	
 	for(int i = 0; i <= n; i++){
 
-		for(int j = 0; j <= c; c++){
+		for(int j = 0; j <= c; j++){
 
 			if(i == 0 || j == 0) 
 				dp[i][j] = 0;
@@ -44,6 +44,7 @@ int knapsack01_bottomUp(int val[], int wt[], int c, int n){
 }
 
 int main() {
+
     ios::sync_with_stdio(0); 
     cin.tie();
 
@@ -54,12 +55,10 @@ int main() {
 		if(budget == 0 && parties == 0) //end of input
 			break;
 
-		int fees[parties], funRates[parties];
+		//knapsack weights and values
+		int fees[parties], funRates[parties], cost, fun;
 		for(int i = 0; i < parties; i++){
-			
-			int cost, fun;
 			cin >> cost; cin >> fun;
-
 			fees[i] = cost;
 			funRates[i] = fun;
 		}
