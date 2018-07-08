@@ -7,6 +7,12 @@
 Place cows in different barn stalls maximizing the minimum distance between each one
 
 
+## Dynamic Programming
+
+* [**PARTY**](https://www.spoj.com/problems/PARTY/) ([MySolution](https://github.com/joao-conde/competitive-programming/blob/master/spoj/party.cpp))  
+Find the set of parties to attend maxmizing fun rate and minimizing costs. 0/1 knapsack approach.
+
+
 ## Graphs
 
 * [**GCPC11J**](https://www.spoj.com/problems/GCPC11J/) ([MySolution](https://github.com/joao-conde/competitive-programming/blob/master/spoj/gcpc11j.cpp))  
