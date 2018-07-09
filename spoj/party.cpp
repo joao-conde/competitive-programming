@@ -4,17 +4,17 @@
 using namespace std;
 
 /* TIL:
-*   1 - Knapsack 0/1 problem: for a set of items with different weights and values find the optimal subset of items 
-*   that maximizes value and minimizes weight
-*
-*   2 - It's '0/1' because you either choose the item or you don't (there problems where partial items can be envolved)
-*
-*	3 - Dynamic programming is basically using memoization to avoid repeating computations already made, storing these values
-*	in a data structure with linear (O(1)) access time 
-*
-*	4 - Useful link: https://www.geeksforgeeks.org/knapsack-problem/
-*
-*/
+ *   1 - Knapsack 0/1 problem: for a set of items with different weights and values find the optimal subset of items 
+ *   that maximizes value and minimizes weight
+ *	
+ *	2 - It's '0/1' because you either choose the item or you don't (there problems where partial items can be envolved)
+ *
+ *	3 - Dynamic programming is basically using memoization to avoid repeating computations already made, storing these values
+ *	in a data structure with linear (O(1)) access time 
+ *
+ *	4 - Useful link: www.geeksforgeeks.org/knapsack-problem/
+ *
+ */
 
 
 /*
