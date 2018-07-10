@@ -13,5 +13,5 @@ The solutions implemented are my own and they are often a product of quick think
 The repository contains:
 
 1. A folder with solutions for each online judge
-2. A book about competitive programming (freely distributed by the author)
+2. Books about competitive programming (freely distributed by the authors)
 3. A template cpp file for competitive programming solutions
