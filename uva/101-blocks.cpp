@@ -25,6 +25,13 @@ void printWorld(vector<stack<int>> bworld){
 
 }
 
+
+void processCommand(vector<stack<int>> &bworld, string cmd){
+
+	cout << "PROCESSNG CMD: " << cmd << "\n";
+
+}
+
 int main() {
     
     ios::sync_with_stdio(0); 
@@ -34,14 +41,22 @@ int main() {
     cin >> nBlocks;
 
     vector<stack<int>> bworld;
-
     for(int i = 0; i < nBlocks; i++){
     	stack<int> stacki;
     	stacki.push(i);
     	bworld.push_back(stacki);
     } 
+    
+    cin.ignore();
+    
+    string cmd;
+    while(true){
+    	
+    	getline(cin, cmd);
+    	if(cmd == "quit") break;
+
+    	processCommand(bworld, cmd);
+    }
 
     printWorld(bworld);
-
-
 }
