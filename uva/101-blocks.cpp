@@ -9,7 +9,7 @@ using namespace std;
 *   3 - ...
 */
 
-void printWorld(vector<stack<int>> bworld){
+void printWorld(const vector<stack<int>> &bworld){
 
 	cout << "\n---BLOCK WORLD---";
 	for(int i = 0; i < bworld.size(); i++){
@@ -25,12 +25,88 @@ void printWorld(vector<stack<int>> bworld){
 
 }
 
+vector<string> parseCmd(const string cmd){
+	
+	vector<string> parsedCmd;
+
+	stringstream ss(cmd);
+	string dummy;
+	while(ss >> dummy){
+		parsedCmd.push_back(dummy);
+	}
+
+	return parsedCmd;
+}
+
+void restore(vector<stack<int>> &bworld, int x){
+
+	while(bworld[x].size() > 1){
+		int c = bworld[x].top();
+		bworld[x].pop();
+
+		bworld[c].push(c);
+	}
+
+}
+
+void moveOnto(vector<stack<int>> &bworld, int a, int b){
+
+	//restore pile of a and b
+	restore(bworld, a);
+	restore(bworld, b);
+
+	//place a on top of b
+	bworld[b].push(a);
+	bworld[a].pop();
+
+}
+
+void moveOver(vector<stack<int>> &bworld, int a, int b){
+
+}
+
+void pileOnto(vector<stack<int>> &bworld, int a, int b){
+
+}
+
+void pileOver(vector<stack<int>> &bworld, int a, int b){
+
+}
+
 
 void processCommand(vector<stack<int>> &bworld, string cmd){
 
-	cout << "PROCESSNG CMD: " << cmd << "\n";
+	cout << "\nPROCESSNG CMD: " << cmd << "\n";
+
+	vector<string> parsedCmd = parseCmd(cmd);
+
+	//validations
+	if(parsedCmd.size() != 4)
+		return;
+
+	if(parsedCmd[1] == parsedCmd[3])
+		return;
+
+
+	if(parsedCmd[0].compare("move") == 0){
+		if(parsedCmd[0].compare("onto") == 0)
+			moveOnto(bworld, stoi(parsedCmd[1]), stoi(parsedCmd[3]));
+
+		if(parsedCmd[0].compare("over") == 0)
+			moveOver(bworld, stoi(parsedCmd[1]), stoi(parsedCmd[3]));
+	}
+
+
+	if(parsedCmd[0].compare("pile") == 0){
+		if(parsedCmd[0].compare("onto") == 0)
+			pileOnto(bworld, stoi(parsedCmd[1]), stoi(parsedCmd[3]));
+
+		if(parsedCmd[0].compare("over") == 0)
+			pileOver(bworld, stoi(parsedCmd[1]), stoi(parsedCmd[3]));
+	}
 
 }
+
 
 int main() {
     
