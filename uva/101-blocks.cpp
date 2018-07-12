@@ -11,15 +11,21 @@ using namespace std;
 
 void printWorld(const vector<stack<int>> &bworld){
 
-	cout << "\n---BLOCK WORLD---";
-	for(int i = 0; i < bworld.size(); i++){
-		cout << "\n" << i << ":";
+	cout << "\n---BLOCK WORLD---\n";
 
+
+	for(int i = 0; i < bworld.size(); i++){
+		cout << i << ":";
+
+		string stackStr = "";
 		stack<int> auxStack = bworld.at(i);
+
 		while(!auxStack.empty()){
-			cout << " " << auxStack.top();
+			stackStr = to_string(auxStack.top()) + " " + stackStr;
 			auxStack.pop();
 		}
+
+		cout << stackStr << "\n";
 	}
 	cout << "\n";
 
@@ -58,15 +64,19 @@ void moveTopTo(vector<stack<int>> &bworld, int a, int b){
 }
 
 
-void moveStackTo(vector<stack<int>> &bworld, int a, int b){
+void movePileTo(vector<stack<int>> &bworld, int a, int b){
 
 	stack<int> auxStack = bworld[a];
-		
+	vector<int> pileToMove;
+
 	while(!auxStack.empty()){
-		cout << " " << auxStack.top();
+		pileToMove.push_back(auxStack.top());
 		auxStack.pop();
 	}
 
+	for(int i = pileToMove.size() - 1; i >= 0; i++){
+		bworld[b].push(pileToMove[i]);
+	}
 
 }
 
@@ -91,12 +101,12 @@ void moveOver(vector<stack<int>> &bworld, int a, int b){
 void pileOnto(vector<stack<int>> &bworld, int a, int b){
 
 	restore(bworld, b);
-
+	movePileTo(bworld, a, b);
 
 }
 
 void pileOver(vector<stack<int>> &bworld, int a, int b){
-
+	movePileTo(bworld, a, b);
 }
 
 
