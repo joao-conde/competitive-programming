@@ -49,23 +49,49 @@ void restore(vector<stack<int>> &bworld, int x){
 
 }
 
-void moveOnto(vector<stack<int>> &bworld, int a, int b){
 
+void moveTopTo(vector<stack<int>> &bworld, int a, int b){
+
+	//place a on top of b
+	bworld[b].push(a);
+	bworld[a].pop();	
+}
+
+
+void moveStackTo(vector<stack<int>> &bworld, int a, int b){
+
+	stack<int> auxStack = bworld[a];
+		
+	while(!auxStack.empty()){
+		cout << " " << auxStack.top();
+		auxStack.pop();
+	}
+
+
+}
+
+void moveOnto(vector<stack<int>> &bworld, int a, int b){
+	cout << "MOVE ONTO " << a << " - " << b << "\n";
 	//restore pile of a and b
 	restore(bworld, a);
 	restore(bworld, b);
 
-	//place a on top of b
-	bworld[b].push(a);
-	bworld[a].pop();
+	moveTopTo(bworld, a, b);
 
 }
 
 void moveOver(vector<stack<int>> &bworld, int a, int b){
 
+	restore(bworld, a);
+
+	moveTopTo(bworld, a, b);
+
 }
 
 void pileOnto(vector<stack<int>> &bworld, int a, int b){
+
+	restore(bworld, b);
+
 
 }
 
@@ -76,32 +102,30 @@ void pileOver(vector<stack<int>> &bworld, int a, int b){
 
 void processCommand(vector<stack<int>> &bworld, string cmd){
 
-	cout << "\nPROCESSNG CMD: " << cmd << "\n";
-
 	vector<string> parsedCmd = parseCmd(cmd);
 
 	//validations
 	if(parsedCmd.size() != 4)
 		return;
 
-	if(parsedCmd[1] == parsedCmd[3])
+	if(parsedCmd[1].compare(parsedCmd[3]) == 0)
 		return;
 
 
 	if(parsedCmd[0].compare("move") == 0){
-		if(parsedCmd[0].compare("onto") == 0)
+		if(parsedCmd[2].compare("onto") == 0)
 			moveOnto(bworld, stoi(parsedCmd[1]), stoi(parsedCmd[3]));
 
-		if(parsedCmd[0].compare("over") == 0)
+		if(parsedCmd[2].compare("over") == 0)
 			moveOver(bworld, stoi(parsedCmd[1]), stoi(parsedCmd[3]));
 	}
 
 
 	if(parsedCmd[0].compare("pile") == 0){
-		if(parsedCmd[0].compare("onto") == 0)
+		if(parsedCmd[2].compare("onto") == 0)
 			pileOnto(bworld, stoi(parsedCmd[1]), stoi(parsedCmd[3]));
 
-		if(parsedCmd[0].compare("over") == 0)
+		if(parsedCmd[2].compare("over") == 0)
 			pileOver(bworld, stoi(parsedCmd[1]), stoi(parsedCmd[3]));
 	}
 
