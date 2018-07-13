@@ -71,9 +71,6 @@ void movePileTo(vector<stack<int>> &bworld, vector<int> &bPositions, int a, int 
 	int aPos = bPositions[a],
 		bPos = bPositions[b];
 
-	//they are on the same stack already
-	if(aPos == bPos) return;
-
 	vector<int> pileToMove;
 
 	while(true){
@@ -93,24 +90,17 @@ void movePileTo(vector<stack<int>> &bworld, vector<int> &bPositions, int a, int 
 }
 
 void moveOnto(vector<stack<int>> &bworld, vector<int> &bPositions, int a, int b){
-	//restore pile of a and b
 	restore(bworld, bPositions, a);
 	restore(bworld, bPositions, b);
-
 	moveTopTo(bworld, bPositions, a, b);
-
 }
 
 void moveOver(vector<stack<int>> &bworld, vector<int> &bPositions, int a, int b){
-
 	restore(bworld, bPositions, a);
-
 	moveTopTo(bworld, bPositions, a, b);
-
 }
 
 void pileOnto(vector<stack<int>> &bworld, vector<int> &bPositions, int a, int b){
-
 	restore(bworld, bPositions, b);
 	movePileTo(bworld, bPositions, a, b);
 
@@ -125,29 +115,45 @@ void processCommand(vector<stack<int>> &bworld, vector<int> &bPositions, string 
 
 	vector<string> parsedCmd = parseCmd(cmd);
 
-	//validations
-	if(parsedCmd.size() != 4)
-		return;
+	//valid command size
+	if(parsedCmd.size() != 4) return;
 
-	if(parsedCmd[1].compare(parsedCmd[3]) == 0)
+	//valid arguments -> a != b
+	if(parsedCmd[1].compare(parsedCmd[3]) == 0)	return;
+
+	//a and b must be valid integers
+	int a, b;
+	try{
+		a = stoi(parsedCmd[1]);
+		b = stoi(parsedCmd[3]);
+	}
+	catch (const invalid_argument& ia){
+		cout << "DISCARD" << endl;
 		return;
+	}
+
+	int aPos = bPositions[a],
+		bPos = bPositions[b];
+
+	//a can't be on b stack
+	if(aPos == bPos) return;
 
 
 	if(parsedCmd[0].compare("move") == 0){
 		if(parsedCmd[2].compare("onto") == 0)
-			moveOnto(bworld, bPositions, stoi(parsedCmd[1]), stoi(parsedCmd[3]));
+			moveOnto(bworld, bPositions, a, b);
 
 		if(parsedCmd[2].compare("over") == 0)
-			moveOver(bworld, bPositions, stoi(parsedCmd[1]), stoi(parsedCmd[3]));
+			moveOver(bworld, bPositions, a, b);
 	}
 
 
 	if(parsedCmd[0].compare("pile") == 0){
 		if(parsedCmd[2].compare("onto") == 0)
-			pileOnto(bworld, bPositions, stoi(parsedCmd[1]), stoi(parsedCmd[3]));
+			pileOnto(bworld, bPositions, a, b);
 
 		if(parsedCmd[2].compare("over") == 0)
-			pileOver(bworld, bPositions, stoi(parsedCmd[1]), stoi(parsedCmd[3]));
+			pileOver(bworld, bPositions, a, b);
 	}
 
 }
