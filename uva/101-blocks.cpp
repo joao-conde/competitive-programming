@@ -40,6 +40,8 @@ void restore(vector<stack<int>> &bworld, vector<int> &bPositions, int x){
 
 	while(true){
 		
+		if(bworld[xPos].empty()) break;
+
 		int top = bworld[xPos].top();
 
 		if(top == x) break;
@@ -74,6 +76,8 @@ void movePileTo(vector<stack<int>> &bworld, vector<int> &bPositions, int a, int 
 	vector<int> pileToMove;
 
 	while(true){
+
+		if(bworld[aPos].empty()) break;
 
 		int top = bworld[aPos].top();
 		bworld[aPos].pop();

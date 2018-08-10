@@ -9,7 +9,7 @@ using namespace std;
 *		https://www.quora.com/What-is-the-correct-approach-to-solve-the-SPOJ-problem-Aggressive-cow
 *
 *	2 - we know the possible smallest value (0, all cows in sequential stalls) and the biggest one
-*		(max distance stall minus the first, simulatng 2 cows at each edge)
+*		(max distance stall minus the first, simulating 2 cows at each edge)
 *
 *	3 - we also know that if a value X of distance cannot be satisfied then for any Y > X
 *		Y cannot be satisfied aswell -> this property is called monotonicity condition and 
