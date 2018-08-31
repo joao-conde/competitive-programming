@@ -1,0 +1,7 @@
+---Problems not yet solved---
+
+SPOJ:
+	- trt.cpp
+
+CSA:
+	- adaptive-binary-search.cpp
