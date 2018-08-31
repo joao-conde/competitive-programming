@@ -3,7 +3,7 @@ using namespace std;
 
 
 /*
- *	Restore blocks stacked on top of block b to original positions
+ *	Restore blocks stacked on top of block b to original positions.
  */
 void restore(int b, vector<stack<int>> &bworld, vector<int> &bpositions){
 
@@ -91,7 +91,7 @@ void pileOver(int a, int b, vector<stack<int>> &bworld, vector<int> &bpositions)
 
 
 /*
- *	Prints block world in an human friendly way
+ *	Prints block world in an human friendly way.
  */
 void printWorld(const vector<stack<int>> &bworld){
 
@@ -110,6 +110,10 @@ void printWorld(const vector<stack<int>> &bworld){
 	}
 }
 
+
+/*
+ *	Parses the input string as an array of arguments.
+ */
 vector<string> parseCmd(const string cmd){
 	
 	vector<string> parsedCmd;
@@ -123,6 +127,10 @@ vector<string> parseCmd(const string cmd){
 	return parsedCmd;
 }
 
+
+/*
+ *	Processes the arguments executing correct movements.
+ */
 void processCommand(vector<stack<int>> &bworld, vector<int> &bpositions, string cmd){
 
 	vector<string> parsedCmd = parseCmd(cmd);
