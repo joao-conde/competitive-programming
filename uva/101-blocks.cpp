@@ -1,25 +1,114 @@
-//https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=3&page=show_problem&problem=37
-
 #include <bits/stdc++.h>
 using namespace std;
 
-void printWorld(const vector<stack<int>> &bworld, const vector<int> &bPositions){
+
+/*
+ *	Restore blocks stacked on top of block b to original positions
+ */
+void restore(int b, vector<stack<int>> &bworld, vector<int> &bpositions){
+
+	while(bworld[bpositions[b]].top() != b){
+		int top = bworld[bpositions[b]].top();
+
+		bworld[top].push(top);
+
+		bpositions[top] = top;
+		bworld[bpositions[b]].pop();
+	}
+}
+
+/*
+ *	Moves block a to the stack of b. Requires a to be top of its stack.
+ */
+void moveBlock(int a, int b, vector<stack<int>> &bworld, vector<int> &bpositions){
+
+	bworld[bpositions[a]].pop();
+
+	bworld[bpositions[b]].push(a);
+	bpositions[a] = bpositions[b];
+
+}
+
+
+/*
+ *	Moves the pile of blocks consisting of block a and those above it on top of block b.
+ *	Pile of blocks retains its order.
+ */
+void movePile(int a, int b, vector<stack<int>> &bworld, vector<int> &bpositions){
+
+	vector<int> pile;
+
+	if(bpositions[a] == bpositions[b]) return;
+
+	while(bworld[bpositions[a]].top() != a){
+		pile.push_back(bworld[bpositions[a]].top());
+		bworld[bpositions[a]].pop();
+	}
+
+	pile.push_back(a);
+	bworld[bpositions[a]].pop();
+
+
+	for(int i = pile.size()-1; i >= 0; i--){
+		bworld[bpositions[b]].push(pile[i]);
+		bpositions[pile[i]] = bpositions[b];
+	}
+	
+}
+
+
+/*
+ *	Moves a onto b, restoring any blocks above both a and b first.
+ */
+void moveOnto(int a, int b, vector<stack<int>> &bworld, vector<int> &bpositions){
+	restore(a, bworld, bpositions);
+	restore(b, bworld, bpositions);
+	moveBlock(a, b, bworld, bpositions);
+}
+
+/*
+ *	Moves a onto b, restoring any blocks above a first.
+ */
+void moveOver(int a, int b, vector<stack<int>> &bworld, vector<int> &bpositions){
+	restore(a, bworld, bpositions);
+	moveBlock(a, b, bworld, bpositions);
+}
+
+/*
+ *	Moves the pile of blocks a onto b, first restoring blocks above b.
+ */
+void pileOnto(int a, int b, vector<stack<int>> &bworld, vector<int> &bpositions){
+	restore(b, bworld, bpositions);
+	movePile(a, b, bworld, bpositions);
+}
+
+/*
+ *	Moves the pile of blocks a onto b stack.
+ */
+void pileOver(int a, int b, vector<stack<int>> &bworld, vector<int> &bpositions){
+	movePile(a, b, bworld, bpositions);
+}
+
+
+/*
+ *	Prints block world in an human friendly way
+ */
+void printWorld(const vector<stack<int>> &bworld){
 
 	for(int i = 0; i < bworld.size(); i++){
-		cout << i << ": ";
+		cout << i << ":";
 
 		string stackStr = "";
 		stack<int> auxStack = bworld.at(i);
 
 		while(!auxStack.empty()){
-			stackStr = to_string(auxStack.top()) + " " + stackStr;
+			stackStr = " " + to_string(auxStack.top()) + stackStr;
 			auxStack.pop();
 		}
 
 		cout << stackStr << "\n";
 	}
 }
-
 
 vector<string> parseCmd(const string cmd){
 	
@@ -34,88 +123,7 @@ vector<string> parseCmd(const string cmd){
 	return parsedCmd;
 }
 
-void restore(vector<stack<int>> &bworld, vector<int> &bPositions, int x){
-
-	int xPos = bPositions[x];
-
-	while(true){
-		
-		if(bworld[xPos].empty()) break;
-
-		int top = bworld[xPos].top();
-
-		if(top == x) break;
-
-		bworld[xPos].pop();
-
-		bworld[top].push(top);
-		bPositions[top] = top;
-	}
-
-}
-
-
-void moveTopTo(vector<stack<int>> &bworld, vector<int> &bPositions, int a, int b){
-
-	int aPos = bPositions[a],
-		bPos = bPositions[b];
-
-	//place a on top of b
-	bworld[bPos].push(a);
-	bworld[aPos].pop();
-
-	bPositions[a] = bPos;	
-}
-
-
-void movePileTo(vector<stack<int>> &bworld, vector<int> &bPositions, int a, int b){
-
-	int aPos = bPositions[a],
-		bPos = bPositions[b];
-
-	vector<int> pileToMove;
-
-	while(true){
-
-		if(bworld[aPos].empty()) break;
-
-		int top = bworld[aPos].top();
-		bworld[aPos].pop();
-
-		pileToMove.push_back(top);
-		
-		if(top == a) break;
-	}
-
-	for(int i = pileToMove.size() - 1; i >= 0; i--){
-		bworld[bPos].push(pileToMove[i]);
-	}
-
-}
-
-void moveOnto(vector<stack<int>> &bworld, vector<int> &bPositions, int a, int b){
-	restore(bworld, bPositions, a);
-	restore(bworld, bPositions, b);
-	moveTopTo(bworld, bPositions, a, b);
-}
-
-void moveOver(vector<stack<int>> &bworld, vector<int> &bPositions, int a, int b){
-	restore(bworld, bPositions, a);
-	moveTopTo(bworld, bPositions, a, b);
-}
-
-void pileOnto(vector<stack<int>> &bworld, vector<int> &bPositions, int a, int b){
-	restore(bworld, bPositions, b);
-	movePileTo(bworld, bPositions, a, b);
-
-}
-
-void pileOver(vector<stack<int>> &bworld, vector<int> &bPositions, int a, int b){
-	movePileTo(bworld, bPositions, a, b);
-}
-
-
-void processCommand(vector<stack<int>> &bworld, vector<int> &bPositions, string cmd){
+void processCommand(vector<stack<int>> &bworld, vector<int> &bpositions, string cmd){
 
 	vector<string> parsedCmd = parseCmd(cmd);
 
@@ -127,17 +135,12 @@ void processCommand(vector<stack<int>> &bworld, vector<int> &bPositions, string 
 
 	//a and b must be valid integers
 	int a, b;
-	try{
-		a = stoi(parsedCmd[1]);
-		b = stoi(parsedCmd[3]);
-	}
-	catch (const invalid_argument& ia){
-		cout << "DISCARD" << endl;
-		return;
-	}
+	a = stoi(parsedCmd[1]);
+	b = stoi(parsedCmd[3]);
+	
 
-	int aPos = bPositions[a],
-		bPos = bPositions[b];
+	int aPos = bpositions[a],
+		bPos = bpositions[b];
 
 	//a can't be on b stack
 	if(aPos == bPos) return;
@@ -145,23 +148,22 @@ void processCommand(vector<stack<int>> &bworld, vector<int> &bPositions, string 
 
 	if(parsedCmd[0].compare("move") == 0){
 		if(parsedCmd[2].compare("onto") == 0)
-			moveOnto(bworld, bPositions, a, b);
+			moveOnto(a, b, bworld, bpositions);
 
 		if(parsedCmd[2].compare("over") == 0)
-			moveOver(bworld, bPositions, a, b);
+			moveOver(a, b, bworld, bpositions);
 	}
 
 
 	if(parsedCmd[0].compare("pile") == 0){
 		if(parsedCmd[2].compare("onto") == 0)
-			pileOnto(bworld, bPositions, a, b);
+			pileOnto(a, b, bworld, bpositions);
 
 		if(parsedCmd[2].compare("over") == 0)
-			pileOver(bworld, bPositions, a, b);
+			pileOver(a, b, bworld, bpositions);
 	}
 
 }
-
 
 int main() {
     
@@ -171,26 +173,28 @@ int main() {
     int nBlocks;
     cin >> nBlocks;
 
-    vector<int> blockPositions;  /* current position of each block (to ensure O(1) lookup) */
-    vector<stack<int>> bworld;	 /*	the block world itself, with stacked blocks */
+    vector<stack<int>> bworld;
+    vector<int> bpositions;
+
+    //initialize world
     for(int i = 0; i < nBlocks; i++){
+    	
     	stack<int> stacki;
     	stacki.push(i);
-    	bworld.push_back(stacki);
 
-    	blockPositions.push_back(i);
-    } 
-    
-    cin.ignore();
-    
+    	bworld.push_back(stacki);
+    	bpositions.push_back(i);
+
+    }
+
     string cmd;
     while(true){
     	
     	getline(cin, cmd);
     	if(cmd == "quit") break;
 
-    	processCommand(bworld, blockPositions, cmd);
+    	processCommand(bworld, bpositions, cmd);
     }
 
-    printWorld(bworld, blockPositions);
+    printWorld(bworld);
 }
