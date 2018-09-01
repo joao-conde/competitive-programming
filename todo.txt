@@ -5,3 +5,6 @@ SPOJ:
 
 CSA:
 	- adaptive-binary-search.cpp
+
+UVA:
+	- 104
