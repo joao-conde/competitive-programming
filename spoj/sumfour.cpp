@@ -7,28 +7,39 @@ using namespace std;
 *   1 - Combinations of 4 single elements are better done combining 2 pairs of elements
 */
 
-
 int main() {
     
     ios::sync_with_stdio(0); 
     cin.tie();
 
-    int listSize; cin >> listSize;
-    vector<pair<int, int>> pairsAB, pairsCD; 
+    int listSize, quadruplets = 0;
+    vector<long long> listA, listB, listC, listD;
+    vector<long long> sumsPairsAB, sumsPairsCD; 
 
+    //Read lists' values
+    cin >> listSize;
     for(int i = 0; i < listSize; i++){
-        int a, b, c, d;
+        long long a, b, c, d;
         cin >> a >> b >> c >> d;
-        pairsAB.push_back(make_pair(a, b));
-        pairsCD.push_back(make_pair(c, d));
+        
+        listA.push_back(a);
+        listB.push_back(b);
+        listC.push_back(c);
+        listD.push_back(d);
     }
 
-    int quadruplets = 0;
+    //Make pairs of AB and CD
     for(int j = 0; j < listSize; j++){
-        int sumAB = pairsAB[j].first + pairsAB[j].second;
-        for(int k = 0; k < listSize; k++){
-            int sumCD = pairsCD[k].first + pairsCD[k].second;
-            if(sumAB + sumCD == 0)
+        for(int l = 0; l < listSize; l++){
+            sumsPairsAB.push_back(listA[j] + listB[l]);
+            sumsPairsCD.push_back(listC[j] + listD[l]);
+        }
+    }
+
+    //Make pairs of AB and CD pairs counting those whoose sum equals 0
+    for(int j = 0; j < sumsPairsAB.size(); j++){
+        for(int k = 0; k < sumsPairsCD.size(); k++){
+            if(sumsPairsAB[j] + sumsPairsCD[k] == 0)
                 quadruplets++;
         }
     }
