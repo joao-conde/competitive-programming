@@ -3,17 +3,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int computeNumberOfProperDivisors(int n){
-
-    int properDivisors = 0, sqrt_n = ceil(sqrt(n));
-    
-    for(int i = 0; i < sqrt_n; i++){
-        if(n % i == 0)  properDivisors++;
-    }
-
-    return properDivisors;
-}
-
 
 int main() {
     
@@ -24,7 +13,17 @@ int main() {
 
     while(testCases--){
         int n; cin >> n;
-        cout << n - computeNumberOfProperDivisors(n) << "\n";
+
+        /*
+         * From simple pattern observation comes that for:
+         *  - odd numbers: unmarked = ceil(n/2) or (n+1)/2
+         *  - even numbers: unmarked = n/2
+         */
+
+        if(n % 2 == 0)
+            cout << n/2 << "\n";
+        else
+            cout << (n+1)/2 << "\n";
     }
 
 }
