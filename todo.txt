@@ -3,6 +3,25 @@
 SPOJ:
 	- trt.cpp
 
+	DP:
+	- GNYR09F
+	- MISERMAN
+	- BEHAPPY
+
+	GRAPHS:
+	- SAMER08A
+	- TRSTAGE
+
+	BINARY SEARCH:
+	- SUMFOUR
+
+	MATHS:
+	- ALICESIE
+
+
+	DP + BS:
+	- ANARC05B 
+
 CSA:
 	- adaptive-binary-search.cpp
 
