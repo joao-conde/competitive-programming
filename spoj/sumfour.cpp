@@ -36,12 +36,31 @@ int main() {
         }
     }
 
+    //For binary search: searching if there is a pair or multiple pair values that satisfie AB + CD = 0
+    sort(sumsPairsAB.begin(), sumsPairsAB.end());
+    sort(sumsPairsCD.begin(), sumsPairsCD.end());
+
     //Make pairs of AB and CD pairs counting those whoose sum equals 0
     for(int j = 0; j < sumsPairsAB.size(); j++){
-        for(int k = 0; k < sumsPairsCD.size(); k++){
-            if(sumsPairsAB[j] + sumsPairsCD[k] == 0)
-                quadruplets++;
+
+        //Find if and how many values of sumsPairsCD satisfy sumsPairsAB + sumsPairsCD[j] = 0 using binary search
+        int lb = 0, ub = sumsPairsCD.size(), mid = lb + (ub - lb) / 2;
+            
+        while(lb <= ub){
+
+            mid = mid = lb + (ub - lb) / 2;
+
+            if(sumsPairsCD[mid] + sumsPairsAB[j] == 0){
+                //search for neighboor equal values
+                quadruplets += count(sumsPairsCD.begin(), sumsPairsCD.end(), sumsPairsAB[j]);
+                break;
+            }
+            else if(sumsPairsCD[mid] + sumsPairsAB[j] < 0)
+                lb = mid + 1;
+            else
+                ub = mid - 1;
         }
+
     }
 
     cout << quadruplets << "\n";
