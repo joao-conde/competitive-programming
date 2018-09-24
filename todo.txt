@@ -2,6 +2,7 @@
 
 SPOJ:
 	- trt.cpp
+	- sumfour.cpp
 
 	DP:
 	- GNYR09F
@@ -11,9 +12,6 @@ SPOJ:
 	GRAPHS:
 	- SAMER08A
 	- TRSTAGE
-
-	BINARY SEARCH:
-	- SUMFOUR
 
 	DP + BS:
 	- ANARC05B 
