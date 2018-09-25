@@ -8,6 +8,8 @@ long long memo[205][205]; //memo[foxlings][crackers]
 
 long long distribute(vector<long long> &a, vector<long long> &b, long long foxlings, long long crackers){
 
+    if(crackers < 0) return 0;
+
     if(memo[foxlings][crackers] != -1) return memo[foxlings][crackers];
 
     if(foxlings == a.size()){ //last foxen
@@ -15,8 +17,8 @@ long long distribute(vector<long long> &a, vector<long long> &b, long long foxli
     }
 
     long long ways = 0;
-    for(int i = a[foxlings]; i <= b[foxlings]; i++){
-        ways += distribute(a, b, foxlings + 1, crackers - 1);
+    for(long long i = a[foxlings]; i <= b[foxlings]; i++){
+        ways += distribute(a, b, foxlings + 1, crackers - i);
     }
 
     memo[foxlings][crackers] = ways;
@@ -28,10 +30,10 @@ int main() {
     ios::sync_with_stdio(0); 
     cin.tie();
 
-    memset(memo, -1, sizeof(memo));
-
     int testCases; cin >> testCases;
     while(testCases--){
+
+        memset(memo, -1, sizeof(memo));
 
         long long foxlings, crackers;
         cin >> foxlings >> crackers;
@@ -44,6 +46,6 @@ int main() {
 
         distribute(a, b, 0, crackers);
 
-        cout << memo[0][crackers] % 1000000007 << endl;
+        cout << memo[0][crackers] << endl;    
     }
 }
