@@ -6,7 +6,6 @@ SPOJ:
 
 	DP:
 	- GNYR09F
-	- MISERMAN
 	
 	GRAPHS:
 	- SAMER08A
