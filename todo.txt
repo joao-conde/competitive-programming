@@ -7,7 +7,7 @@ SPOJ:
 	DP:
 	- GNYR09F
 	- MISERMAN
-	- BEHAPPY
+	- BEHAPPY (missing memoization/dp implement)
 
 	GRAPHS:
 	- SAMER08A
