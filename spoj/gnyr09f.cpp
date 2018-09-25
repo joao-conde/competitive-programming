@@ -8,18 +8,12 @@ int main() {
     ios::sync_with_stdio(0); 
     cin.tie();
 
-    int dp[100][100][2];
+    int dp[100+2][100+2][2];
 
-    for(int i = 0; i < 100; i++){
-        for(int j = 0; j < 2; j++){
-            dp[0][i][j] = 0; //every 0 length string as 0 adj()
-        }
-    }
-    
-    dp[1][0][0] = dp[1][0][1] = 1; //base case
+    dp[1][0][0] = dp[1][0][1] = 1; //base case: 1 way only of getting a 1 length string and 0 adj()
 
-    for(int i = 1; i < 100; i++){
-        for(int j = 0; j < 100; j++){
+    for(int i = 2; i <= 100; i++){
+        for(int j = 0; j <= 100; j++){
             dp[i][j][0] = dp[i-1][j][0] + dp[i-1][j][1];
 
             if(j > 0) dp[i][j][1] = dp[i-1][j-1][1];
@@ -34,7 +28,7 @@ int main() {
         int dataSetID, stringLen, adjBitCnt;
         cin >> dataSetID >> stringLen >> adjBitCnt;
 
-        cout << "\n" << dataSetID << " : " << stringLen << " : " << adjBitCnt << " : " << dp[stringLen][adjBitCnt][0] <<  " ---- " << dp[stringLen][adjBitCnt][1] << endl;
+        cout << dataSetID << " " << dp[stringLen][adjBitCnt][0] + dp[stringLen][adjBitCnt][1] << endl;
     }
 
 }

@@ -3,9 +3,6 @@
 SPOJ:
 	- trt.cpp
 	- sumfour.cpp
-
-	DP:
-	- GNYR09F
 	
 	GRAPHS:
 	- SAMER08A
