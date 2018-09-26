@@ -3,9 +3,9 @@
 SPOJ:
 	- trt.cpp
 	- sumfour.cpp
+	- samer08a.cpp
 	
 	GRAPHS:
-	- SAMER08A
 	- TRSTAGE
 
 	DP + BS:
