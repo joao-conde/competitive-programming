@@ -4,6 +4,7 @@ SPOJ:
 	- trt.cpp
 	- sumfour.cpp
 	- samer08a.cpp
+	- cpcrc1c.cpp
 	
 	GRAPHS:
 	- TRSTAGE
