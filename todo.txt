@@ -6,6 +6,9 @@ SPOJ:
 	- samer08a.cpp
 	- cpcrc1c.cpp
 	
+
+	SHROOMS
+
 	GRAPHS:
 	- TRSTAGE
 
