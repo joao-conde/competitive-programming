@@ -3,10 +3,9 @@
 SPOJ:
 	- trt.cpp
 	- sumfour.cpp
-	- samer08a.cpp
-	- cpcrc1c.cpp
+	- cpcrc1c.cpp	//DIGIT DP
+	- amr11a.cpp
 	
-
 	SHROOMS
 
 	GRAPHS:
