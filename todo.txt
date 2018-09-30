@@ -3,10 +3,7 @@
 SPOJ:
 	- trt.cpp
 	- sumfour.cpp
-	- cpcrc1c.cpp	//DIGIT DP
-	- amr11a.cpp
-	
-	SHROOMS
+	- cpcrc1c.cpp	//DIGIT DP	
 
 	GRAPHS:
 	- TRSTAGE
