@@ -1,7 +1,7 @@
 ---Problems not yet solved---
 
 SPOJ:
-	- trt.cpp
+
 	- sumfour.cpp
 	- cpcrc1c.cpp	//DIGIT DP	
 
