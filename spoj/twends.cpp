@@ -11,39 +11,46 @@ int computeSmartMaxPts(int lidx, int ridx){
     if(lidx > ridx) return 0;
 
     if(memo[lidx][ridx] != -1) return memo[lidx][ridx];
+    
+    /*
+        Option 1:
+            - choose first card in range (left)
+            - greedy now chooses the max value card off of the 2 ends
 
-    int pts, takeLeft, takeRight;
+            opt1 = cards[i] + func(i + 1, j - 1) or opt1 = cards[i] + func(i + 2, j)
+            since you take card[i] (leftmost card) and can either have a state where greedy takes from right (so j-1 and your i+1) or also takes from 
+            left (so i + 2)
 
-    if(memo[lidx+1][ridx] != -1)
-        takeLeft = memo[lidx+1][ridx];
-    else
-        takeLeft = computeSmartMaxPts(lidx+1, ridx);
+        Option 2:
+            - choose last card in range (right)
+            - greedy now chooses the max value card
 
-    if(memo[lidx][ridx-1] != -1)
-        takeRight = memo[lidx][ridx-1];
-    else
-        takeRight = computeSmartMaxPts(lidx, ridx-1);
+            opt2 = cards[j] + func(i + 1, j - 1) or cards[j] + func(i, j - 2) similiar to previous option
+    */
 
-    if(takeLeft + cards[lidx] >= takeRight + cards[ridx]){
-        pts = cards[lidx];
-        lidx++;
+    int opt1, opt2;
+
+    //assume we pick first card -> cards[i]
+    //remains cards(i+1 to j), which end has higher value for the greedy?
+    
+    //left end has higher value
+    if(cards[lidx+1] >= cards[ridx]){
+        opt1 = cards[lidx] + computeSmartMaxPts(lidx + 2, ridx);
     }
-    else{
-        pts = cards[ridx];
-        ridx--;
+    else{ //right end has higher value
+        opt1 = cards[lidx] + computeSmartMaxPts(lidx + 1, ridx-1);
     }
 
-    //dumb greedy pick
-    if(cards[lidx] >= cards[ridx])
-        lidx++;
-    else   
-        ridx--;
+    //assume we pick last card -> cards[j]
+    //left end has higher value
+    if(cards[lidx] >= cards[ridx-1]){
+        opt2 = cards[ridx] + computeSmartMaxPts(lidx + 1, ridx - 1);
+    }
+    else{ //right end has higher value
+        opt2 = cards[ridx] + computeSmartMaxPts(lidx, ridx - 2);
+    }
 
-
-    if(memo[lidx][ridx] != -1) return memo[lidx][ridx] + pts;
-
-    memo[lidx][ridx] = computeSmartMaxPts(lidx, ridx);
-    return memo[lidx][ridx] + pts;
+    return memo[lidx][ridx] = max(opt1, opt2);
 }
 
 int main(){
@@ -68,7 +75,7 @@ int main(){
 
         //from total = smart + greedy and smart - greedy = diff
         //diff = 2 * smart - total
-        cout << "In game " << game << ", the greedy strategy might lose by as many as " << abs(2 * computeSmartMaxPts(0, n) - total) << " points.\n";
+        cout << "In game " << game << ", the greedy strategy might lose by as many as " << abs(2 * computeSmartMaxPts(0, n-1) - total) << " points.\n";
         game++;
     }
 
