@@ -2,14 +2,39 @@
 
 SPOJ:
 
+	started problems:
 	- sumfour.cpp
 	- cpcrc1c.cpp	//DIGIT DP	
 
 	GRAPHS:
 	- TRSTAGE
+	- SAMER08A
+	- MTOTALF
+	- GEORGE
+	- HIGHWAYS
+	- EZDIJKST
+	- MICEMAZE
 
 	DP + BS:
-	- ANARC05B 
+	- ANARC05B
+
+	DP:
+	- COINS
+
+	BS:
+	- SKY
+
+	ADHOC:
+	- PAYING
+	- NITTROAD
+	- MMASS
+	- ROHAAN
+	- CSTREET
+
+	NUMBER THEORY:
+	- PPATH
+	- CUBEFR
+	- DEPOSIT
 
 CSA:
 	- adaptive-binary-search.cpp
