@@ -1,6 +1,5 @@
 # SPOJ [(Sphere-online-judge)](https://www.spoj.com/)
 
-
 ## Hall of Fame
 
 Some solutions to problems which I considered relevant and will later review before competition.
