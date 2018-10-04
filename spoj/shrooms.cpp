@@ -8,6 +8,7 @@ using namespace std;
 /* TIL:
 *   1 - Binary search doing wonders again :D
 *   2 - DP allows us to compute the most OPTIMAL PATH if at each step you can make the OPTIMAL CHOICE (not the case here)
+*   3 - Solution: test each value in range of solutions with binary search, testing with dp
 */
 
 int forest[501][501], dp[501][501];
