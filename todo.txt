@@ -4,7 +4,8 @@ SPOJ:
 
 	started problems:
 	- sumfour.cpp
-	- cpcrc1c.cpp	//DIGIT DP	
+	- cpcrc1c.cpp	//DIGIT DP
+	- sky.cpp	
 
 	GRAPHS:
 	- TRSTAGE
@@ -17,9 +18,6 @@ SPOJ:
 
 	DP + BS:
 	- ANARC05B
-
-	BS:
-	- SKY
 
 	ADHOC:
 	- PAYING
