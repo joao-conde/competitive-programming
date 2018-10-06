@@ -32,5 +32,8 @@
 *.app
 exe
 
+#shell scripts
+*.sh
+
 #vscode
 .vscode
