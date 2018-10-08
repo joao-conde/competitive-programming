@@ -3,25 +3,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/* TIL:
-*   1 - ...
-*   2 - ...
-*   3 - ...
-*/
-
-#define MAX_SOLUTION 10000000
-#define MAX_ELEMENTS 10000
-
-int dp[MAX_ELEMENTS][MAX_ELEMENTS];
-
-bool isSolution(int val){
-
-
-
-
-    return false;
-}
-
 int main() {
     
     ios::sync_with_stdio(0); 
@@ -29,35 +10,51 @@ int main() {
 
     while(true){
 
-        int length1, length2; 
+        int length1, length2;
         cin >> length1;
-        
         if(length1 == 0) 
-            break;
-        else
-            cin >> length2;
+            break;         
 
-        for(int i = 0; i < length1; i++) cin >> dp[0][i];
-        for(int i = 0; i < length2; i++) cin >> dp[i][0];
+        vector<int> seq1(length1);
+        for(int i = 0; i < length1; i++) cin >> seq1[i];
+        
+        cin >> length2;
+        vector<int> seq2(length2);
+        for(int i = 0; i < length2; i++) cin >> seq2[i];
+        
+        //following solution takes advantage of both being ordered
+        int idx1 = 0, idx2 = 0; 
+        long long segmentSum1 = 0, segmentSum2 = 0;
+        while(idx1 < length1 || idx2 < length2){
 
-        int lb = 0, ub = MAX_SOLUTION, mid;
-        while(ub >= lb){
-
-            cout << "TESTING: " << mid << endl;
-            mid = (lb + ub) / 2;
-
-            if(isSolution(mid){
-                mid = ub - 1;
+            //intersection
+            if(idx1 < length1 && idx2 < length2 && seq1[idx1] == seq2[idx2]){
+                segmentSum1 += seq1[idx1];
+                segmentSum2 += seq2[idx2];
+                segmentSum1 = segmentSum2 = max(segmentSum1, segmentSum2);
+                idx1++; idx2++;
             }
-            else{
-                mid = lb + 1;
+            else if(idx1 >= length1){ //no more seq1 elements
+                segmentSum2 += seq2[idx2];
+                idx2++;
             }
-
+            else if(idx2 >= length2){ //no more seq2 elements
+                segmentSum1 += seq1[idx1];
+                idx1++;
+            }
+            else if(seq1[idx1] < seq2[idx2]){ //first element lower than second
+                segmentSum1 += seq1[idx1];
+                idx1++;
+            }
+            else if(seq1[idx1] > seq2[idx2]){ //first element bigger than second
+                segmentSum2 += seq2[idx2];
+                idx2++;
+            }
+            
         }
 
+        cout << max(segmentSum1, segmentSum2) << "\n";
 
-        cout << lb << " - " << mid << " - " << ub << endl;
     }
-
 
 }
