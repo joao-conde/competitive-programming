@@ -1,6 +1,6 @@
 # Competitive Programming Contests
 
-Training exercises for programming competitions
+Training exercises for programming competitions from online judging websites
 
 ## About
 
