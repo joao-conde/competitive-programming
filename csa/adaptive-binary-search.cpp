@@ -47,6 +47,6 @@ int main() {
 
     }
 
-    cout << "lb " << lb << " mid " << mid << " ub " << ub << endl;
+    cout << "A " << lb << endl;
 
 }
