@@ -27,7 +27,8 @@ int query(int solution){
 }
 
 int main() {
-    ios::sync_with_stdio(0); 
+    
+	ios::sync_with_stdio(0); 
     cin.tie();
 
     int n;
@@ -35,20 +36,17 @@ int main() {
 
     int lb = 1, ub = n, mid;
 
-    while(ub - lb > 1){
+    while(lb <= ub){
 
     	mid = (lb + ub) / 2;
 
-    	//cout << "lb " << lb << " mid " << mid << " ub " << ub << endl;
-
-    	//X smaller than guess
-    	if(query(mid) == 0)
-    		ub = mid;
-    	//X bigger than guess
-    	else lb = mid;
+    	if(query(mid) == 0) //X smaller than guess
+    		ub = mid - 1;
+    	else //X bigger than guess 
+			lb = mid + 1;
 
     }
 
-    cout << "A " << ub << "\n";
+    cout << "lb " << lb << " mid " << mid << " ub " << ub << endl;
 
 }
