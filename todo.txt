@@ -6,9 +6,9 @@ SPOJ:
 	- sumfour.cpp
 	- cpcrc1c.cpp	//DIGIT DP
 	- sky.cpp	
+	- trstage.cpp
 
 	GRAPHS:
-	- TRSTAGE
 	- SAMER08A
 	- MTOTALF
 	- GEORGE
@@ -22,7 +22,6 @@ SPOJ:
 
 	NUMBER THEORY:
 	- PPATH
-	- CUBEFR
 	- DEPOSIT
 
 CSA:
