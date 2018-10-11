@@ -3,12 +3,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/* TIL:
-*   1 - ...
-*   2 - ...
-*   3 - ...
-*/
-
 #define MAX 10000
 #define SQRT_MAX 320
 #define INF 1000000
@@ -43,14 +37,14 @@ int main() {
     for(int i = 2; i < SQRT_MAX; i++){
         if(isPrime[i]) continue;
 
-        for(int j = 2*i; j < SQRT_MAX; j+=i){
+        for(int j = 2*i; j < MAX; j+=i){
             isPrime[j] = 1;
         }
     }
 
 
     //build graph of possible paths
-    for(int i = 0; i < MAX; i++){ //for all possible 4-digit prime numbers
+    for(int i = 1000; i < MAX; i++){ //for all possible 4-digit prime numbers
         
         if(isPrime[i]) continue; //not a prime number
 
@@ -86,7 +80,7 @@ int main() {
         }
 
         //change d3
-        for(int j = 0; j < DIGITS; j++){
+        for(int j = 1; j < DIGITS; j++){
             int n = j*1000 + d2*100 + d1*10 + d0;
             if(isPrime[n] == 0)
                 graph[i][childNo++] = n; //adds child and increments no. 
