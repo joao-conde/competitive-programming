@@ -4,11 +4,9 @@
 using namespace std;
 
 /* TIL:
-*   1 - ...
-*   2 - ...
-*   3 - ...
+*   1 - Minimum spanning tree gives the shortest path that connects all nodes, avoiding cycles
+*   2 - Kruskal or Prim are known algorithms, kruskal widely used
 */
-
 
 #define MK              make_pair 
 #define COST            first
@@ -58,7 +56,7 @@ public:
 			me[x].p = find_set(me[x].p);
 		return me[x].p;
 	}
-	//Esta funcao pode nao ser importante
+
 	int find_length(const int& x) {
 		uf& me = *this;
 		return me[find_set(me[x].p)].number;
@@ -69,12 +67,12 @@ public:
 	}
 };
 
-int kruskal(elGraph g, vector<bool>& mst){
+long long kruskal(elGraph g, vector<bool>& mst){
 	sort(g.begin(), g.end());
 	mst = vector<bool>(g.size(), false);
 
 	uf s(g.n);
-	int minimum = 0;
+	long long minimum = 0;
 	for(int i = 0; i < g.size(); i++){
 		if(s.find_set(g[i].V1) != s.find_set(g[i].V2)) {
 			s.union_set(g[i].V1, g[i].V2);

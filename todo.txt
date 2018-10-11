@@ -7,6 +7,7 @@ SPOJ:
 	- cpcrc1c.cpp	//DIGIT DP
 	- sky.cpp	
 	- trstage.cpp
+	- cstreet.cpp
 
 	GRAPHS:
 	- SAMER08A
@@ -18,7 +19,6 @@ SPOJ:
 	- NITTROAD
 	- MMASS
 	- ROHAAN
-	- CSTREET
 
 	NUMBER THEORY:
 	- DEPOSIT
