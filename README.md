@@ -16,5 +16,5 @@ Some code was provided by the professors at FEUP, namely the data structures use
 The repository contains:
 
 1. A folder with solutions for each online judge
-2. Books about competitive programming (freely distributed by the authors)
-3. A template cpp file for competitive programming solutions
+2. Books about competitive programming (freely distributed by the authors) found in 'docs'
+3. A template cpp file for competitive programming solutions found in 'docs'
