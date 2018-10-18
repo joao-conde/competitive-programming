@@ -1,3 +1,3 @@
-# MIUP (Maratona Inter-Universitária de Programação)
+# MIUP 2018 (Maratona Inter-Universitária de Programação)
 
 Miup exercises
