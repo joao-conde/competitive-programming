@@ -1,29 +1,26 @@
----Problems not yet solved---
+# TODO
 
-SPOJ:
+## SPOJ
+ 
+ - sumfour.cpp
+ - cpcrc1c.cpp	//DIGIT DP
+ - sky.cpp	
+ - trstage.cpp
+ - cstreet.cpp
 
-	started problems:
-	- sumfour.cpp
-	- cpcrc1c.cpp	//DIGIT DP
-	- sky.cpp	
-	- trstage.cpp
-	- cstreet.cpp
+### GRAPHS
+ - SAMER08A
+ - MTOTALF
+ - GEORGE
 
-	GRAPHS:
-	- SAMER08A
-	- MTOTALF
-	- GEORGE
+### OTHERS
+ - PAYING
+ - NITTROAD
+ - MMASS
+ - ROHAAN
 
-	OTHERS:
-	- PAYING
-	- NITTROAD
-	- MMASS
-	- ROHAAN
+### NUMBER THEORY
+ - DEPOSIT
 
-	NUMBER THEORY:
-	- DEPOSIT
-
-UVA:
-	- 104
-	
-	
+## UVA
+ - 104
