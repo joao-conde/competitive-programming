@@ -1,26 +1,3 @@
-# TODO
+# Online-judges
 
-## SPOJ
- 
- - sumfour.cpp
- - cpcrc1c.cpp	//DIGIT DP
- - sky.cpp	
- - trstage.cpp
- - cstreet.cpp
-
-### GRAPHS
- - SAMER08A
- - MTOTALF
- - GEORGE
-
-### OTHERS
- - PAYING
- - NITTROAD
- - MMASS
- - ROHAAN
-
-### NUMBER THEORY
- - DEPOSIT
-
-## UVA
- - 104
+Folders with solutions for each online judge.

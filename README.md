@@ -10,6 +10,15 @@ Also, the programming style for a competitive environment changes a lot.
 
 Some code was provided by the professors at FEUP, namely the data structures used in graph algorithms and these aswell.
 
+## Repository Contents
 
-## Repository Structure
-
+```
+google-hash-code  --- Team programming competition to solve a google engineering problem
+google-kick-start --- Google contest with algorithmic puzzles
+ieee-extreme      --- Contest for IEEE Student members
+online-judges     --- Solutions for online judges' exercises
+├── csa           --- CS Academy Online Judge
+├── spoj          --- Sphere Online Judge
+└── uva           --- University of Valladolid Online Judge
+res               --- Useful Resources
+```
