@@ -1,5 +1,7 @@
 # IEEE Extreme 2018
 
+InvalidNameException
+
 For almost 40h we stayed up, since we work to do during the day prior to the competition start here at 1 a.m. in Portugal. We did not get much sleep during the event either...
 
 Anyways, this was our first IEEExtreme and we enjoyed it a lot.
