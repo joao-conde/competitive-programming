@@ -1,12 +1,8 @@
-# Competitive Programming Contests
+# Competitive Programming
 
-Training exercises from online judges and from programming competitions.
+Solutions for programming contests and practice exercises from online judges.
 
-The solutions implemented are my own and they are often a product of quick thinking and coding. I do not intend to make super good 'quality' code I only intend to come up with a program to solve the problem as quickly and as efficiently as required (and to have fun of course). Still I try to keep it clean.
-
-Also, the programming style for a competitive environment changes a lot. 
-
-Some code was provided by the professors at FEUP, namely the data structures used in graph algorithms and these aswell.
+The solutions implemented are my own and they are often a product of quick thinking and coding. I do not intend to make enterprise level software but only to solve the problem as quickly and as efficiently as required (and to have fun of course). Also, in a competitive environment, the programming style changes a lot (more global variables, shorter variable names, ...).
 
 ## Repository Contents
 

@@ -1,4 +1,4 @@
-# Google's Hash Code
+# Google Hash Code
 
 
 ## What is it?
