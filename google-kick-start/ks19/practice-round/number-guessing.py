@@ -9,12 +9,8 @@ def guess(lb, up):
     guess(mid + 1, up)
   else: return
 
-def solve():
-  test_cases = int(input())
-  for _ in range(test_cases):
-    lb, up = map(int, input().split())
-    _ = int(input())
-    guess(lb + 1, up)
-
-if __name__ == "__main__":
-  solve()
+test_cases = int(input())
+for _ in range(test_cases):
+  lb, up = map(int, input().split())
+  _ = int(input())
+  guess(lb + 1, up)

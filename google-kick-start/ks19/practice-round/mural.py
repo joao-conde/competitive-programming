@@ -7,13 +7,9 @@ def max_subarray_sum(array, subarray_length):
   for i in range(len(aggs) - subarray_length): max_sum = max(max_sum, aggs[i+subarray_length] - aggs[i])
   return max_sum
 
-def solve():
-  test_cases = int(input())
-  for i in range(test_cases):
-    sections_to_paint = math.ceil(int(input())/2) # paint half, other half is destroyed, we get to paint the last section
-    mural_beauty_scores = [int(x) for x in input()]
-    max_beauty = max_subarray_sum(mural_beauty_scores, sections_to_paint)
-    print("Case #", i+1, ": ", max_beauty, sep="")
-
-if __name__ == "__main__":
-  solve()
+test_cases = int(input())
+for i in range(test_cases):
+  sections_to_paint = math.ceil(int(input())/2) # paint half, other half is destroyed, we get to paint the last section
+  mural_beauty_scores = [int(x) for x in input()]
+  max_beauty = max_subarray_sum(mural_beauty_scores, sections_to_paint)
+  print("Case #", i+1, ": ", max_beauty, sep="")
