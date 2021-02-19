@@ -6,48 +6,48 @@ using namespace std;
 
 int computeCycleLength(int n){
 
-	if(n < 1) return 0;
+    if(n < 1) return 0;
 
-	//Ending 1 counts
-	int cycles = 1;
+    //Ending 1 counts
+    int cycles = 1;
 
-	while(n > 1){
+    while(n > 1){
 
-		if(n % 2 != 0)
-			n = 3*n + 1;
-		else
-			n = n/2;
+        if(n % 2 != 0)
+            n = 3*n + 1;
+        else
+            n = n/2;
 
-		cycles++;
-	}
+        cycles++;
+    }
 
-	return cycles;
+    return cycles;
 }
 
 int main() {
 
-    ios::sync_with_stdio(0); 
+    ios::sync_with_stdio(0);
     cin.tie();
 
     int i, j;
 
     while(cin >> i && cin >> j){
-    	
-    	// i > j may be possible
-    	int lb = min(i,j), ub = max(i,j);
 
-    	int maxCycleLength = -1, dummy;
+        // i > j may be possible
+        int lb = min(i,j), ub = max(i,j);
 
-    	while(lb <= ub){
+        int maxCycleLength = -1, dummy;
 
-    		dummy = computeCycleLength(lb);
+        while(lb <= ub){
 
-    		if(maxCycleLength < dummy) maxCycleLength = dummy;
+            dummy = computeCycleLength(lb);
 
-    		lb++;
-    	}
+            if(maxCycleLength < dummy) maxCycleLength = dummy;
 
-       	cout << i << " " << j << " " << maxCycleLength << "\n";
+            lb++;
+        }
+
+           cout << i << " " << j << " " << maxCycleLength << "\n";
     }
-   
+
 }

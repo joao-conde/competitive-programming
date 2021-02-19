@@ -7,7 +7,7 @@ using namespace std;
 
 
 unsigned long long byteman(int squares){
- 
+
     unsigned long long rectangles = 0;
 
     if(squares == 1) return 1;
@@ -16,8 +16,8 @@ unsigned long long byteman(int squares){
     int sqrt_n = sqrt(squares);
     for(int i = 1; i <= sqrt_n; i++)
         if(squares % i == 0) rectangles++;
-    
-    
+
+
     //call for n-1
     rectangles += byteman(squares-1);
 

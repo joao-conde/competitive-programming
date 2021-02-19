@@ -7,7 +7,7 @@ int query(string bit_string){
     cout << "Q";
 
     for(char b: bit_string){
-        cout << " " << b; 
+        cout << " " << b;
     }
 
     cout << endl;
@@ -40,7 +40,7 @@ int main(){
         while(str_idxs_processed.size() < str_size){
 
             if(correct_bits == str_size) break;
-            
+
             int str_idx;
             vector<int>::iterator it;
             do{
@@ -48,9 +48,9 @@ int main(){
                 it = find(str_idxs_processed.begin(), str_idxs_processed.end(), str_idx);
             }
             while(it != str_idxs_processed.end());
-            
+
             str_idxs_processed.push_back(str_idx);
-            
+
             string new_guess = guess;
             if(new_guess[str_idx] == '1')
                 new_guess[str_idx] = '0';
@@ -69,7 +69,7 @@ int main(){
 
         cout << "A";
         for(char b: guess){
-            cout << " " << b; 
+            cout << " " << b;
         }
         cout << endl;
 

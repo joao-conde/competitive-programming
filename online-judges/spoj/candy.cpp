@@ -36,7 +36,7 @@ int main(){
 
         //Desired number of candy per packet
         goal = ncandies/npackets;
-        
+
         //Compute minimum candy moves required
         moves = 0;
         for(int j = 0; j < npackets; j++){

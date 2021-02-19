@@ -11,14 +11,14 @@ int computeSmartMaxPts(int lidx, int ridx){
     if(lidx > ridx) return 0;
 
     if(memo[lidx][ridx] != -1) return memo[lidx][ridx];
-    
+
     /*
         Option 1:
             - choose first card in range (left)
             - greedy now chooses the max value card off of the 2 ends
 
             opt1 = cards[i] + func(i + 1, j - 1) or opt1 = cards[i] + func(i + 2, j)
-            since you take card[i] (leftmost card) and can either have a state where greedy takes from right (so j-1 and your i+1) or also takes from 
+            since you take card[i] (leftmost card) and can either have a state where greedy takes from right (so j-1 and your i+1) or also takes from
             left (so i + 2)
 
         Option 2:
@@ -32,7 +32,7 @@ int computeSmartMaxPts(int lidx, int ridx){
 
     //assume we pick first card -> cards[i]
     //remains cards(i+1 to j), which end has higher value for the greedy?
-    
+
     //left end has higher value
     if(cards[lidx+1] >= cards[ridx]){
         opt1 = cards[lidx] + computeSmartMaxPts(lidx + 2, ridx);
@@ -54,8 +54,8 @@ int computeSmartMaxPts(int lidx, int ridx){
 }
 
 int main(){
-    
-    ios::sync_with_stdio(0); 
+
+    ios::sync_with_stdio(0);
     cin.tie();
 
 

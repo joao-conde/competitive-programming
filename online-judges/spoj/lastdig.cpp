@@ -13,13 +13,13 @@ vector<int> computeEndingPattern(int base){
 
     int i = 1;
     while(true){
-	   	int lastDigit = ((int)pow(base,i)) % 10;
+           int lastDigit = ((int)pow(base,i)) % 10;
 
-	   	if(find(pattern.begin(), pattern.end(), lastDigit) != pattern.end())
-	   		break;
+           if(find(pattern.begin(), pattern.end(), lastDigit) != pattern.end())
+               break;
 
-    	pattern.push_back(lastDigit);
-    	i++;
+        pattern.push_back(lastDigit);
+        i++;
     }
 
     //last element should be first to facilitate calculating pattern index using modulo
@@ -30,22 +30,22 @@ vector<int> computeEndingPattern(int base){
 }
 
 int main() {
-    ios::sync_with_stdio(0); 
+    ios::sync_with_stdio(0);
     cin.tie();
 
     int testCases, base, exp;
     cin >> testCases;
 
     for(int i = 0; i < testCases; i++){
-    	cin >> base; cin >> exp;
+        cin >> base; cin >> exp;
 
-    	if(exp == 0){
-    		cout << "1\n";
-    		continue;
-    	}
-    	
-    	vector<int> endPattern = computeEndingPattern(base);
-    	cout << endPattern.at(exp % endPattern.size()) << "\n";
-    }	
+        if(exp == 0){
+            cout << "1\n";
+            continue;
+        }
+
+        vector<int> endPattern = computeEndingPattern(base);
+        cout << endPattern.at(exp % endPattern.size()) << "\n";
+    }
 
 }

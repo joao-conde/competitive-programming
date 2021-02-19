@@ -12,7 +12,7 @@ using namespace std;
 *   So if you want to know if (x1 + x2 + x3 + x4) modulo 4 is 0, rather than add all x's and then
 *   do modulo 0 (if x's are large the sum is gigantic and may not fit in memory), do modulo for each x
 *   and sum the modulos, in the end apply modulo to the sum and check if it is 0.
-*   
+*
 *   As a result you get a much smaller sum since the added numbers go from 0 to modulo-1
 *   In this problem adding all and doing modulo in the end would not work.
 */

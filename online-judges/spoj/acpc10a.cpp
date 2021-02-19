@@ -7,7 +7,7 @@ using namespace std;
 int main(){
 
     int x, y, z, n;
-    string type; 
+    string type;
 
     while(true){
         cin >> x; cin >> y; cin >> z;
@@ -16,11 +16,11 @@ int main(){
         //termination case
         if(x == 0 && y == 0 && z == 0)
             break;
-   
+
 
         if(abs(x-y) == abs(y-z)){
             type = "AP";
-            n += (y - x); 
+            n += (y - x);
         }
         else{
             type = "GP";
@@ -28,7 +28,7 @@ int main(){
         }
 
         cout << type << " " << n << endl;
-    
+
     }
 
     return 0;

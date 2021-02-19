@@ -38,7 +38,7 @@ struct DisjointSet{
 
         if(degree[parentA] > degree[parentB]){
             parent[parentB] = parentA;
-            degree[parentA] += degree[parentB]; 
+            degree[parentA] += degree[parentB];
         }
         else{
             parent[parentA] = parentB;
@@ -60,8 +60,8 @@ struct DisjointSet{
 };
 
 int main(){
-    
-    ios::sync_with_stdio(0); 
+
+    ios::sync_with_stdio(0);
     cin.tie();
 
     long foxlings, friendships;
@@ -75,5 +75,5 @@ int main(){
     }
 
     cout << dsu.getTotalComponent() << "\n";
-    
+
 }

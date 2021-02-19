@@ -12,9 +12,9 @@ struct Star{
 
 vector<Star> stars;
 
-bool star_comp(Star s1, Star s2){ 
-    return (s1.f < s2.f); 
-} 
+bool star_comp(Star s1, Star s2){
+    return (s1.f < s2.f);
+}
 
 int main(){
 

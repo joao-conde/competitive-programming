@@ -26,7 +26,7 @@ bool isSolution(int shrooms, int rows, int cols){
 
     for(int c = 0; c < cols; c++){
         dp[0][c] = dp[0][c-1] + forest[0][c];
-        if(dp[0][c] < 0) dp[0][c] = -INF; 
+        if(dp[0][c] < 0) dp[0][c] = -INF;
     }
 
 
@@ -42,8 +42,8 @@ bool isSolution(int shrooms, int rows, int cols){
 
 
 int main() {
-    
-    ios::sync_with_stdio(0); 
+
+    ios::sync_with_stdio(0);
     cin.tie();
 
 
@@ -75,7 +75,7 @@ int main() {
         }
 
         cout << lb << "\n";
-        
+
     }
 
 }

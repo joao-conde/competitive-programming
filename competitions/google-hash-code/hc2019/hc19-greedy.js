@@ -6,13 +6,13 @@ function getCommonElements(arrays) { //Assumes that we are dealing with an array
     var currentValues = {};
     var commonValues = {};
     for (var i = arrays[0].length - 1; i >= 0; i--) {
-        currentValues[arrays[0][i]] = 1; 
+        currentValues[arrays[0][i]] = 1;
     }
     for (var i = arrays.length - 1; i > 0; i--) {
         var currentArray = arrays[i];
         for (var j = currentArray.length - 1; j >= 0; j--) {
             if (currentArray[j] in currentValues) {
-                commonValues[currentArray[j]] = 1; 
+                commonValues[currentArray[j]] = 1;
             }
         }
         currentValues = commonValues;
@@ -49,7 +49,7 @@ for (let i = 0; i < horizontals.length - 1; i++) {
     }
     fs.appendFileSync(outputPath, horizontals[i].id + "\n" + photo.id + "\n");
     horizontals.splice(i, 1);
-    horizontals.splice(index2 - 1, 1); i--; 
+    horizontals.splice(index2 - 1, 1); i--;
 }
 
 for (let i = 0; i < verticals.length - 1; i+=2) {

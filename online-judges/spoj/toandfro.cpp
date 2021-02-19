@@ -33,7 +33,7 @@ string read_chypher_col(string cypher, int size, int col){
         if(idx >= cypher_size) break; //no more string
 
         decrypted += cypher[idx];
-        
+
         idx += step_l;
     }
 
@@ -43,7 +43,7 @@ string read_chypher_col(string cypher, int size, int col){
 
 string decrypt(string cypher, int size){
     string decrypted = "";
-    
+
     int i = 0;
     while(i < size){
         decrypted += read_chypher_col(cypher, size, i);
@@ -59,16 +59,16 @@ int main(){
     string cypher = "";
 
     while(true){
-        
+
         cin >> size;
         if(size == 0)
             break;
 
-        
+
         cin >> cypher;
-    
+
         cout << decrypt(cypher, size) << endl;
-        
+
     }
 
     return 0;

@@ -15,11 +15,11 @@ int dijkstra(vector< vector<edge> > &g, int source, int target, vector<int>& dis
 
     while (!active.empty()) {
         int cur = active.begin()->second;
-        
+
         if (cur == target) return dist[cur];
-        
+
         active.erase( active.begin() );
-        for (edge ed : g[cur]) 
+        for (edge ed : g[cur])
             if (dist[ed.to] > dist[cur] + ed.cost) {
                 active.erase( { dist[ed.to], ed.to } );
                 dist[ed.to] = dist[cur] + ed.cost;
@@ -31,8 +31,8 @@ int dijkstra(vector< vector<edge> > &g, int source, int target, vector<int>& dis
 }
 
 int main() {
-    
-    ios::sync_with_stdio(0); 
+
+    ios::sync_with_stdio(0);
     cin.tie();
 
     int testCases;
@@ -42,7 +42,7 @@ int main() {
         int cities, highways, src, dest;
         cin >> cities >> highways >> src >> dest;
 
-        vector< vector<edge> > g(cities); 
+        vector< vector<edge> > g(cities);
         vector<int> dist(g.size(), INF);
         vector<int> prev(g.size(), INF);
 
@@ -51,7 +51,7 @@ int main() {
             cin >> src >> dst >> cost;
             g[src-1].push_back({dst-1, cost});
             g[dst-1].push_back({src-1, cost});
-        }   
+        }
 
         int distance = dijkstra(g, src-1, dest-1, dist, prev);
 

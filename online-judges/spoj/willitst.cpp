@@ -4,33 +4,33 @@
 using namespace std;
 
 /*
- * 	If it cycles then it never ends, if not it does.
+ *     If it cycles then it never ends, if not it does.
  */
 
 bool checkCycle(unsigned long long n){
-	vector<int> nValues;
+    vector<int> nValues;
 
-	while(n > 1){
+    while(n > 1){
 
-		if(find(nValues.begin(), nValues.end(), n) != nValues.end())
-			return true;
+        if(find(nValues.begin(), nValues.end(), n) != nValues.end())
+            return true;
 
-		nValues.push_back(n);
+        nValues.push_back(n);
 
-		if(n % 2 == 0){
-			n = n/2;
-		}
-		else{
-			n = 3*n + 3;
-		}
-	}
+        if(n % 2 == 0){
+            n = n/2;
+        }
+        else{
+            n = 3*n + 3;
+        }
+    }
 
-	return false;
+    return false;
 }
 
 
 int main() {
-    ios::sync_with_stdio(0); 
+    ios::sync_with_stdio(0);
     cin.tie();
 
     unsigned long long n;

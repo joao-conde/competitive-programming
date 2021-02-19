@@ -44,7 +44,7 @@ string to_RPN(string str){
 
             //special treatment for ')' token
             if(token == ')'){
-                
+
                 while(!operators.empty()){
 
                     if(operators.top() == '('){
@@ -71,7 +71,7 @@ string to_RPN(string str){
             }
 
             operators.push(token);
-            
+
         }
 
         //token is an operand

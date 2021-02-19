@@ -52,21 +52,21 @@ bool isSolution(int val, int rows, int cols){
 
 int main() {
 
-    ios::sync_with_stdio(0); 
+    ios::sync_with_stdio(0);
     cin.tie();
 
     int testCases; cin >> testCases;
 
     while(testCases--){
 
-        int rows, cols, transverseEntireGrid = 0; 
+        int rows, cols, transverseEntireGrid = 0;
         cin >> rows >> cols;
 
         //magic grid from input
         for(int r = 0; r < rows; r++){
             for(int c = 0; c < cols; c++){
                 cin >> mgrid[r][c];
-                transverseEntireGrid += abs(mgrid[r][c]); 
+                transverseEntireGrid += abs(mgrid[r][c]);
             }
         }
 

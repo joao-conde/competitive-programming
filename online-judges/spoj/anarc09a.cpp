@@ -5,14 +5,14 @@ using namespace std;
 
 
 int requiredOperations(string line){
-    
+
     int ops = 0, maxOpen = line.size() / 2;
     stack<char> open;
 
     for(int i = 0; i < line.size(); i++){
-        
+
         if(line[i] == '{'){
-            
+
             if(maxOpen == 0){
                 ops++;
                 open.pop();
@@ -20,9 +20,9 @@ int requiredOperations(string line){
             else{
                 open.push('{');
                 maxOpen--;
-            } 
+            }
 
-        } 
+        }
         else{
 
             if(open.empty() && maxOpen > 0){
@@ -30,9 +30,9 @@ int requiredOperations(string line){
                 maxOpen--;
                 ops++;
             }
-            else 
+            else
                 open.pop();
-        }        
+        }
     }
 
     return ops;
@@ -41,7 +41,7 @@ int requiredOperations(string line){
 
 int main(){
 
-    ios::sync_with_stdio(0); 
+    ios::sync_with_stdio(0);
     cin.tie();
 
     int testNo = 1;
@@ -51,7 +51,7 @@ int main(){
         getline(cin, line);
 
         if(line[0] == '-') break;
-    
+
         cout << testNo << ". " << requiredOperations(line) << endl;
         testNo++;
     }

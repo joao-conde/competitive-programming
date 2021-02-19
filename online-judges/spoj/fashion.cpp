@@ -4,8 +4,8 @@
 using namespace std;
 
 int main() {
-    
-    ios::sync_with_stdio(0); 
+
+    ios::sync_with_stdio(0);
     cin.tie();
 
     int test_cases, participants, score, sum_of_bonds;

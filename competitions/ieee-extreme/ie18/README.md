@@ -10,7 +10,7 @@ We were 4th in Portugal ladder until we dropped to 5th right in the last hour. N
 We did not solve all the problems (obviously) but I intend to post solutions to most of them here.
 However, during the 24h competition we solved (partially or totally):
 
-* Bear-sums 
+* Bear-sums
 * Brackets
 * Drawing Binary Trees
 * Lemons

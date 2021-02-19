@@ -16,7 +16,7 @@ bool isSolution(double sliceV, vector<double> piesV, int friends){
 
 int main(){
 
-    ios::sync_with_stdio(0); 
+    ios::sync_with_stdio(0);
     cin.tie();
 
     double pi = acos(-1.0);
@@ -33,7 +33,7 @@ int main(){
             pieVolumes.push_back(pieRadii*pieRadii*pi);
         }
 
-        
+
         double lb = 0, ub = MAX_SLICE_VOLUME, mid;
         while(ub - lb > 0.00001){
 
@@ -47,8 +47,8 @@ int main(){
             }
 
         }
-        
-        printf("%.4f\n", lb); 
+
+        printf("%.4f\n", lb);
 
     }
 

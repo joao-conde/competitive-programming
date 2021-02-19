@@ -7,7 +7,7 @@ using namespace std;
 
 
 /* TIL:
-*   1 - Simply watching the pattern gets you there, but it can be probably more efficient to find 
+*   1 - Simply watching the pattern gets you there, but it can be probably more efficient to find
 *   the functions equation and use that (linear time)
 */
 
@@ -19,7 +19,7 @@ int nsteps(int x, int y){
 
     int ox = 0, oy = 0, n = 0;
     while(ox <= x + 3){
-        
+
         if(ox == x && oy == y)
             return n;
 
@@ -46,7 +46,7 @@ int nsteps(int x, int y){
     }
 
     return -1;
-    
+
 }
 
 int main(){
@@ -62,7 +62,7 @@ int main(){
 
         if(number != -1)
             cout << number << endl;
-        else 
+        else
             cout << "No Number" << endl;
     }
 

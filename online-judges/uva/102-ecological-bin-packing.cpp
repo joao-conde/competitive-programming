@@ -37,7 +37,7 @@ int minMovesBin(vector<int> &bin, char type){
  *  Calculates minimum moves for the set of bins with specified configuration.
  */
 int minMovesSet(vector<int> &bin1, vector<int> &bin2, vector<int> &bin3, string conf){
-    return minMovesBin(bin1, conf[0]) + minMovesBin(bin2, conf[1]) + minMovesBin(bin3, conf[2]); 
+    return minMovesBin(bin1, conf[0]) + minMovesBin(bin2, conf[1]) + minMovesBin(bin3, conf[2]);
 }
 
 
@@ -46,8 +46,8 @@ int minMovesSet(vector<int> &bin1, vector<int> &bin2, vector<int> &bin3, string 
  *  If 2 configurations require the same amount of movements, chooses the alphabetically first one.
  */
 string computeEcoBinPack(vector<int> &bin1, vector<int> &bin2, vector<int> &bin3){
-    
-    //alphabetical order 
+
+    //alphabetical order
     string configs[6] = {"BCG", "BGC", "CBG", "CGB", "GBC", "GCB"};
     int moves[6], min;
 
@@ -61,7 +61,7 @@ string computeEcoBinPack(vector<int> &bin1, vector<int> &bin2, vector<int> &bin3
     int j;
     for(j = 0; j < 6; j++){
         if(moves[j] == min) break;
-    }    
+    }
 
     return configs[j] + " " + to_string(min);
 }
@@ -69,19 +69,19 @@ string computeEcoBinPack(vector<int> &bin1, vector<int> &bin2, vector<int> &bin3
 
 int main() {
 
-    ios::sync_with_stdio(0); 
+    ios::sync_with_stdio(0);
     cin.tie();
 
     string input;
     while(getline(cin, input)){
-        
+
         stringstream ss(input);
         vector<int> bin1, bin2, bin3;
 
         bin1 = makeBin(ss);
         bin2 = makeBin(ss);
         bin3 = makeBin(ss);
-        
+
         cout << computeEcoBinPack(bin1, bin2, bin3) << "\n";
     }
 

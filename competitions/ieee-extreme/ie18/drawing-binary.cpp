@@ -11,7 +11,7 @@ void build_tree(string infix, string prefix){
     char root = prefix[0];
     cout << root << endl;
     int left_size = infix.rfind(root);
-    
+
     BinaryTree *left, *right;
     if(left_size > 0){
         build_tree(infix.substr(0, left_size), prefix.substr(1, left_size));
@@ -30,9 +30,9 @@ void print_binary_tree(BinaryTree *tree){
 }
 
 int main() {
-    ios::sync_with_stdio(0); 
+    ios::sync_with_stdio(0);
     cin.tie();
-    
+
     string infix, prefix;
     while(getline(cin, infix)){
         getline(cin, prefix);

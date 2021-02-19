@@ -2,20 +2,20 @@ const fs = require("fs");
 const inputPath = "a.in", outputPath = "a2.out";
 const thresh = 7;
 let horizontals = [], verticals = [];
- 
+
 fs.readFileSync(inputPath, 'utf-8').split('\n').forEach((im, i) => {
     let args = im.split(' ');
     let photo = {};
     photo.id = i;
     photo.orientation = args[0];
     photo.tags = args.slice(2, args.length);
- 
+
     if (photo.orientation === 'H') horizontals.push(photo);
     else verticals.push(photo);
 })
- 
+
 fs.writeFileSync(outputPath, horizontals.length + verticals.length / 2 + "\n");
- 
+
 // Pair verticals
 for (let i = 0; i < verticals.length - 1; i++) {
     for (let j = i + 1; j < verticals.length; j++) {
@@ -38,12 +38,12 @@ let sol = '';
 let flag = false;
 for (let i = 0; i < horizontals.length - 1; i++) {
     let photo = null, index2 = -1;
- 
+
     for (let j = i + 1; j < horizontals.length; j++) {
         let out1 = horizontals[i].tags.filter(value => horizontals[j].tags.includes(value)).length;
         let out2 = horizontals[i].tags.length - out1;
         let out3 = horizontals[j].tags.length - out1;
- 
+
         let score = Math.min(out1, out2, out3);
         if (score >= thresh) {
             photo = horizontals[j];
@@ -52,9 +52,9 @@ for (let i = 0; i < horizontals.length - 1; i++) {
             break;
         }
     }
-    
+
     if(!flag) photo = horizontals.pop();
-    
+
     sol += (horizontals[i].id + "\n" + photo.id + "\n");
 
     if(flag){

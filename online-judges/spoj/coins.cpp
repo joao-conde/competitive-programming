@@ -18,8 +18,8 @@ long long computeDollarValue(long long byteCoin){
 
     //memoization of values up untill MAX
     if(byteCoin <= MAX){
-        
-        if(memo[byteCoin] != -1) 
+
+        if(memo[byteCoin] != -1)
             return memo[byteCoin];
         else
             return memo[byteCoin] = max(byteCoin, computeDollarValue(byteCoin / 2) + computeDollarValue(byteCoin / 3) + computeDollarValue(byteCoin / 4));
@@ -31,8 +31,8 @@ long long computeDollarValue(long long byteCoin){
 
 
 int main() {
-    
-    ios::sync_with_stdio(0); 
+
+    ios::sync_with_stdio(0);
     cin.tie();
 
     int byteCoins;
@@ -40,5 +40,5 @@ int main() {
         memset(memo, -1, sizeof(memo));
         cout << computeDollarValue(byteCoins) << endl;
     }
-    
+
 }

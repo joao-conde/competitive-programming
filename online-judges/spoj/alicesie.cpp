@@ -5,8 +5,8 @@ using namespace std;
 
 
 int main() {
-    
-    ios::sync_with_stdio(0); 
+
+    ios::sync_with_stdio(0);
     cin.tie();
 
     int testCases; cin >> testCases;

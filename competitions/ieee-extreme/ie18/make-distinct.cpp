@@ -7,7 +7,7 @@ using namespace std;
 int num[MAX];
 
 int main(){
-    
+
     int n, ops = 0; cin >> n;
     while(n--){
         int el; cin >> el;

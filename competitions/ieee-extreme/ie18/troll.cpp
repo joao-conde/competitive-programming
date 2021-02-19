@@ -7,7 +7,7 @@ int query(string bit_string){
     cout << "Q";
 
     for(char b: bit_string){
-        cout << " " << b; 
+        cout << " " << b;
     }
 
     cout << endl;
@@ -51,7 +51,7 @@ int main(){
 
     cout << "A";
     for(char b: guess){
-        cout << " " << b; 
+        cout << " " << b;
     }
     cout << endl;
 

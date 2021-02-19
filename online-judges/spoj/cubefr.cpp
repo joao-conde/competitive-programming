@@ -10,9 +10,9 @@ vector<int> cubeFreeNums;
 
 int main() {
 
-    ios::sync_with_stdio(0); 
+    ios::sync_with_stdio(0);
     cin.tie();
-    
+
     //pre-compute cubefree numbers
     int cubicRootMax = 100;  //roughly cubic root of max
     cubeFreeNums.push_back(1);
@@ -21,7 +21,7 @@ int main() {
         if(notCubeFree[i]) continue;
 
         cubeFreeNums.push_back(i);
-        
+
         int cube = i * i * i;
         for(int j = cube; j <= MAX; j += cube){
             notCubeFree[j] = 1;

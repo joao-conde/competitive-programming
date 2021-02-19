@@ -11,8 +11,8 @@ int main(){
 
     while(true){
         cin >> n;
-        
-        if(n == 42) break; 
+
+        if(n == 42) break;
 
         printf("%d\n", n);
     }

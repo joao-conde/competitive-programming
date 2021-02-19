@@ -27,7 +27,7 @@ long long distribute(vector<long long> &a, vector<long long> &b, long long foxli
 
 int main() {
 
-    ios::sync_with_stdio(0); 
+    ios::sync_with_stdio(0);
     cin.tie();
 
     int testCases; cin >> testCases;
@@ -46,6 +46,6 @@ int main() {
 
         distribute(a, b, 0, crackers);
 
-        cout << memo[0][crackers] << endl;    
+        cout << memo[0][crackers] << endl;
     }
 }

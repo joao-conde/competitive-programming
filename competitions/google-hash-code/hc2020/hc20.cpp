@@ -35,7 +35,7 @@ class Library {
         double score = 0.0;
 
         for (int i = 0; i < books.size(); i++) {
-            score += ((double)books[i].points - (double)books[i].points*((double)book_freqs[books[i].id] / (double)nLibraries)); 
+            score += ((double)books[i].points - (double)books[i].points*((double)book_freqs[books[i].id] / (double)nLibraries));
         }
 
         double part1 = (signup/100000.0) * weightSignup;
@@ -73,10 +73,10 @@ int solve(string filename) {
 
     int book_freqs[general[0]];
     memset(book_freqs, 0, sizeof(int) * general[0]);
-    
-    int printed[general[0]]; 
+
+    int printed[general[0]];
     memset(printed, -1, sizeof(int) * general[0]);
-    
+
     for (int i = 0; i < general[1]; i++) {
         getline(infile, s);
         vector<int> lib_line = split_string(s, ' ');
@@ -85,7 +85,7 @@ int solve(string filename) {
 
         getline(infile, s);
         vector<int> book_line = split_string(s, ' ');
-        
+
         for (int j = 0; j < book_line.size(); j++) {
             lib.addBook(Book(book_line[j], book_scores[book_line[j]]));
             book_freqs[book_line[j]]++;
@@ -99,7 +99,7 @@ int solve(string filename) {
         libraries[i].computeScore(libraries.size(), book_freqs, 0.6, 0.4); //time, points
     }
 
-    sort(libraries.begin(), libraries.end());   
+    sort(libraries.begin(), libraries.end());
 
     for (int i = 0; i < libraries.size(); i++) {
         for (Book b : libraries[i].books) {
@@ -155,4 +155,3 @@ int main() {
         solve(files[i]);
     }
 }
-

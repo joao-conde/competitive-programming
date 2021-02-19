@@ -14,8 +14,8 @@ using namespace std;
 
 //Eratosthenes' Sieve
 vector<int> generate_primes_upto(int n){
-    vector<int> primes_upto_n; 
-    
+    vector<int> primes_upto_n;
+
     //int sqrt_n = sqrt(n);
     int sqrt_n = 1000000;
     int not_prime[sqrt_n]; //all inititated as '0' = prime, '1' = not prime
@@ -30,7 +30,7 @@ vector<int> generate_primes_upto(int n){
         }
 
     }
-    
+
     return primes_upto_n;
 }
 
@@ -41,8 +41,8 @@ vector<int> primes;
 int main(){
 
     int test_cases, n;
-    cin >> test_cases; 
-    
+    cin >> test_cases;
+
     primes = generate_primes_upto(1000000);
 
     for(int i = 0; i < test_cases; i++){
@@ -57,7 +57,7 @@ int main(){
             }
         }
 
-        cout << endl;           
+        cout << endl;
     }
 
     return 0;

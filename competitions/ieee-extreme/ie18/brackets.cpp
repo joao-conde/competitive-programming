@@ -16,7 +16,7 @@ int main(){
 
     stack<char> open_stack_n, open_stack_c;
     for(int i = 0; i < input.size(); i++){
-        
+
         if(input[i] == '(' || input[i] == '['){
             if(opens > 0){
                 solution += "1";
@@ -70,11 +70,11 @@ int main(){
                     continue;
                 }
             }
-            
+
         }
     }
 
-   
+
     if(s1.size() != s2.size()){
         cout << "impossible\n";
         return 0;

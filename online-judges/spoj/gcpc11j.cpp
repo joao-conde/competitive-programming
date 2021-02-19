@@ -14,19 +14,19 @@ using namespace std;
 *   1 - bfs calculates all shortest distances from a node
 *   2 - graph can have bi-directional edges
 *   3 - to find the middle of a tree, find the maximum distance from the source, then find
-*   the maximum distance from that furthest node ; dividing the diameter in half you get the 
+*   the maximum distance from that furthest node ; dividing the diameter in half you get the
 *   middle of the tree
 */
 
 void bfs(const vector< vector<int> > &g, int source, vector<int>& dist) {
-  
+
   queue<int> q;
   dist[source] = 0;
   q.push(source);
 
   while (!q.empty()) {
     int cur = q.front(); q.pop();
-    for (int e : g[cur]) 
+    for (int e : g[cur])
       if (dist[e] == INF) {
         dist[e] = dist[cur] + 1;
         q.push(e);
@@ -44,9 +44,9 @@ int main(){
     cin >> test_cases;
 
     for(int i = 0; i < test_cases; i++){
-        
+
         cin >> computers;
-        
+
         int maxIdx = -1, max = -1;
         vector<vector<int>> network(computers);
         vector<int> dist(network.size(), INF), dist2(network.size(), INF);
@@ -61,20 +61,20 @@ int main(){
         }
 
         //use bfs to calculate distances from first node and discover furthest node from root
-        bfs(network, 0, dist); 
+        bfs(network, 0, dist);
         for(int k = 0; k < dist.size(); k++){
             if(dist[k] > max){
                 max = dist[k];
                 maxIdx = k;
-            }      
+            }
         }
-        
+
         //use bfs to calculate biggest distance for furthest node = tree diameter
         bfs(network, maxIdx, dist2);
         treeDiam = *max_element(dist2.begin(),dist2.end());
 
         cout << treeDiam / 2 + treeDiam % 2 << endl;
     }
-    
+
     return 0;
 }
