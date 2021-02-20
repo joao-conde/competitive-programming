@@ -2,19 +2,19 @@
 class Solution:
     VOWELS = ["a", "e", "i", "o", "u"]
     
-    cache = dict()
+    CACHE = dict()
 
     def countVowelStrings(self, n):
-        return self.count(n, 'a') + self.count(n, 'e') + self.count(n, 'i') + self.count(n, 'o') + self.count(n, 'u')
+        return sum([self.count(n, vowel) for vowel in self.VOWELS])
 
     def count(self, n, char):
-        if (n, char) in self.cache: return self.cache[(n, char)]
+        if (n, char) in self.CACHE: return self.CACHE[(n, char)]
 
         if n == 1: return 1
         valid = [vowel for vowel in self.VOWELS if vowel >= char]
         result = sum([self.count(n - 1, char) for char in valid])
 
-        self.cache[(n, char)] = result
+        self.CACHE[(n, char)] = result
         return result
 
 # Tests
