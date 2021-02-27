@@ -6,7 +6,7 @@ The problem description can be found [here](https://storage.googleapis.com/codin
 
 ## Solution implemented
 
-Assumes input files are named "a.txt", "b.txt", "c.txt", "d.txt" and "e.txt" and inside ```input/```.
+Assumes input files are named `a.txt`, `b.txt`, `c.txt`, `d.txt` and `e.txt` and inside ```input/```.
 
 The idea was to **rate the libraries** by taking into account **signup time** and the **average score a library can process per day**. We assume the **average score** a library can process per day is the total score of the books it holds divided by the number of books (average score per book) times the number of books it is able to process per day, hence the average score a library can process per day. We obviously penalized for large signup times and encourage bigger average scores.
 
