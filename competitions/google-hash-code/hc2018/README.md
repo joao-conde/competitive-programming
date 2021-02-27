@@ -15,4 +15,4 @@ I joined forces with:
 
 ## Ranking
 
-Global ranking #2501 in [this ladder.](https://codingcompetitions.withgoogle.com/hashcode/archive/2018)
+[Global ranking #2501](https://codingcompetitions.withgoogle.com/hashcode/archive/2018)

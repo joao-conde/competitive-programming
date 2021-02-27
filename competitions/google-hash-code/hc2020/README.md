@@ -23,8 +23,4 @@ I joined forces with:
 
 ## Ranking
 
-Check [certificate](./certificate.pdf) points and compare against [this ladder](https://codingcompetitions.withgoogle.com/hashcode/archive/2020).
-
-## Ranking
-
-Global ranking #2837 in [this ladder.](https://codingcompetitions.withgoogle.com/hashcode/archive/2020)
+[Global ranking #2837](https://codingcompetitions.withgoogle.com/hashcode/archive/2020)

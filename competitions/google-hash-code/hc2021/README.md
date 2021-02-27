@@ -16,4 +16,4 @@ I joined forces with:
 
 ## Ranking
 
-Global ranking #XXXX in [this ladder.](https://codingcompetitions.withgoogle.com/hashcode/archive/2021)
+[Global ranking #3464](https://codingcompetitions.withgoogle.com/hashcode/archive/2021)

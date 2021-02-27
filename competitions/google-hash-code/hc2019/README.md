@@ -21,4 +21,4 @@ Check [certificate](./certificate.pdf) points and compare against [this ladder](
 
 ## Ranking
 
-Global ranking #1053 in [this ladder.](https://codingcompetitions.withgoogle.com/hashcode/archive/2019)
+[Global ranking #1053](https://codingcompetitions.withgoogle.com/hashcode/archive/2019)
