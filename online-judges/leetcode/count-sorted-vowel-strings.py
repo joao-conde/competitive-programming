@@ -1,7 +1,7 @@
 # https://leetcode.com/problems/count-sorted-vowel-strings/
 class Solution:
     VOWELS = ["a", "e", "i", "o", "u"]
-    
+
     CACHE = dict()
 
     def countVowelStrings(self, n):

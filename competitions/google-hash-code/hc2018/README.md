@@ -12,3 +12,7 @@ The problem description can be found [here](https://storage.googleapis.com/codin
 I joined forces with:
 - [@aquelemiguel](https://github.com/aquelemiguel)
 - [@julietafrade97](https://github.com/julietafrade97)
+
+## Ranking
+
+Global ranking #2501 in [this ladder.](https://codingcompetitions.withgoogle.com/hashcode/archive/2018)

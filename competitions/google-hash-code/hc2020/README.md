@@ -20,3 +20,11 @@ I joined forces with:
 - [@aquelemiguel](https://github.com/aquelemiguel)
 - [@edramos-97](https://github.com/edramos-97)
 - [@luisnmartins](https://github.com/luisnmartins)
+
+## Ranking
+
+Check [certificate](./certificate.pdf) points and compare against [this ladder](https://codingcompetitions.withgoogle.com/hashcode/archive/2020).
+
+## Ranking
+
+Global ranking #2837 in [this ladder.](https://codingcompetitions.withgoogle.com/hashcode/archive/2020)

@@ -13,3 +13,7 @@ Assumes input files are named `a.txt`, `b.txt`, `c.txt`, `d.txt` and `e.txt` and
 I joined forces with:
 - [@msramalho](https://github.com/msramalho)
 - [@afonsojramos](https://github.com/afonsojramos)
+
+## Ranking
+
+Global ranking #XXXX in [this ladder.](https://codingcompetitions.withgoogle.com/hashcode/archive/2021)
