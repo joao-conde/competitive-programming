@@ -1,5 +1,3 @@
-import math
-
 class Car:
     def __init__(self):
         self.pos = [0, 0]
@@ -30,13 +28,9 @@ def parse_input(filename, num_cars, num_rides, ticks):
     ticks = first_line[5]
 
     for i, line in enumerate(lines):
-        if i == 0:
-            continue
-
+        if i == 0: continue
         line = line.split()
-
         int_line = [int(x) for x in line]
-
         rides.append(
             Ride(
                 i - 1,
@@ -50,42 +44,36 @@ def parse_input(filename, num_cars, num_rides, ticks):
     return [num_cars, num_rides, ticks]
 
 def generate_cars(num_cars):
-    cars = []
+    return [Car() in range(num_cars)]
 
-    for _ in range(num_cars):
-        cars.append(Car())
+def run_clock(ticks):
+    for _ in range(ticks):
+        assign_ride_to_car(cars, rides)
+        place_on_origin(cars)
+        make_trip(cars)
+        check_if_completed(cars)
 
-    return cars
+def assign_ride_to_car(cars, rides):
+    for ride in rides:
+        if ride.on_road or ride.completed: continue
 
-def calculate_distance(start, end):
-    dx = abs(start[0] - end[0])
-    dy = abs(start[1] - end[1])
-
-    return dx + dy
+        distances = [calculate_car_distance(car, ride) for car in cars]
+        min_car = distances.index(min(distances))
+        cars[min_car].rides.append(ride)
+        cars[min_car].occupied = True
+        ride.on_road = True
 
 def calculate_car_distance(car, ride):
     if car.occupied:
         step_1 = calculate_distance(car.pos, car.rides[0].finish)
         step_2 = calculate_distance(car.rides[0].finish, ride.start)
-
         return step_1 + step_2
-
     return calculate_distance(car.pos, ride.start)
 
-def assign_ride_to_car(cars, rides):
-    for ride in rides:
-        if ride.on_road or ride.completed:
-            continue
-
-        distances = []
-
-        for car in cars:
-            distances.append(calculate_car_distance(car, ride))
-
-        min_car = distances.index(min(distances))
-        cars[min_car].rides.append(ride)
-        cars[min_car].occupied = True
-        ride.on_road = True
+def calculate_distance(start, end):
+    dx = abs(start[0] - end[0])
+    dy = abs(start[1] - end[1])
+    return dx + dy
 
 def place_on_origin(cars):
     for car in cars:
@@ -142,14 +130,7 @@ def check_if_completed(cars):
             else:
                 car.rides = []
 
-def run_clock(ticks):
-    for _ in range(ticks):
-        assign_ride_to_car(cars, rides)
-        place_on_origin(cars)
-        make_trip(cars)
-        check_if_completed(cars)
-
-def show_results(problem):
+def show_results(output_path):
     file = open(output_path, "a")
     for car in cars:
         file.write(str(len(car.history)))
@@ -157,15 +138,15 @@ def show_results(problem):
         file.write(" ".join(str(x) for x in car.history))
         file.write("\n")
 
-
-input_path = "a.in"
-output_path = "a.out"
-rides = []
-num_cars = num_rides = ticks = 0
-parse_results = parse_input(input_path, num_cars, num_rides, ticks)
-num_cars = parse_results[0]
-num_rides = parse_results[1]
-ticks = parse_results[2]
-cars = generate_cars(num_cars)
-run_clock(ticks)
-show_results(output_path)
+if __name__ == "__main__":
+    input_path = "a.in"
+    output_path = "a.out"
+    rides = []
+    num_cars = num_rides = ticks = 0
+    parse_results = parse_input(input_path, num_cars, num_rides, ticks)
+    num_cars = parse_results[0]
+    num_rides = parse_results[1]
+    ticks = parse_results[2]
+    cars = generate_cars(num_cars)
+    run_clock(ticks)
+    show_results(output_path)

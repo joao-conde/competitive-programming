@@ -2,7 +2,8 @@ const fs = require("fs");
 const inputPath = "a.in", outputPath = "a1.out";
 let horizontals = [], verticals = [];
 
-function getCommonElements(arrays) { //Assumes that we are dealing with an array of arrays of integers
+// Assumes that we are dealing with an array of arrays of integers
+function getCommonElements(arrays) {
     var currentValues = {};
     var commonValues = {};
     for (var i = arrays[0].length - 1; i >= 0; i--) {

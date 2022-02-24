@@ -6,7 +6,6 @@ The problem description can be found [here](https://storage.googleapis.com/codin
 
 ## Solution implemented
 
-
 ## The team
 
 I joined forces with:

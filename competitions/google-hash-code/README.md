@@ -1,6 +1,5 @@
 # Google Hash Code
 
-
 ## What is it?
 
 From [Google's Hash Code about page](https://codingcompetitions.withgoogle.com/hashcode/about), Hash Code is a

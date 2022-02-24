@@ -1,6 +1,7 @@
 //src: https://www.geeksforgeeks.org/fast-io-for-competitive-programming/
 
 #include <bits/stdc++.h>
+
 using namespace std;
 
 /* TIL:

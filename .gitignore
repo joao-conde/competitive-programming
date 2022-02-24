@@ -5,7 +5,3 @@
 # HashCode 2020
 *.exe
 *.out
-
-# HashCode 2022
-**/target/*
-*.lock

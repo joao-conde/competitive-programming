@@ -1,5 +1,4 @@
 import math
-import random
 
 from collections import defaultdict
 
@@ -150,4 +149,5 @@ def read_file(filename):
 def mints(line):
     return map(int, line.strip().split(" "))
 
-solve_all()
+if __name__ == "__main__":
+    solve_all()

@@ -1,8 +1,8 @@
-//https://csacademy.com/contest/archive/task/adaptive-binary-search/
+// https://csacademy.com/contest/archive/task/adaptive-binary-search/
 
 #include <bits/stdc++.h>
-using namespace std;
 
+using namespace std;
 
 /* TIL:
 *   1 - binary search algorithm for problems like this, well explained at:
@@ -15,7 +15,6 @@ using namespace std;
 *        it is necessary for binary search
 */
 
-
 int query(int solution){
 
     int result = 0;
@@ -27,7 +26,6 @@ int query(int solution){
 }
 
 int main() {
-
     ios::sync_with_stdio(0);
     cin.tie();
 
@@ -35,18 +33,16 @@ int main() {
     cin >> n;
 
     int lb = 1, ub = n, mid;
-
     while(lb <= ub){
 
         mid = (lb + ub) / 2;
 
-        if(query(mid) == 0) //X smaller than guess
+        if(query(mid) == 0)
             ub = mid - 1;
-        else //X bigger than guess
+        else
             lb = mid + 1;
 
     }
 
     cout << "A " << lb << endl;
-
 }
