@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/climbing-stairs/
+
 impl Solution {
     pub fn climb_stairs(n: i32) -> i32 {
         let n = (n + 1) as usize;

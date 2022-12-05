@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/is-subsequence/
+
 impl Solution {
     pub fn is_subsequence(s: String, t: String) -> bool {
         let mut cur = 0;

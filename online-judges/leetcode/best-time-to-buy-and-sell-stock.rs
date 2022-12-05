@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+
 use std::cmp::max;
 
 impl Solution {

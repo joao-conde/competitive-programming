@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/min-cost-climbing-stairs/
+
 use std::cmp::min;
 
 impl Solution {

@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/range-sum-query-immutable/
+
 use std::collections::HashMap;
 
 struct NumArray {

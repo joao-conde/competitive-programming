@@ -1,6 +1,6 @@
 def guess(lb, up):
     # binary search
-    mid = lb + (up - lb)//2
+    mid = lb + (up - lb) // 2
     print(mid)  # guess
     answer = input()
     if answer == "TOO_BIG":

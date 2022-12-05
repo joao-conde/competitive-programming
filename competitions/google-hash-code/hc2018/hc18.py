@@ -6,6 +6,7 @@ class Car:
         self.rides = []
         self.history = []
 
+
 class Ride:
     def __init__(self, id, start, finish, early_start, latest_start):
         self.id = id
@@ -15,6 +16,7 @@ class Ride:
         self.latest_start = latest_start
         self.on_road = False
         self.completed = False
+
 
 def parse_input(filename, num_cars, num_rides, ticks):
     file = open(filename, "r")
@@ -28,7 +30,8 @@ def parse_input(filename, num_cars, num_rides, ticks):
     ticks = first_line[5]
 
     for i, line in enumerate(lines):
-        if i == 0: continue
+        if i == 0:
+            continue
         line = line.split()
         int_line = [int(x) for x in line]
         rides.append(
@@ -43,8 +46,10 @@ def parse_input(filename, num_cars, num_rides, ticks):
 
     return [num_cars, num_rides, ticks]
 
+
 def generate_cars(num_cars):
     return [Car() in range(num_cars)]
+
 
 def run_clock(ticks):
     for _ in range(ticks):
@@ -53,15 +58,18 @@ def run_clock(ticks):
         make_trip(cars)
         check_if_completed(cars)
 
+
 def assign_ride_to_car(cars, rides):
     for ride in rides:
-        if ride.on_road or ride.completed: continue
+        if ride.on_road or ride.completed:
+            continue
 
         distances = [calculate_car_distance(car, ride) for car in cars]
         min_car = distances.index(min(distances))
         cars[min_car].rides.append(ride)
         cars[min_car].occupied = True
         ride.on_road = True
+
 
 def calculate_car_distance(car, ride):
     if car.occupied:
@@ -70,10 +78,12 @@ def calculate_car_distance(car, ride):
         return step_1 + step_2
     return calculate_distance(car.pos, ride.start)
 
+
 def calculate_distance(start, end):
     dx = abs(start[0] - end[0])
     dy = abs(start[1] - end[1])
     return dx + dy
+
 
 def place_on_origin(cars):
     for car in cars:
@@ -97,6 +107,7 @@ def place_on_origin(cars):
             elif car.pos[1] > car.rides[0].start[1]:
                 car.pos[1] -= 1
 
+
 def make_trip(cars):
     for car in cars:
         if not car.origin or len(car.rides) == 0:
@@ -116,6 +127,7 @@ def make_trip(cars):
             elif car.pos[1] > car.rides[0].finish[1]:
                 car.pos[1] -= 1
 
+
 def check_if_completed(cars):
     for car in cars:
 
@@ -130,6 +142,7 @@ def check_if_completed(cars):
             else:
                 car.rides = []
 
+
 def show_results(output_path):
     file = open(output_path, "a")
     for car in cars:
@@ -137,6 +150,7 @@ def show_results(output_path):
         file.write(" ")
         file.write(" ".join(str(x) for x in car.history))
         file.write("\n")
+
 
 if __name__ == "__main__":
     input_path = "a.in"

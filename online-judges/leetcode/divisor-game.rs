@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/divisor-game/
+
 impl Solution {
     pub fn divisor_game(mut n: i32) -> bool {
         n % 2 == 0
