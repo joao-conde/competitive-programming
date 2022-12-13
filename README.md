@@ -18,5 +18,7 @@ The solutions implemented are my own and they are often a product of quick think
 │   └── spoj                --- Sphere Online Judge
 │   └── uva                 --- University of Valladolid Online Judge
 │
+├── others                  --- Ad-hoc programming challenges
+│
 └── resources               --- Useful Resources
 ```
