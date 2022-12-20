@@ -95,12 +95,34 @@ Example tree:
 ```
 
 ## Tree Traversal
-TODO some pseudocode with comments
+
 | Method    | Order               | Example       |
 | --------- | ------------------- | ------------- |
 | Pre (dfs) | **root** left right | A B D E C F G |
 | In        | left **root** right | D B E A G F C |
 | Post      | left right **root** | D E B G F C A |
+
+```python
+def preorder(root):
+    if root == None: return
+    print(root, end = " ")
+    preorder(root.left)
+    preorder(root.right)
+
+
+def inorder(root):
+    if root == None: return
+    inorder(root.left)
+    print(root, end = " ")
+    inorder(root.right)
+
+
+def postorder(root):
+    if root == None: return
+    postorder(root.left)
+    postorder(root.right)
+    print(root, end = " ")
+```
 
 ## Minimum Spanning Tree (MST)
 
