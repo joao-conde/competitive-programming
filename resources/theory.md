@@ -112,11 +112,11 @@ Example tree:
 ```
         A
       /   \         
-    B     C
-   / \      /
-  D  E  F
-          /
-         G
+    B      C
+   / \     /
+  D  E   F
+        /
+       G 
 ```
 
 ## Tree Traversal
