@@ -62,10 +62,10 @@ class Node:
 ### Balanced Binary Search Tree
 
 - a binary search tree where the height difference between subtrees is at most 1
-- the height H is balanced, hence:
-  - O(log H) lookup
-  - O(log H) insert
-  - O(log H) delete
+- the height H is balanced, hence with N nodes height is log N, thus:
+  - O(log N) lookup
+  - O(log N) insert
+  - O(log N) delete
 
 - insertions and deletions possibly make the tree unbalanced
 
