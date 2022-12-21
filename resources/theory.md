@@ -18,6 +18,13 @@ Built-in python data structures and relevant notes:
   - O(H) insert
   - O(H) delete
 
+```python
+class Node:
+    def __init__(self, val, children = []):
+        self.val = val
+        self.children = children
+```
+
 ### Binary Tree
 
 - a tree with at most 2 children
@@ -26,6 +33,14 @@ Built-in python data structures and relevant notes:
   - O(H) insert
   - O(H) delete
 
+```python
+class Node:
+    def __init__(self, val, left = None, right = None):
+        self.val = val
+        self.left = left
+        self.right = right
+```
+
 ### Binary Search Tree
 
 - a binary tree where left < root < right
@@ -33,6 +48,16 @@ Built-in python data structures and relevant notes:
   - O(H) lookup
   - O(H) insert
   - O(H) delete
+
+```python
+class Node:
+    def __init__(self, val, left = None, right = None):
+        if left != None and right != None:
+            assert(left < right)
+        self.val = val
+        self.left = left
+        self.right = right
+```
 
 ### Balanced Binary Search Tree
 
@@ -105,7 +130,7 @@ Example tree:
 ```python
 def preorder(root):
     if root == None: return
-    print(root, end = " ")
+    print(root)
     preorder(root.left)
     preorder(root.right)
 
@@ -113,7 +138,7 @@ def preorder(root):
 def inorder(root):
     if root == None: return
     inorder(root.left)
-    print(root, end = " ")
+    print(root)
     inorder(root.right)
 
 
@@ -121,7 +146,7 @@ def postorder(root):
     if root == None: return
     postorder(root.left)
     postorder(root.right)
-    print(root, end = " ")
+    print(root)
 ```
 
 ## Minimum Spanning Tree (MST)
@@ -157,18 +182,49 @@ while lb <= ub:
 
 ## Depth-First Search (DFS)
 
+- LIFO approach
 - search leftmost first, backtracking when needed
 - useful to detect graph cycles too
 - O(V)
 - example: A B D E C F G (tree pre-order)
-TODO some pseudocode with comments
+
+```python
+# recursive
+def dfs(root):
+    if root == None: return
+    print(root)
+    for child in root.children:
+        dfs(child)
+
+# stack based
+def dfs(root):
+    stack = [root]
+    while len(stack) > 0:
+        top = stack.pop()
+        print(top)
+        for child in reversed(top.children):
+            if child == None: continue
+            stack.append(child)
+```
 
 ## Breadth-First Search (BFS)
 
+- FIFO approach
 - explore all nodes in a "level" before going deeper
 - O(V)
 - example: A B C D E F G
-TODO some pseudocode with comments
+
+```python
+from collections import deque
+def bfs(root):
+    queue = deque([root])
+    while len(queue) > 0:
+        front = queue.popleft()
+        print(front)
+        for child in front.children:
+            if child == None: continue
+            queue.append(child)
+```
 
 ## Dijkstra
 
