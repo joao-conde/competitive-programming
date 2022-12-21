@@ -196,6 +196,7 @@ def dfs(root):
     for child in root.children:
         dfs(child)
 
+
 # stack based
 def dfs(root):
     stack = [root]
@@ -290,8 +291,6 @@ Detecting cycles in a graph can be done in several ways:
 - O(N * log N)
 
 # Object Oriented Programming (OOP)
-
-*Prefer composition over inheritance.*
 
 TODO examples
 
