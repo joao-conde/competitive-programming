@@ -2,13 +2,13 @@
 
 Built-in python data structures and relevant notes:
 
-| Structure | Python            | Relevant Notes                                                                             |
-| --------- | ----------------- | ------------------------------------------------------------------------------------------ |
-| Vector    | list()            | `append`, `pop`, `insert`, `remove`, `extend`, `index`, `clear`                            |
-| HashMap   | dict()            | `d[k]=v`, `d.pop(k)`. CPython uses open addressing and random probing to solve collisions. |
-| HashSet   | set()             | `add`, `remove`                                                                            |
-| Stack     | list()            |                                                                                            |
-| Dequeue   | collections.deque | `rotate`, `append`, `appendleft`, `pop`, `popLeft`, `extend`, `extendLeft`                 |
+| Structure | Python                                     | Relevant Notes                                                                             |
+| --------- | ------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| Vector    | list()                                     | `append`, `pop`, `insert`, `remove`, `extend`, `index`, `clear`                            |
+| HashMap   | dict(), collections.defaultdict(lambda: 0) | `d[k]=v`, `d.pop(k)`. CPython uses open addressing and random probing to solve collisions. |
+| HashSet   | set()                                      | `add`, `remove`, `clear`                                                                   |
+| Stack     | list()                                     |                                                                                            |
+| Dequeue   | collections.deque                          | `rotate`, `append`, `appendleft`, `pop`, `popLeft`, `extend`, `extendLeft`                 |
 
 ## Tree
 
@@ -52,8 +52,9 @@ class Node:
 ```python
 class Node:
     def __init__(self, val, left = None, right = None):
-        if left != None and right != None:
-            assert(left < right)
+        if left: assert(left <= val)
+        if right: assert(val <= right)
+
         self.val = val
         self.left = left
         self.right = right
@@ -68,6 +69,23 @@ class Node:
   - O(log N) delete
 
 - insertions and deletions possibly make the tree unbalanced
+
+```python
+class Node:
+    def __init__(self, val, left=None, right=None):
+        if left: assert(left <= val)
+        if right: assert(val <= right)
+        if left and right: assert(abs(left.height() - right.height()) <= 1)
+
+        self.val = val
+        self.left = left
+        self.right = right
+
+    def height(self):
+        left_h = self.left.height() if self.left else 0
+        right_h = self.right.height() if self.right else 0
+        return max(left_h, right_h) + 1
+```
 
 #### AVL Trees
 

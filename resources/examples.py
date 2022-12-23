@@ -1,31 +1,19 @@
+from collections import deque
+
+
 class Node:
     def __init__(self, val, left=None, right=None):
+        if left: assert left <= val
+        if right: assert val <= right
+
         self.val = val
         self.left = left
         self.right = right
 
-    def __str__(self) -> str:
-        return str(self.val)
-
-    @property
-    def children(self):
-        return [self.left, self.right]
-
-
-A = Node("A")
-B = Node("B")
-C = Node("C")
-D = Node("D")
-E = Node("E")
-F = Node("F")
-G = Node("G")
-
-A.left = B
-A.right = C
-B.left = D
-B.right = E
-C.left = F
-F.left = G
+    def height(self):
+        left_h = self.left.height() if self.left else 0
+        right_h = self.right.height() if self.right else 0
+        return max(left_h, right_h) + 1
 
 
 def preorder(root):
@@ -52,11 +40,12 @@ def postorder(root):
     print(root, end=" ")
 
 
-# def dfs(root):
-#     if root == None: return
-#     print(root)
-#     for child in root.children:
-#         dfs(child)
+def dfs_rec(root):
+    if root == None:
+        return
+    print(root)
+    for child in root.children:
+        dfs_rec(child)
 
 
 def dfs(root):
@@ -70,15 +59,36 @@ def dfs(root):
             stack.append(child)
 
 
-from collections import deque
 def bfs(root):
     queue = deque([root])
     while len(queue) > 0:
         front = queue.popleft()
         print(front)
         for child in front.children:
-            if child == None: continue
+            if child == None:
+                continue
             queue.append(child)
 
 
-bfs(A)
+def height(root):
+    if root == None:
+        return 0
+    return max(height(root.left), height(root.right)) + 1
+
+
+def main():
+    A = Node("A")
+    B = Node("B")
+    C = Node("C")
+    D = Node("D")
+    E = Node("E")
+    F = Node("F")
+    G = Node("G")
+    A.left = B
+    A.right = C
+    B.left = D
+    B.right = E
+    C.left = F
+    F.left = G
+
+main()
