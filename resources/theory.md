@@ -1,5 +1,7 @@
 # Data Structures
 
+*Disclaimer: example source code might not compile/execute properly*
+
 Built-in python data structures and relevant notes:
 
 | Structure | Python                                     | Relevant Notes                                                                             |
@@ -52,8 +54,8 @@ class Node:
 ```python
 class Node:
     def __init__(self, val, left = None, right = None):
-        if left: assert(left <= val)
-        if right: assert(val <= right)
+        if left: assert(left.val <= val)
+        if right: assert(val <= right.val)
 
         self.val = val
         self.left = left
@@ -72,9 +74,9 @@ class Node:
 
 ```python
 class Node:
-    def __init__(self, val, left=None, right=None):
-        if left: assert(left <= val)
-        if right: assert(val <= right)
+    def __init__(self, val, left = None, right = None):
+        if left: assert(left.val <= val)
+        if right: assert(val <= right.val)
         if left and right: assert(abs(left.height() - right.height()) <= 1)
 
         self.val = val
@@ -341,15 +343,71 @@ TODO examples
 Typical solutions for common software OOP design problems.
 
 **Creational** - objects' creation
-  - **Factory** - interface for creating objects, hiding details
+
+  - **Factory** - interface for creating objects, simplifying and centralizing logic
+
+```python
+class Honda:
+    def __init__(self, model): pass
+    def drive(self): pass
+
+class BMW:
+    def __init__(self, model, premium): pass
+    def drive(self): pass
+
+class Ferrari:
+    def __init__(self, model, super): pass
+    def drive(self): pass
+
+class CarFactory:
+    @classmethod
+    def build(cls, brand, model, **kwargs):
+        if brand == "honda": return Honda(model)
+        if brand == "bmw": return BMW(model, kwargs.get("premium", True))
+        if brand == "ferrari": return Ferrari(model, kwargs.get("super", True))
+```
+
   - **Builder** - construct complex objects step by step
-  - **Singleton** - ensure a single instance of this class
+
+```python
+class House:
+    def __init__(self): pass
+
+    def with_walls(self, nwalls):
+        self.nwalls = nwalls
+        return self
+
+    def with_roof(self):
+        self.roof = True
+        return self
+
+house = House()
+house = house.with_walls(3).with_roof()
+```
+
+  - **Singleton** - ensure a single instance of a class
+
+```python
+class Singleton:
+    _instance = None
+
+    @classmethod
+    def instance(cls):
+        if cls._instance is None:
+            cls._instance = cls()
+        return cls._instance
+```
 
 **Structural** - objects' assembly
+
   - **Adapter** - allow objects with incompatible interfaces to communicate
+
   - **Decorator** - wrap objects with additional functionality
 
 **Behavioral** - objects' communication
+
   - **Command** - turns actions into objects (e.g. useful for queues, delays, undo/redo, event sourcing, ...)
+  
   - **Observer** - subscription/notification of objects to events
+
   - **Strategy** - define a family of interchangeable algorithms
