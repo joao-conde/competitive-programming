@@ -3,8 +3,10 @@ from collections import deque
 
 class Node:
     def __init__(self, val, left=None, right=None):
-        if left: assert left <= val
-        if right: assert val <= right
+        if left:
+            assert left <= val
+        if right:
+            assert val <= right
 
         self.val = val
         self.left = left
@@ -90,5 +92,6 @@ def main():
     B.right = E
     C.left = F
     F.left = G
+
 
 main()
