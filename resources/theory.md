@@ -4,13 +4,14 @@
 
 Built-in python data structures and relevant notes:
 
-| Structure | Python                                     | Relevant Notes                                                                             |
-| --------- | ------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| Vector    | list()                                     | `append`, `pop`, `insert`, `remove`, `extend`, `index`, `clear`                            |
-| HashMap   | dict(), collections.defaultdict(lambda: 0) | `d[k]=v`, `d.pop(k)`. CPython uses open addressing and random probing to solve collisions. |
-| HashSet   | set()                                      | `add`, `remove`, `clear`                                                                   |
-| Stack     | list()                                     |                                                                                            |
-| Dequeue   | collections.deque                          | `rotate`, `append`, `appendleft`, `pop`, `popLeft`, `extend`, `extendLeft`                 |
+| Structure      | Python                                     | Relevant Notes                                                                             |
+| -------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| Vector         | list()                                     | `append`, `pop`, `insert`, `remove`, `extend`, `index`, `clear`                            |
+| HashMap        | dict(), collections.defaultdict(lambda: 0) | `d[k]=v`, `d.pop(k)`. CPython uses open addressing and random probing to solve collisions. |
+| HashSet        | set()                                      | `add`, `remove`, `clear`                                                                   |
+| Stack          | list()                                     |                                                                                            |
+| Dequeue        | collections.deque                          | `rotate`, `append`, `appendleft`, `pop`, `popLeft`, `extend`, `extendLeft`                 |
+| Priority Queue | heapq                                      | `heapify`, `heappush`, `heappop`                                                           |
 
 ## Tree
 
