@@ -93,7 +93,7 @@ class Node:
 #### AVL Trees
 
 - self-balancing tree after insertions & deletions
-- balances itself through rotations
+- balances itself through rotations (left, right, left-right, right-left)
 
 ### Trie
 
@@ -110,6 +110,9 @@ class Node:
 - insertion is done by inserting new element in the last spot and bubbling it up, swapping with parent if needed
 - deletion is done by removing element and replacing by the last element added, swapping it down with the max child
 - great for sorting or priority queues
+- balanced binary tree:
+  - O(log N) insertions/deletions
+  - O(1) query max
 
 ## Disjoint Set
 
@@ -118,7 +121,6 @@ class Node:
 - implemented as a simple array that keeps track of set parents
 - `find(x)` should return the set `x` belongs to
 - `union(x, y)` should set `x` and `y` to the same set
-
 
 ## Graph
 
@@ -180,8 +182,6 @@ def postorder(root):
 - keep edges sorted by weight in a min heap
 - pop them one by one, using those that do not connect two already used vertices
 - stop when all vertices are connected
-TODO: Missing complexities
-TODO some pseudocode with comments
 
 ## Binary Search
 
@@ -252,12 +252,10 @@ def bfs(root):
 
 - greedy algorithm to find the shortest path between two nodes
 - no negative weight edges
-TODO some pseudocode with comments
 
 ## A*
 
 - dijkstra with an extra heuristic added to the cost
-- TODO some pseudocode with comments
 
 ## Bellman-Ford
 
@@ -272,7 +270,6 @@ TODO some pseudocode with comments
 - O(V³)
 
 ## Cycle Detection
-TODO: complexities
 
 Detecting cycles in a graph can be done in several ways:
 
@@ -313,8 +310,6 @@ Detecting cycles in a graph can be done in several ways:
 
 # Object Oriented Programming (OOP)
 
-TODO examples
-
 **Abstraction** - black-box abstractions that hide implementation details
 
 **Encapsulation** - hide private implementation details, expose a public interface
@@ -324,8 +319,6 @@ TODO examples
 **Polymorphism** - uniform usage of objects that share a same interface
 
 ## SOLID
-
-TODO examples
 
 **Single Responsibility** - classes should do one thing and do it well, having one reason to change
 
@@ -338,8 +331,6 @@ TODO examples
 **Dependency Inversion** - entities depend on abstractions and not on concretions
 
 ## Design Patterns
-
-TODO examples
 
 Typical solutions for common software OOP design problems.
 
