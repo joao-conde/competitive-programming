@@ -13,6 +13,12 @@ Built-in python data structures and relevant notes:
 | Dequeue        | collections.deque                          | `rotate`, `append`, `appendleft`, `pop`, `popleft`, `extend`, `extendleft`                 |
 | Priority Queue | heapq                                      | `heapify`, `heappush`, `heappop`                                                           |
 
+| Function (Python)                          | Relevant Notes                                    |
+| ------------------------------------------ | ------------------------------------------------- |
+| sorted(iterable, key=key, reverse=reverse) | Ascending sort of an iterable collection          |
+| reversed(sequence)                         | Reverses a sequence (lists, strings, tuples, ...) |
+| bin(number)                                | Binary string representation of a number          |
+
 ## Tree
 
 - acyclic graph (root + children)
