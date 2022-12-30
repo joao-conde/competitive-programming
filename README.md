@@ -25,9 +25,6 @@ The solutions implemented are my own and they are often a product of quick think
 
 
 TODO: LEETCODE:
-# Happy Number (easy)
-# Minimum Meeting Rooms (medium)
-# Number of Islands (medium)
 # Merge Intervals (medium)
 # Number of Closed Islands (medium)
 # Making a Large Island (hard)
