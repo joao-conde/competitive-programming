@@ -21,6 +21,8 @@ Built-in python data structures and relevant notes:
 
 ## Tree
 
+TODO BTree
+
 - acyclic graph (root + children)
 - given the height of tree as H:
   - O(H) lookup
@@ -127,6 +129,20 @@ class Node:
 - implemented as a simple array that keeps track of set parents
 - `find(x)` should return the set `x` belongs to
 - `union(x, y)` should set `x` and `y` to the same set
+
+```python
+groups = list(range(length))
+
+def find(x):
+    while x != groups[x]:
+        x = groups[x]
+    return x
+
+def union(x, y):
+    root_x = find(x)
+    root_y = find(y)
+    groups[root_x] = root_y
+```
 
 ## Graph
 
