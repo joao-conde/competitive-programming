@@ -275,6 +275,35 @@ def bfs(root):
 - greedy algorithm to find the shortest path between two nodes
 - no negative weight edges
 
+```python
+from heapq import heappush, heappop
+def dijkstra(graph, src, dst):
+    prev = [None] * len(graph)
+    dists = [float("inf")] * len(graph)
+
+    visited = set()
+    pq = [(0, src)]
+    dists[src] = 0
+    while len(pq) > 0:
+        (_, cur) = heappop(pq)
+
+        if cur in visited:
+            continue
+        visited.add(cur)
+
+        if cur == dst:
+            return dists[dst], prev
+
+        for (neighbor, cost) in enumerate(graph[cur]):
+            alt = dists[cur] + cost
+            if alt < dists[neighbor]:
+                prev[neighbor] = cur
+                dists[neighbor] = alt
+            heappush(pq, (dists[neighbor], neighbor))
+
+    return -1, []
+```
+
 ## A*
 
 - dijkstra with an extra heuristic added to the cost
