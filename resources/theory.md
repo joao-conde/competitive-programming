@@ -273,7 +273,10 @@ def bfs(root):
 ## Dijkstra
 
 - greedy algorithm to find the shortest path between two nodes
-- no negative weight edges
+- no negative weight edges allowed
+- O((V + E) log V) with min-heap:
+  - heappush once per edge -> E log V
+  - heappop once per node -> V log V
 
 ```python
 from heapq import heappush, heappop
@@ -355,9 +358,17 @@ Detecting cycles in a graph can be done in several ways:
 
 ## Heap Sort
 
-- build an heap
+- build an heap (heapify O(N))
 - keep popping the min element into a new array
-- O(N * log N)
+- O(N * log N):
+  - the popped top element will be replaced by a leaf and bubbled down
+
+```python
+from heapq import heapify, heappush, heappop
+def heapsort(collection):
+    heapify(collection)
+    return [heappop(collection) for _ in range(len(collection))]
+```
 
 # Object Oriented Programming (OOP)
 
