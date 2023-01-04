@@ -287,12 +287,12 @@ def dijkstra(graph, src, dst):
     while len(pq) > 0:
         (_, cur) = heappop(pq)
 
+        if cur == dst:
+            return dists[dst], prev
+
         if cur in visited:
             continue
         visited.add(cur)
-
-        if cur == dst:
-            return dists[dst], prev
 
         for (neighbor, cost) in enumerate(graph[cur]):
             alt = dists[cur] + cost
