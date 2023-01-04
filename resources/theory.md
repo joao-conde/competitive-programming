@@ -127,8 +127,8 @@ class Node:
 - keeps track of multiple sets of elements, disjoint at first
 - allows fast check of disjoint sets of elements
 - implemented as a simple array that keeps track of set parents
-- `find(x)` should return the set `x` belongs to
-- `union(x, y)` should set `x` and `y` to the same set
+- `find(x)` should return the set `x` belongs to (O(N))
+- `union(x, y)` should set `x` and `y` to the same set (O(1))
 
 ```python
 groups = list(range(length))
