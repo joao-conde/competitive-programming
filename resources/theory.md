@@ -344,6 +344,17 @@ Detecting cycles in a graph can be done in several ways:
 - each iteration the ith element is sorted, quitting early if nothing is swapped
 - O(N²)
 
+```python
+def bubblesort(collection):
+    for n in range(len(collection)):
+        for i in range(len(collection) - n - 1):
+            if collection[i] > collection[i + 1]:
+                tmp = collection[i]
+                collection[i] = collection[i + 1]
+                collection[i + 1] = tmp
+    return collection
+```
+
 ## Quick Sort
 
 - recursively sort halves, partitioned by a pivot
