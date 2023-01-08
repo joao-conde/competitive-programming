@@ -1,7 +1,5 @@
 # https://leetcode.com/problems/zigzag-conversion/
 
-# TODO: https://leetcode.com/problems/spiral-matrix/
-
 
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
@@ -10,27 +8,13 @@ class Solution:
 
         res = ""
         jump = 2 * (numRows - 1)
-
-        i = 0
-        while i < len(s):
-            res += s[i]
-            i += jump
-
-        for r in range(1, numRows - 1):
-            i = r
-            while i < len(s):
+        for r in range(numRows):
+            for i in range(r, len(s), jump):
                 res += s[i]
 
-                diag_i = (i + jump) - 2 * r
-                if diag_i < len(s):
+                diag_i = i + jump - 2 * r
+                if r > 0 and r < numRows - 1 and diag_i < len(s):
                     res += s[diag_i]
-
-                i += jump
-
-        i = numRows - 1
-        while i < len(s):
-            res += s[i]
-            i += jump
 
         return res
 
