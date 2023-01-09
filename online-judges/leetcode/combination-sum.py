@@ -1,32 +1,22 @@
 # https://leetcode.com/problems/combination-sum/
 
-from typing import Dict, List
+from typing import List
 
 
 class Solution:
-    def helper(self, candidates: List[int], target: int) -> List[List[int]]:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         combinations = []
-        for candidate in candidates:
+        for (i, candidate) in enumerate(candidates):
             if candidate > target:
                 continue
 
             if candidate == target:
                 combinations.append([candidate])
 
-            for comb in self.helper(candidates, target - candidate):
+            for comb in self.combinationSum(candidates[i:], target - candidate):
                 combinations.append([candidate] + comb)
 
         return combinations
-
-    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        combinations = self.helper(candidates, target)
-        unique = set()
-        for comb in combinations:
-            comb_t = tuple(sorted(comb))
-            if comb_t not in unique:
-                unique.add(comb_t)
-
-        return list([list(s) for s in unique])
 
 
 # Tests
