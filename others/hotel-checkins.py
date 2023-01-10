@@ -18,7 +18,6 @@ def most_reserved(bookings):
 
     result, reservations = None, 0
     for (room, count) in check_ins.items():
-
         if count > reservations:
             reservations = count
             result = room
