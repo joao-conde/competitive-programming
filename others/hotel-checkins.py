@@ -3,26 +3,23 @@ from collections import defaultdict
 
 def most_reserved(bookings):
     in_use = set()
-    check_ins = defaultdict(lambda: 0)
+    counts = defaultdict(lambda: 0)
 
     for booking in bookings:
         check_in = booking[0] == "+"
         room = booking[1:]
 
         if check_in and room not in in_use:
-            check_ins[room] += 1
+            counts[room] += 1
             in_use.add(room)
 
         if not check_in:
             in_use.remove(room)
 
-    result, reservations = None, 0
-    for (room, count) in check_ins.items():
-        if count > reservations:
-            reservations = count
-            result = room
-
-        if count == reservations and (result == None or room < result):
+    counts = list(counts.items())
+    result, reservations = counts[0]
+    for (room, count) in counts:
+        if count > reservations or (count == reservations and room < result):
             reservations = count
             result = room
 
