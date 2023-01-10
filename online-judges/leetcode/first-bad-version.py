@@ -1,7 +1,5 @@
 # https://leetcode.com/problems/first-bad-version/
 
-from typing import List
-
 
 class Solution:
     def firstBadVersion(self, n: int) -> int:
