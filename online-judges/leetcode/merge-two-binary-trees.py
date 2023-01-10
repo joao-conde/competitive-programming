@@ -1,6 +1,6 @@
 # https://leetcode.com/problems/merge-two-binary-trees/
 
-from typing import List, Optional
+from typing import Optional
 
 
 class TreeNode:
