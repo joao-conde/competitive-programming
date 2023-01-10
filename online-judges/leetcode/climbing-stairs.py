@@ -2,7 +2,7 @@
 
 
 class Solution:
-    def climbStairs(self, n: int, cache=None) -> int:
+    def climbStairs(self, n: int) -> int:
         ways, n1, n2 = 0, 0, 1
         for _ in range(n):
             ways = n1 + n2
