@@ -4,18 +4,11 @@ from typing import List
 
 
 class Solution:
-    def is_type(self, val, type):
-        try:
-            type(val)
-            return True
-        except:
-            return False
-
     def evalRPN(self, tokens: List[str]) -> int:
         stack = []
 
         for token in tokens:
-            if self.is_type(token, int):
+            if token not in "+-*/":
                 stack.append(int(token))
                 continue
 
