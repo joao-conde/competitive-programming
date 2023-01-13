@@ -63,7 +63,7 @@ class Node:
 ```python
 class Node:
     def __init__(self, val, left = None, right = None):
-        if left: assert(left.val <= val)
+        if left: assert(left.val < val)
         if right: assert(val <= right.val)
 
         self.val = val
