@@ -3,12 +3,22 @@
 
 class Solution:
     def climbStairs(self, n: int) -> int:
-        ways, n1, n2 = 0, 0, 1
-        for _ in range(n):
-            ways = n1 + n2
-            n1 = n2
-            n2 = ways
-        return ways
+        cache = dict()
+
+        def climb(n):
+            if n == 1:
+                return 1
+            if n == 2:
+                return 2
+
+            if n in cache:
+                return cache[n]
+
+            ways = climb(n - 1) + climb(n - 2)
+            cache[n] = ways
+            return ways
+
+        return climb(n)
 
 
 # Tests
