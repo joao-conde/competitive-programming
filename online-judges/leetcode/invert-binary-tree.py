@@ -1,6 +1,6 @@
 # https://leetcode.com/problems/invert-binary-tree/
 
-from typing import List, Optional
+from typing import Optional
 
 
 class TreeNode:
