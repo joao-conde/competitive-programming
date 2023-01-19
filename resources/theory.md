@@ -11,7 +11,7 @@ Built-in python data structures and relevant notes:
 | HashSet        | set()                                      | `add`, `update`, `remove`, `clear`, `union`, `intersection`                                |
 | Stack          | list()                                     |                                                                                            |
 | Dequeue        | collections.deque                          | `rotate`, `append`, `appendleft`, `pop`, `popleft`, `extend`, `extendleft`                 |
-| Priority Queue | heapq                                      | `heapify`, `heappush`, `heappop`                                                           |
+| Priority Queue | heapq                                      | `heapify`, `heappush`, `heappop`, `nlargest`, `nsmallest`                                  |
 
 | Function (Python)                          | Relevant Notes                                    |
 | ------------------------------------------ | ------------------------------------------------- |
