@@ -21,8 +21,6 @@ Built-in python data structures and relevant notes:
 
 ## Tree
 
-TODO BTree
-
 - acyclic graph (root + children)
 - given the height of tree as H:
   - O(H) lookup
