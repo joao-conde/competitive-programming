@@ -77,7 +77,7 @@ class Node:
   - O(log N) insert
   - O(log N) delete
 
-- insertions and deletions possibly make the tree unbalanced
+- insertions and deletions possibly make the tree unbalanced, self-balancing trees correct this through rotations (e.g. AVL)
 
 ```python
 class Node:
@@ -95,11 +95,6 @@ class Node:
         right_h = self.right.height() if self.right else 0
         return max(left_h, right_h) + 1
 ```
-
-#### AVL Trees
-
-- self-balancing tree after insertions & deletions
-- balances itself through rotations (left, right, left-right, right-left)
 
 ### Trie
 
@@ -305,10 +300,6 @@ def dijkstra(graph, src, dst):
     return -1, []
 ```
 
-## A*
-
-- dijkstra with an extra heuristic added to the cost
-
 ## Bellman-Ford
 
 - finds the shortest path between two nodes
@@ -333,7 +324,7 @@ Detecting cycles in a graph can be done in several ways:
 ## Dynamic Programming
 
 - appliable when optimal solution depends on the optimal solution for subproblems
-- bottom-up: solve base cases and compound results (e.g. floyd-warshall)
+- bottom-up: solve base cases and compound results
 - top-down: memoization, cache results and avoid recomputation, easily applied to recursive solutions
 
 ## Bubble Sort
