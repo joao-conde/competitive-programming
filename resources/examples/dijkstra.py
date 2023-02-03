@@ -28,6 +28,8 @@ def dijkstra(graph, src, dst):
     return -1, []
 
 
+# https://www.freecodecamp.org/news/content/images/2020/06/image-76.png
+
 INF = float("inf")
 graph = [
     [0, 2, 6, INF, INF, INF, INF],
@@ -39,5 +41,6 @@ graph = [
     [INF, INF, INF, INF, 2, 6, 0],
 ]
 
-dist, prev = dijkstra(graph, 2, 6)
-print(dist, prev)
+assert dijkstra(graph, 2, 2) == (0, [None, None, None, None, None, None, None])
+assert dijkstra(graph, 0, 6) == (19, [None, 0, 0, 1, 3, 3, 4])
+assert dijkstra(graph, 2, 6) == (20, [2, 0, None, 2, 3, 3, 4])
