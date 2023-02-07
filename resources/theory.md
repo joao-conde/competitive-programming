@@ -225,9 +225,23 @@ def postorder(root):
 ### Kruskal's Algorithm
 
 - select minimum cost edges that do not form a cycle
-- keep edges sorted by weight in a min heap
-- pop them one by one, using those that do not connect two already used vertices
+- pop them one by one, using those that do not connect two already used vertices (disjoint set)
 - stop when all vertices are connected
+
+```python
+def kruskal(edges):
+    edges.sort()
+
+    mst = []
+    while len(edges) > 0:
+        cost, src, dst = edges.pop(0)
+
+        if find(src) != find(dst):
+            union(src, dst)
+            mst.append((cost, src, dst))
+
+    return mst
+```
 
 ## Binary Search
 
