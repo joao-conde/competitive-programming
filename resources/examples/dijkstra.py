@@ -2,17 +2,16 @@ from heapq import heappush, heappop
 
 
 def dijkstra(graph, src, dst):
-    prev = [None] * len(graph)
     dists = [float("inf")] * len(graph)
+    dists[src] = 0
 
     visited = set()
     pq = [(0, src)]
-    dists[src] = 0
     while len(pq) > 0:
         (_, cur) = heappop(pq)
 
         if cur == dst:
-            return dists[dst], prev
+            return dists[dst]
 
         if cur in visited:
             continue
@@ -21,11 +20,10 @@ def dijkstra(graph, src, dst):
         for (neighbor, cost) in enumerate(graph[cur]):
             alt = dists[cur] + cost
             if alt < dists[neighbor]:
-                prev[neighbor] = cur
                 dists[neighbor] = alt
             heappush(pq, (dists[neighbor], neighbor))
 
-    return -1, []
+    return -1
 
 
 # Tests
@@ -42,6 +40,6 @@ graph = [
     [INF, INF, INF, INF, 2, 6, 0],
 ]
 
-assert dijkstra(graph, 2, 2) == (0, [None, None, None, None, None, None, None])
-assert dijkstra(graph, 0, 6) == (19, [None, 0, 0, 1, 3, 3, 4])
-assert dijkstra(graph, 2, 6) == (20, [2, 0, None, 2, 3, 3, 4])
+assert dijkstra(graph, 2, 2) == 0
+assert dijkstra(graph, 0, 6) == 19
+assert dijkstra(graph, 2, 6) == 20

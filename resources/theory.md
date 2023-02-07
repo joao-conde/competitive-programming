@@ -34,7 +34,7 @@ class Node:
         self.children = children
 ```
 
-### Binary Tree
+## Binary Tree
 
 - a tree with at most 2 children
 - no certainty regarding tree height, hence:
@@ -50,7 +50,7 @@ class Node:
         self.right = right
 ```
 
-### Binary Search Tree
+## Binary Search Tree
 
 - a binary tree where left < root < right
 - no certainty regarding tree height, hence:
@@ -69,7 +69,7 @@ class Node:
         self.right = right
 ```
 
-### Balanced Binary Search Tree
+## Balanced Binary Search Tree
 
 - a binary search tree where the height difference between subtrees is at most 1
 - the height H is balanced, hence with N nodes height is log N, thus:
@@ -96,7 +96,7 @@ class Node:
         return max(left_h, right_h) + 1
 ```
 
-### Trie
+## Trie
 
 - trees of characters
 - terminal nodes (leaves) represent words
@@ -319,17 +319,16 @@ def bfs(root):
 ```python
 from heapq import heappush, heappop
 def dijkstra(graph, src, dst):
-    prev = [None] * len(graph)
     dists = [float("inf")] * len(graph)
+    dists[src] = 0
 
     visited = set()
     pq = [(0, src)]
-    dists[src] = 0
     while len(pq) > 0:
         (_, cur) = heappop(pq)
 
         if cur == dst:
-            return dists[dst], prev
+            return dists[dst]
 
         if cur in visited:
             continue
@@ -338,11 +337,10 @@ def dijkstra(graph, src, dst):
         for (neighbor, cost) in enumerate(graph[cur]):
             alt = dists[cur] + cost
             if alt < dists[neighbor]:
-                prev[neighbor] = cur
                 dists[neighbor] = alt
             heappush(pq, (dists[neighbor], neighbor))
 
-    return -1, []
+    return -1
 ```
 
 ## Bellman-Ford
