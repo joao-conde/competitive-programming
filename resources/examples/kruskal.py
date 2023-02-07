@@ -23,6 +23,7 @@ def kruskal(edges):
     while len(edges) > 0:
         cost, src, dst = edges.pop(0)
 
+        # disjoint set keeps track of connectivity
         if find(src) != find(dst):
             union(src, dst)
             mst.append((cost, src, dst))

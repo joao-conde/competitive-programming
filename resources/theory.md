@@ -236,6 +236,7 @@ def kruskal(edges):
     while len(edges) > 0:
         cost, src, dst = edges.pop(0)
 
+        # disjoint set keeps track of connectivity
         if find(src) != find(dst):
             union(src, dst)
             mst.append((cost, src, dst))
@@ -334,6 +335,8 @@ def dijkstra(graph, src, dst):
             continue
         visited.add(cur)
 
+        # for each neighbor check if the cost of going
+        # from current to neighbor is lower than neighbor distance
         for (neighbor, cost) in enumerate(graph[cur]):
             alt = dists[cur] + cost
             if alt < dists[neighbor]:
@@ -369,23 +372,6 @@ Detecting cycles in a graph can be done in several ways:
 - appliable when optimal solution depends on the optimal solution for subproblems
 - bottom-up: solve base cases and compound results
 - top-down: memoization, cache results and avoid recomputation, easily applied to recursive solutions
-
-## Bubble Sort
-
-- bubble biggest element to the top each iteration
-- each iteration the ith element is sorted, quitting early if nothing is swapped
-- O(N²)
-
-```python
-def bubblesort(collection):
-    for n in range(len(collection)):
-        for i in range(len(collection) - n - 1):
-            if collection[i] > collection[i + 1]:
-                tmp = collection[i]
-                collection[i] = collection[i + 1]
-                collection[i + 1] = tmp
-    return collection
-```
 
 ## Quick Sort
 

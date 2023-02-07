@@ -17,6 +17,8 @@ def dijkstra(graph, src, dst):
             continue
         visited.add(cur)
 
+        # for each neighbor check if the cost of going
+        # from current to neighbor is lower than neighbor distance
         for (neighbor, cost) in enumerate(graph[cur]):
             alt = dists[cur] + cost
             if alt < dists[neighbor]:
