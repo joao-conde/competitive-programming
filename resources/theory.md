@@ -99,10 +99,41 @@ class Node:
 ### Trie
 
 - trees of characters
-- terminal nodes (leafs) represent words
+- terminal nodes (leaves) represent words
 - allows caching of current prefix and current node for efficient search
-- given the prefix length of N:
-    - O(N) lookup
+- given the prefix length of K:
+    - O(K) lookup
+
+```python
+class Trie:
+    def __init__(self):
+        self.children = {}
+        self.terminal = False
+
+    def insert(self, word):
+        cur = self
+        for c in word:
+            if c not in cur.children:
+                cur.children[c] = Trie()
+            cur = cur.children[c]
+        cur.terminal = True
+
+    def remove(self, word):
+        cur = self
+        for c in word:
+            if c not in cur.children:
+                break
+            cur = cur.children[c]
+        cur.terminal = False
+
+    def search(self, word) -> bool:
+        cur = self
+        for c in word:
+            if c not in cur.children:
+                return False
+            cur = cur.children[c]
+        return cur.terminal
+```
 
 ## Heap (Max)
 
@@ -393,6 +424,8 @@ def heapsort(collection):
 **Dependency Inversion** - entities depend on abstractions and not on concretions
 
 ## Design Patterns
+
+https://www.youtube.com/watch?v=tAuRQs_d9F8
 
 Typical solutions for common software OOP design problems.
 
