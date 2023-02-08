@@ -10,9 +10,6 @@ def dijkstra(graph, src, dst):
     while len(pq) > 0:
         (_, cur) = heappop(pq)
 
-        if cur == dst:
-            return dists[dst]
-
         if cur in visited:
             continue
         visited.add(cur)
@@ -25,7 +22,7 @@ def dijkstra(graph, src, dst):
                 dists[neighbor] = alt
             heappush(pq, (dists[neighbor], neighbor))
 
-    return -1
+    return dists[dst]
 
 
 # Tests

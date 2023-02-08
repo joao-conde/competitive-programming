@@ -151,8 +151,9 @@ class Trie:
 - keeps track of multiple sets of elements, disjoint at first
 - allows fast check of disjoint sets of elements
 - implemented as a simple array that keeps track of set parents
-- `find(x)` should return the set `x` belongs to (O(N))
 - `union(x, y)` should set `x` and `y` to the same set (O(1))
+- `find(x)` should return the set `x` belongs to (O(N))
+  - can be made O(log N) if we track the size and chain to the smallest, guaranteeing at max log N length of each chain
 
 ```python
 groups = list(range(length))
@@ -299,6 +300,7 @@ def dfs(root):
 
 ```python
 from collections import deque
+
 def bfs(root):
     queue = deque([root])
     while len(queue) > 0:
@@ -311,7 +313,7 @@ def bfs(root):
 
 ## Dijkstra
 
-- greedy algorithm to find the shortest path between two nodes
+- greedy algorithm to find the shortest path from one node to all others
 - no negative weight edges allowed
 - O((V + E) log V) with min-heap:
   - heappush once per edge -> E log V
@@ -319,6 +321,7 @@ def bfs(root):
 
 ```python
 from heapq import heappush, heappop
+
 def dijkstra(graph, src, dst):
     dists = [float("inf")] * len(graph)
     dists[src] = 0
@@ -327,9 +330,6 @@ def dijkstra(graph, src, dst):
     pq = [(0, src)]
     while len(pq) > 0:
         (_, cur) = heappop(pq)
-
-        if cur == dst:
-            return dists[dst]
 
         if cur in visited:
             continue
@@ -343,7 +343,7 @@ def dijkstra(graph, src, dst):
                 dists[neighbor] = alt
             heappush(pq, (dists[neighbor], neighbor))
 
-    return -1
+    return dists[dst]
 ```
 
 ## Bellman-Ford
@@ -352,6 +352,25 @@ def dijkstra(graph, src, dst):
 - relaxes edges V-1 times, quitting early if no distance improves
 - works for negative edges
 - does not work with negative cycles but detects them
+
+```python
+def bellman_ford(graph, src, dst):
+    n_vertices = len(graph)
+
+    dists = [float("inf")] * n_vertices
+    dists[src] = 0
+
+    for _ in range(n_vertices - 1):
+        # for each neighbor check if the cost of going
+        # from current to neighbor is lower than neighbor distance
+        for i in range(n_vertices):
+            for j in range(n_vertices):
+                alt = dists[i] + graph[i][j]
+                if alt < dists[j]:
+                    dists[j] = alt
+
+    return dists[dst]
+```
 
 ## Floyd-Warshall
 
@@ -394,6 +413,7 @@ Detecting cycles in a graph can be done in several ways:
 
 ```python
 from heapq import heapify, heappush, heappop
+
 def heapsort(collection):
     heapify(collection)
     return [heappop(collection) for _ in range(len(collection))]
