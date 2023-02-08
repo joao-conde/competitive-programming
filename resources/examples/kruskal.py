@@ -1,31 +1,32 @@
-groups = dict()
+class DisjointSet:
+    def __init__(self):
+        self.groups = dict()
 
+    def find(self, x):
+        if x not in self.groups:
+            self.groups[x] = x
 
-def find(x):
-    if x not in groups:
-        groups[x] = x
+        while x != self.groups[x]:
+            x = self.groups[x]
+        return x
 
-    while x != groups[x]:
-        x = groups[x]
-    return x
-
-
-def union(x, y):
-    group_x = find(x)
-    group_y = find(y)
-    groups[group_x] = group_y
+    def union(self, x, y):
+        root_x = self.find(x)
+        root_y = self.find(y)
+        self.groups[root_x] = root_y
 
 
 def kruskal(edges):
     edges.sort()
 
     mst = []
+    disjoint_set = DisjointSet()
     while len(edges) > 0:
         cost, src, dst = edges.pop(0)
 
         # disjoint set keeps track of connectivity
-        if find(src) != find(dst):
-            union(src, dst)
+        if disjoint_set.find(src) != disjoint_set.find(dst):
+            disjoint_set.union(src, dst)
             mst.append((cost, src, dst))
 
     return mst

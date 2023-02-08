@@ -15,3 +15,20 @@ def dfs(root):
             if child == None:
                 continue
             stack.append(child)
+
+
+def has_cycle(root):
+    visited = set()
+    stack = [root]
+    while len(stack) > 0:
+        top = stack.pop()
+
+        if top in visited:
+            return True
+
+        for child in reversed(top.children):
+            if child == None:
+                continue
+            stack.append(child)
+
+    return False

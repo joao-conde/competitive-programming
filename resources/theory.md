@@ -156,17 +156,22 @@ class Trie:
   - can be made O(log N) if we track the size and chain to the smallest, guaranteeing at max log N length of each chain
 
 ```python
-groups = list(range(length))
+class DisjointSet:
+    def __init__(self):
+        self.groups = dict()
 
-def find(x):
-    while x != groups[x]:
-        x = groups[x]
-    return x
+    def find(self, x):
+        if x not in self.groups:
+            self.groups[x] = x
 
-def union(x, y):
-    root_x = find(x)
-    root_y = find(y)
-    groups[root_x] = root_y
+        while x != self.groups[x]:
+            x = self.groups[x]
+        return x
+
+    def union(self, x, y):
+        root_x = self.find(x)
+        root_y = self.find(y)
+        self.groups[root_x] = root_y
 ```
 
 ## Graph
@@ -234,12 +239,13 @@ def kruskal(edges):
     edges.sort()
 
     mst = []
+    disjoint_set = DisjointSet()
     while len(edges) > 0:
         cost, src, dst = edges.pop(0)
 
         # disjoint set keeps track of connectivity
-        if find(src) != find(dst):
-            union(src, dst)
+        if disjoint_set.find(src) != disjoint_set.find(dst):
+            disjoint_set.union(src, dst)
             mst.append((cost, src, dst))
 
     return mst
@@ -382,9 +388,70 @@ def bellman_ford(graph, src, dst):
 Detecting cycles in a graph can be done in several ways:
 
 - DFS: check if a node has been visited twice
+```python
+def has_cycle(root):
+    visited = set()
+    stack = [root]
+    while len(stack) > 0:
+        top = stack.pop()
+
+        if top in visited:
+            return True
+
+        for child in reversed(top.children):
+            if child == None:
+                continue
+            stack.append(child)
+
+    return False
+```
+
 - Disjoint Set: union nodes for each edge and quit if same set is found
+```python
+def has_cycle(graph):
+    n_vertices = len(graph)
+    disjoint_set = DisjointSet(n_vertices)
+
+    for i in range(n_vertices):
+        for j in range(n_vertices):
+            if i == j or graph[i][j] == float("inf"):
+                continue
+
+            if disjoint_set.find(i) == disjoint_set.find(j):
+                return True
+
+            disjoint_set.union(i, j)
+
+    return False
+```
+
 - Bellman-Ford: run an extra cycle and if it improves there is a cycle
+```python
+def has_cycle(graph, src):
+    n_vertices = len(graph)
+    dists = bellman_ford(graph, src)
+
+    # run an extra cycle to see if anything improves
+    for i in range(n_vertices):
+        for j in range(n_vertices):
+            alt = dists[i] + graph[i][j]
+            if alt < dists[j]:
+                return True
+
+    return False
+```
+
 - Tortoise & Hare: if both pointers meet, there is a cycle
+```python
+def has_cycle(root):
+    slow, fast = head, head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            return True
+    return False
+```
 
 ## Dynamic Programming
 

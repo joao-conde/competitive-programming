@@ -16,6 +16,20 @@ def bellman_ford(graph, src, dst):
     return dists[dst]
 
 
+def has_cycle(graph, src):
+    n_vertices = len(graph)
+    dists = bellman_ford(graph, src)
+
+    # run an extra cycle to see if anything improves
+    for i in range(n_vertices):
+        for j in range(n_vertices):
+            alt = dists[i] + graph[i][j]
+            if alt < dists[j]:
+                return True
+
+    return False
+
+
 # Tests
 # https://www.geeksforgeeks.org/bellman-ford-algorithm-dp-23/
 
