@@ -126,7 +126,7 @@ class Trie:
             cur = cur.children[c]
         cur.terminal = False
 
-    def search(self, word) -> bool:
+    def search(self, word):
         cur = self
         for c in word:
             if c not in cur.children:
@@ -258,15 +258,17 @@ def kruskal(edges):
 - O(log N)
 
 ```python
-lb, ub = 0, len(nums) - 1
-while lb <= ub:
-    mid = lb + (ub - lb) // 2
-    if nums[mid] < target:
-        lb = mid + 1
-    elif nums[mid] > target:
-        ub = mid - 1
-    else:
-        return mid
+def bin_search(nums, target):
+    lb, ub = 0, len(nums) - 1
+    while lb <= ub:
+        mid = lb + (ub - lb) // 2
+        if nums[mid] < target:
+            lb = mid + 1
+        elif nums[mid] > target:
+            ub = mid - 1
+        else:
+            return mid
+    return -1
 ```
 
 ## Depth-First Search (DFS)
@@ -444,7 +446,7 @@ def has_cycle(graph, src):
 - Tortoise & Hare: if both pointers meet, there is a cycle
 ```python
 def has_cycle(root):
-    slow, fast = head, head
+    slow, fast = root, root
     while fast and fast.next:
         slow = slow.next
         fast = fast.next.next
@@ -510,76 +512,199 @@ def heapsort(collection):
 
 ## Design Patterns
 
-https://www.youtube.com/watch?v=tAuRQs_d9F8
-
 Typical solutions for common software OOP design problems.
 
 **Creational** - objects' creation
 
   - **Factory** - interface for creating objects, simplifying and centralizing logic
-
 ```python
-class Honda:
-    def __init__(self, model): pass
-    def drive(self): pass
+class Burger:
+    def __init__(self, ingredients):
+        self.ingredients = ingredients
 
-class BMW:
-    def __init__(self, model, premium): pass
-    def drive(self): pass
-
-class Ferrari:
-    def __init__(self, model, super): pass
-    def drive(self): pass
-
-class CarFactory:
+class BurgerFactory:
     @classmethod
-    def build(cls, brand, model, **kwargs):
-        if brand == "honda": return Honda(model)
-        if brand == "bmw": return BMW(model, kwargs.get("premium", True))
-        if brand == "ferrari": return Ferrari(model, kwargs.get("super", True))
+    def create_cheese_burger(cls):
+        return Burger(["bun", "cheese", "beef-patty"])
+
+    @classmethod
+    def create_deluxe_burger(cls):
+        return Burger(["bun", "cheese", "beef-patty", "tomatoe", "lettuce"])
 ```
 
   - **Builder** - construct complex objects step by step
-
 ```python
-class House:
-    def __init__(self): pass
+class Burger:
+    def __init__(self):
+        self.buns = None
+        self.patty = None
+    
+    def set_buns(self, buns):
+        self.buns = buns
 
-    def with_walls(self, nwalls):
-        self.nwalls = nwalls
+    def set_patty(self, patty):
+        self.patty = patty
+
+class BurgerBuilder:
+    def __init__(self):
+        self.burger = Burger()
+
+    def build(self):
+        return self.burger
+
+    def add_buns(self, buns):
+        self.burger.set_buns(buns)
         return self
 
-    def with_roof(self):
-        self.roof = True
+    def add_patty(self, patty):
+        self.burger.set_patty(patty)
         return self
-
-house = House()
-house = house.with_walls(3).with_roof()
 ```
 
   - **Singleton** - ensure a single instance of a class
-
 ```python
 class Singleton:
     _instance = None
 
     @classmethod
     def instance(cls):
-        if cls._instance is None:
+        if cls._instance == None:
             cls._instance = cls()
         return cls._instance
 ```
 
-**Structural** - objects' assembly
+**Behavioral** - objects' communication (events / state changes)
 
-  - **Adapter** - allow objects with incompatible interfaces to communicate
+  - **Iterator** - defines how the values in a collection are iterated through
+```python
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        self.cur = None
 
-  - **Decorator** - wrap objects with additional functionality
+    def __iter__(self):
+        self.cur = self.head
+        return self
 
-**Behavioral** - objects' communication
+    def __next__(self):
+        if self.cur == None:
+            raise StopIteration
+
+        val = self.cur.val
+        self.cur = self.cur.next
+        return val
+``` 
 
   - **Command** - turns actions into objects (e.g. useful for queues, delays, undo/redo, event sourcing, ...)
-  
+```python
+class Command:
+    def execute(self):
+        pass
+
+class KillCommand(Command):
+    def __init__(self, program):
+        self.program = program
+
+    def execute(self):
+        self.program.kill()
+
+class RestartCommand(Command):
+    def __init__(self, program):
+        self.program = program
+
+    def execute(self):
+        self.program.restart()
+```
+
   - **Observer** - subscription/notification of objects to events
+```python
+class Publisher:
+    def __init__(self):
+        self.subscribers = []
+
+    def subscribe(self, sub):
+        self.subscribers.append(sub)
+
+    def notify(self, event):
+        for sub in self.subscribers:
+            sub.notify(event)
+```
 
   - **Strategy** - define a family of interchangeable algorithms
+```python
+class FilterStrategy:
+    def filter(self, val):
+        pass
+
+class FilterPositives(FilterStrategy):
+    def filter(self, val):
+        return val > 0
+
+class FilterNegatives(FilterStrategy):
+    def filter(self, val):
+        return val < 0
+
+def filter_fn(values, strategy):
+    return [x for x in values if strategy.filter(x)]
+```
+
+**Structural** - objects' assembly
+
+  - **Facade** - a wrapper used to abstract lower-level details
+```python
+class Vector:
+    ...
+```
+
+  - **Adapter** - allow objects with incompatible interfaces to communicate
+```python
+class UsbCable:
+    def __init__(self):
+        self.port = None
+    
+    def plugUsb(self, port):
+        self.port = port
+
+class UsbPort:
+    def plug(self, cable):
+        cable.plugUsb(self)
+
+class MicroUsbCable:
+    def __init__(self):
+        self.port = None
+    
+    def plugMicroUsb(self, port):
+        self.port = port
+
+class MicroToUsbAdapter(UsbCable):
+    def __init__(self, microUsbCable):
+        self.microUsbCable = microUsbCable
+
+    def plugUsb(self, port):
+        super().plugUsb(port)
+        self.microUsbCable.plugMicroUsb(port)
+```
+
+  - **Decorator** - wrap objects with additional functionality
+```python
+class Text:
+    def __init__(self, text):
+        self.text = text
+    
+    def render(self):
+        return self.text
+
+class UnderlineText(Text):
+    def __init__(self, wrapped):
+        self.wrapped = wrapped
+
+    def render(self):
+        return "<u>" + self.wrapped.render() + "<u>"
+
+class BoldText(Text):
+    def __init__(self, wrapped):
+        self.wrapped = wrapped
+
+    def render(self):
+        return "<b>" + self.wrapped.render() + "<b>"
+```
