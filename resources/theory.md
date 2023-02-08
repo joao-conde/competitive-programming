@@ -490,14 +490,6 @@ def heapsort(collection):
 
 # Object Oriented Programming (OOP)
 
-**Abstraction** - black-box abstractions that hide implementation details
-
-**Encapsulation** - hide private implementation details, expose a public interface
-
-**Inheritance** - parent/child relationship, inherit data and behavior
-
-**Polymorphism** - uniform usage of objects that share a same interface
-
 ## SOLID
 
 **Single Responsibility** - classes should do one thing and do it well, having one reason to change
