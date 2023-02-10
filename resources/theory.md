@@ -1,7 +1,5 @@
 # Data Structures
 
-*Disclaimer: example source code might not compile/execute properly*
-
 Built-in python data structures and relevant notes:
 
 | Structure      | Python                                     | Relevant Notes                                                                             |
@@ -385,6 +383,8 @@ def bellman_ford(graph, src, dst):
 - shortest path between all nodes
 - O(V³)
 
+TODO python code
+
 ## Cycle Detection
 
 Detecting cycles in a graph can be done in several ways:
@@ -467,11 +467,80 @@ def has_cycle(root):
 - swap left and right elements of the pivot and call quick sort on both halves
 - O(N * log N)
 
+```python
+def quicksort(collection):
+    return _quicksort(collection, 0, len(collection) - 1)
+
+
+def _quicksort(collection, left, right):
+    if left >= right:
+        return
+
+    pivot = collection[(left + right) // 2]
+    split = partition(collection, left, right, pivot)
+    _quicksort(collection, left, split - 1)
+    _quicksort(collection, split, right)
+    return collection
+
+
+def partition(collection, left, right, pivot):
+    while left <= right:
+        while collection[left] < pivot:
+            left += 1
+
+        while collection[right] > pivot:
+            right -= 1
+
+        if left <= right:
+            tmp = collection[left]
+            collection[left] = collection[right]
+            collection[right] = tmp
+            left += 1
+            right -= 1
+
+    return left
+```
+
 ## Merge Sort
 
 - recursively sort halves, call merge sort on each
 - copy elements in order to a new array
 - O(N * log N)
+
+```python
+def mergesort(collection):
+    if len(collection) <= 1:
+        return collection
+
+    middle = len(collection) // 2
+    left = mergesort(collection[:middle])
+    right = mergesort(collection[middle:])
+    merged = merge(left, right)
+    return merged
+
+
+def merge(left, right):
+    merged = []
+
+    l, r = 0, 0
+    while l < len(left) and r < len(right):
+        if left[l] < right[r]:
+            merged.append(left[l])
+            l += 1
+        else:
+            merged.append(right[r])
+            r += 1
+
+    while l < len(left):
+        merged.append(left[l])
+        l += 1
+
+    while r < len(right):
+        merged.append(right[r])
+        r += 1
+
+    return merged
+```
 
 ## Heap Sort
 
@@ -491,6 +560,8 @@ def heapsort(collection):
 # Object Oriented Programming (OOP)
 
 ## SOLID
+
+TODO: examples for each
 
 **Single Responsibility** - classes should do one thing and do it well, having one reason to change
 
