@@ -1,7 +1,7 @@
 from heapq import heappush, heappop
 
 
-def dijkstra(graph, src, dst):
+def dijkstra(graph, src):
     dists = [float("inf")] * len(graph)
     dists[src] = 0
 
@@ -22,7 +22,7 @@ def dijkstra(graph, src, dst):
                 dists[neighbor] = alt
             heappush(pq, (dists[neighbor], neighbor))
 
-    return dists[dst]
+    return dists
 
 
 # Tests
@@ -39,6 +39,10 @@ graph = [
     [INF, INF, INF, INF, 2, 6, 0],
 ]
 
-assert dijkstra(graph, 2, 2) == 0
-assert dijkstra(graph, 0, 6) == 19
-assert dijkstra(graph, 2, 6) == 20
+assert dijkstra(graph, 0) == [0, 2, 6, 7, 17, 22, 19]
+assert dijkstra(graph, 1) == [2, 0, 8, 5, 15, 20, 17]
+assert dijkstra(graph, 2) == [6, 8, 0, 8, 18, 23, 20]
+assert dijkstra(graph, 3) == [7, 5, 8, 0, 10, 15, 12]
+assert dijkstra(graph, 4) == [17, 15, 18, 10, 0, 6, 2]
+assert dijkstra(graph, 5) == [22, 20, 23, 15, 6, 0, 6]
+assert dijkstra(graph, 6) == [19, 17, 20, 12, 2, 6, 0]

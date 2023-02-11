@@ -328,7 +328,7 @@ def bfs(root):
 ```python
 from heapq import heappush, heappop
 
-def dijkstra(graph, src, dst):
+def dijkstra(graph, src):
     dists = [float("inf")] * len(graph)
     dists[src] = 0
 
@@ -349,18 +349,18 @@ def dijkstra(graph, src, dst):
                 dists[neighbor] = alt
             heappush(pq, (dists[neighbor], neighbor))
 
-    return dists[dst]
+    return dists
 ```
 
 ## Bellman-Ford
 
-- finds the shortest path between two nodes
+- finds the shortest path from one node to all others
 - relaxes edges V-1 times, quitting early if no distance improves
 - works for negative edges
 - does not work with negative cycles but detects them
 
 ```python
-def bellman_ford(graph, src, dst):
+def bellman_ford(graph, src):
     n_vertices = len(graph)
 
     dists = [float("inf")] * n_vertices
@@ -375,7 +375,7 @@ def bellman_ford(graph, src, dst):
                 if alt < dists[j]:
                     dists[j] = alt
 
-    return dists[dst]
+    return dists
 ```
 
 ## Floyd-Warshall
@@ -383,7 +383,24 @@ def bellman_ford(graph, src, dst):
 - shortest path between all nodes
 - O(V³)
 
-TODO python code
+```python
+def floyd_warshall(graph):
+    n_vertices = len(graph)
+
+    dists = [[float("inf") for _ in range(n_vertices)] for _ in range(n_vertices)]
+    for i in range(n_vertices):
+        for j in range(n_vertices):
+            dists[i][j] = graph[i][j]
+
+    for intermediate in range(n_vertices):
+        for i in range(n_vertices):
+            for j in range(n_vertices):
+                alt = dists[i][intermediate] + dists[intermediate][j]
+                if dists[i][j] > alt:
+                    dists[i][j] = alt
+
+    return dists
+```
 
 ## Cycle Detection
 
@@ -560,8 +577,6 @@ def heapsort(collection):
 # Object Oriented Programming (OOP)
 
 ## SOLID
-
-TODO: examples for each
 
 **Single Responsibility** - classes should do one thing and do it well, having one reason to change
 
