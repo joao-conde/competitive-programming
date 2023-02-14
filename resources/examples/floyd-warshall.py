@@ -10,7 +10,7 @@ def floyd_warshall(graph):
         for i in range(n_vertices):
             for j in range(n_vertices):
                 alt = dists[i][intermediate] + dists[intermediate][j]
-                if dists[i][j] > alt:
+                if alt < dists[i][j]:
                     dists[i][j] = alt
 
     return dists

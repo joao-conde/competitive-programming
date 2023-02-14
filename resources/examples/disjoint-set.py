@@ -16,18 +16,12 @@ class DisjointSet:
         self.groups[root_x] = root_y
 
 
-def has_cycle(graph):
-    n_vertices = len(graph)
+def has_cycle(edges):
     disjoint_set = DisjointSet()
 
-    for i in range(n_vertices):
-        for j in range(n_vertices):
-            if i == j or graph[i][j] == float("inf"):
-                continue
-
-            if disjoint_set.find(i) == disjoint_set.find(j):
-                return True
-
-            disjoint_set.union(i, j)
+    for src, dst in edges:
+        if disjoint_set.find(src) == disjoint_set.find(dst):
+            return True
+        disjoint_set.union(src, dst)
 
     return False

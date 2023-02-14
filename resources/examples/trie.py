@@ -1,4 +1,4 @@
-class Trie:
+class TrieNode:
     def __init__(self):
         self.children = {}
         self.terminal = False
@@ -7,7 +7,7 @@ class Trie:
         cur = self
         for c in word:
             if c not in cur.children:
-                cur.children[c] = Trie()
+                cur.children[c] = TrieNode()
             cur = cur.children[c]
         cur.terminal = True
 
@@ -29,7 +29,7 @@ class Trie:
 
 
 # Tests
-trie = Trie()
+trie = TrieNode()
 assert trie.search("hell") == False
 assert trie.search("hello") == False
 

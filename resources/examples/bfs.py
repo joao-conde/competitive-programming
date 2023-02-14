@@ -7,6 +7,4 @@ def bfs(root):
         front = queue.popleft()
         print(front)
         for child in front.children:
-            if child == None:
-                continue
             queue.append(child)

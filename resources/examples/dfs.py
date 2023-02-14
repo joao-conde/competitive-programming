@@ -12,8 +12,6 @@ def dfs(root):
         top = stack.pop()
         print(top)
         for child in reversed(top.children):
-            if child == None:
-                continue
             stack.append(child)
 
 
@@ -27,8 +25,6 @@ def has_cycle(root):
             return True
 
         for child in reversed(top.children):
-            if child == None:
-                continue
             stack.append(child)
 
     return False

@@ -11,11 +11,11 @@ Built-in python data structures and relevant notes:
 | Dequeue        | collections.deque                          | `rotate`, `append`, `appendleft`, `pop`, `popleft`, `extend`, `extendleft`                 |
 | Priority Queue | heapq                                      | `heapify`, `heappush`, `heappop`, `nlargest`, `nsmallest`                                  |
 
-| Function (Python)                          | Relevant Notes                                    |
-| ------------------------------------------ | ------------------------------------------------- |
-| sorted(iterable, key=key, reverse=reverse) | Ascending sort of an iterable collection          |
-| reversed(sequence)                         | Reverses a sequence (lists, strings, tuples, ...) |
-| bin(number)                                | Binary string representation of a number          |
+| Function (Python)                            | Relevant Notes                                    |
+| -------------------------------------------- | ------------------------------------------------- |
+| `sorted(iterable, key=key, reverse=reverse)` | Ascending sort of an iterable collection          |
+| `reversed(sequence)`                         | Reverses a sequence (lists, strings, tuples, ...) |
+| `bin(number)`                                | Binary string representation of a number          |
 
 ## Tree
 
@@ -27,7 +27,7 @@ Built-in python data structures and relevant notes:
 
 ```python
 class Node:
-    def __init__(self, val, children = []):
+    def __init__(self, val, children):
         self.val = val
         self.children = children
 ```
@@ -74,7 +74,6 @@ class Node:
   - O(log N) lookup
   - O(log N) insert
   - O(log N) delete
-
 - insertions and deletions possibly make the tree unbalanced, self-balancing trees correct this through rotations (e.g. AVL)
 
 ```python
@@ -103,7 +102,7 @@ class Node:
     - O(K) lookup
 
 ```python
-class Trie:
+class TrieNode:
     def __init__(self):
         self.children = {}
         self.terminal = False
@@ -112,7 +111,7 @@ class Trie:
         cur = self
         for c in word:
             if c not in cur.children:
-                cur.children[c] = Trie()
+                cur.children[c] = TrieNode()
             cur = cur.children[c]
         cur.terminal = True
 
@@ -124,7 +123,7 @@ class Trie:
             cur = cur.children[c]
         cur.terminal = False
 
-    def search(self, word):
+    def search(self, word) -> bool:
         cur = self
         for c in word:
             if c not in cur.children:
@@ -139,7 +138,6 @@ class Trie:
 - root is bigger than children (recursive definition meaning maximum is at the top)
 - insertion is done by inserting new element in the last spot and bubbling it up, swapping with parent if needed
 - deletion is done by removing element and replacing by the last element added, swapping it down with the max child
-- great for sorting or priority queues
 - balanced binary tree:
   - O(log N) insertions/deletions
   - O(1) query max
@@ -148,8 +146,7 @@ class Trie:
 
 - keeps track of multiple sets of elements, disjoint at first
 - allows fast check of disjoint sets of elements
-- implemented as a simple array that keeps track of set parents
-- `union(x, y)` should set `x` and `y` to the same set (O(1))
+- `union(x, y)` should set `x` and `y` to the same set
 - `find(x)` should return the set `x` belongs to (O(N))
   - can be made O(log N) if we track the size and chain to the smallest, guaranteeing at max log N length of each chain
 
@@ -252,7 +249,7 @@ def kruskal(edges):
 ## Binary Search
 
 - cut the search space in half each iteration (logarithmic complexity)
-- requires a sorted collection and monotonicity
+- requires a sorted collection
 - O(log N)
 
 ```python
@@ -273,9 +270,6 @@ def bin_search(nums, target):
 
 - LIFO approach
 - search leftmost first, backtracking when needed
-- useful to detect graph cycles too
-- O(V)
-- example: A B D E C F G (tree pre-order)
 
 ```python
 # recursive
@@ -286,14 +280,13 @@ def dfs(root):
         dfs(child)
 
 
-# stack based
+# iterative
 def dfs(root):
     stack = [root]
     while len(stack) > 0:
         top = stack.pop()
         print(top)
         for child in reversed(top.children):
-            if child == None: continue
             stack.append(child)
 ```
 
@@ -313,7 +306,6 @@ def bfs(root):
         front = queue.popleft()
         print(front)
         for child in front.children:
-            if child == None: continue
             queue.append(child)
 ```
 
@@ -355,9 +347,10 @@ def dijkstra(graph, src):
 ## Bellman-Ford
 
 - finds the shortest path from one node to all others
-- relaxes edges V-1 times, quitting early if no distance improves
 - works for negative edges
-- does not work with negative cycles but detects them
+- relaxes edges V-1 times
+- can quit early if nothing improves
+- can detect negative cycles
 
 ```python
 def bellman_ford(graph, src):
@@ -381,6 +374,7 @@ def bellman_ford(graph, src):
 ## Floyd-Warshall
 
 - shortest path between all nodes
+- works for negative edges
 - O(V³)
 
 ```python
@@ -396,15 +390,13 @@ def floyd_warshall(graph):
         for i in range(n_vertices):
             for j in range(n_vertices):
                 alt = dists[i][intermediate] + dists[intermediate][j]
-                if dists[i][j] > alt:
+                if alt < dists[i][j]:
                     dists[i][j] = alt
 
     return dists
 ```
 
 ## Cycle Detection
-
-Detecting cycles in a graph can be done in several ways:
 
 - DFS: check if a node has been visited twice
 ```python
@@ -418,8 +410,6 @@ def has_cycle(root):
             return True
 
         for child in reversed(top.children):
-            if child == None:
-                continue
             stack.append(child)
 
     return False
@@ -427,19 +417,13 @@ def has_cycle(root):
 
 - Disjoint Set: union nodes for each edge and quit if same set is found
 ```python
-def has_cycle(graph):
-    n_vertices = len(graph)
-    disjoint_set = DisjointSet(n_vertices)
+def has_cycle(edges):
+    disjoint_set = DisjointSet()
 
-    for i in range(n_vertices):
-        for j in range(n_vertices):
-            if i == j or graph[i][j] == float("inf"):
-                continue
-
-            if disjoint_set.find(i) == disjoint_set.find(j):
-                return True
-
-            disjoint_set.union(i, j)
+    for src, dst in edges:
+        if disjoint_set.find(src) == disjoint_set.find(dst):
+            return True
+        disjoint_set.union(src, dst)
 
     return False
 ```
@@ -696,6 +680,10 @@ class RestartCommand(Command):
 
   - **Observer** - subscription/notification of objects to events
 ```python
+class Subscriber:
+    def notify(self, event):
+        pass
+
 class Publisher:
     def __init__(self):
         self.subscribers = []
