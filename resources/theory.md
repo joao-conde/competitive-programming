@@ -25,13 +25,6 @@ Built-in python data structures and relevant notes:
   - O(H) insert
   - O(H) delete
 
-```python
-class Node:
-    def __init__(self, val, children):
-        self.val = val
-        self.children = children
-```
-
 ## Binary Tree
 
 - a tree with at most 2 children
@@ -39,14 +32,6 @@ class Node:
   - O(H) lookup
   - O(H) insert
   - O(H) delete
-
-```python
-class Node:
-    def __init__(self, val, left = None, right = None):
-        self.val = val
-        self.left = left
-        self.right = right
-```
 
 ## Binary Search Tree
 
@@ -56,17 +41,6 @@ class Node:
   - O(H) insert
   - O(H) delete
 
-```python
-class Node:
-    def __init__(self, val, left = None, right = None):
-        if left: assert(left.val < val)
-        if right: assert(val <= right.val)
-
-        self.val = val
-        self.left = left
-        self.right = right
-```
-
 ## Balanced Binary Search Tree
 
 - a binary search tree where the height difference between subtrees is at most 1
@@ -75,23 +49,6 @@ class Node:
   - O(log N) insert
   - O(log N) delete
 - insertions and deletions possibly make the tree unbalanced, self-balancing trees correct this through rotations (e.g. AVL)
-
-```python
-class Node:
-    def __init__(self, val, left = None, right = None):
-        if left: assert(left.val <= val)
-        if right: assert(val <= right.val)
-        if left and right: assert(abs(left.height() - right.height()) <= 1)
-
-        self.val = val
-        self.left = left
-        self.right = right
-
-    def height(self):
-        left_h = self.left.height() if self.left else 0
-        right_h = self.right.height() if self.right else 0
-        return max(left_h, right_h) + 1
-```
 
 ## Trie
 
