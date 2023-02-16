@@ -20,7 +20,7 @@ class Solution:
 
         deltas = [(1, 0), (-1, 0), (0, 1), (0, -1)]
         neighbors = [(i + di, j + dj) for (di, dj) in deltas]
-        for (ni, nj) in neighbors:
+        for ni, nj in neighbors:
             neighbor_area = self.area(grid, ni, nj, points)
             points = points.union(neighbor_area)
 

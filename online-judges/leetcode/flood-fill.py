@@ -18,7 +18,7 @@ class Solution:
         # check 4-directions and if within bounds and same color
         # has the pixel it started from, color it correctly
         deltas = [(1, 0), (-1, 0), (0, 1), (0, -1)]
-        for (dr, dc) in deltas:
+        for dr, dc in deltas:
             r = sr + dr
             c = sc + dc
             if r >= 0 and r < len(image) and c >= 0 and c < len(image[0]):

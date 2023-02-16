@@ -23,7 +23,7 @@ class Solution:
 
             cur_rotten = [(i, j) for (i, j) in rotten]
             rotten.clear()
-            for (i, j) in cur_rotten:
+            for i, j in cur_rotten:
                 deltas = [(1, 0), (-1, 0), (0, 1), (0, -1)]
                 neighbors = [(i + di, j + dj) for (di, dj) in deltas]
                 neighbors = [
@@ -32,7 +32,7 @@ class Solution:
                     if i >= 0 and i < m and j >= 0 and j < n
                 ]
 
-                for (ni, nj) in neighbors:
+                for ni, nj in neighbors:
                     if grid[ni][nj] == 0 or grid[ni][nj] == 2:
                         continue
 

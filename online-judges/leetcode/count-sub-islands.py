@@ -17,7 +17,7 @@ class Solution:
             points.add((i, j))
 
             neighbors = []
-            for (di, dj) in deltas:
+            for di, dj in deltas:
                 ni, nj = i + di, j + dj
                 if ni < 0 or ni >= m:
                     continue

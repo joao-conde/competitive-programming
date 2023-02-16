@@ -18,7 +18,7 @@ def most_reserved(bookings):
 
     counts = list(counts.items())
     result, reservations = counts[0]
-    for (room, count) in counts:
+    for room, count in counts:
         if count > reservations or (count == reservations and room < result):
             reservations = count
             result = room

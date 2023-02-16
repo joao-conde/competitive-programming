@@ -27,7 +27,7 @@ class Solution:
         return points
 
     def is_closed(self, grid: List[List[int]], island: Set[Tuple[int, int]]) -> bool:
-        for (i, j) in island:
+        for i, j in island:
             if i <= 0 or j <= 0:
                 return False
 

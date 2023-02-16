@@ -25,3 +25,33 @@ def has_cycle(edges):
         disjoint_set.union(src, dst)
 
     return False
+
+
+disjoint_set = DisjointSet()
+assert disjoint_set.find(0) == 0
+assert disjoint_set.find(1) == 1
+assert disjoint_set.find(2) == 2
+assert disjoint_set.find(3) == 3
+assert disjoint_set.find(4) == 4
+
+disjoint_set.union(0, 1)
+disjoint_set.union(1, 4)
+assert disjoint_set.find(0) == 4
+assert disjoint_set.find(1) == 4
+assert disjoint_set.find(2) == 2
+assert disjoint_set.find(3) == 3
+assert disjoint_set.find(4) == 4
+
+disjoint_set.union(4, 3)
+assert disjoint_set.find(0) == 3
+assert disjoint_set.find(1) == 3
+assert disjoint_set.find(2) == 2
+assert disjoint_set.find(3) == 3
+assert disjoint_set.find(4) == 3
+
+disjoint_set.union(3, 2)
+assert disjoint_set.find(0) == 2
+assert disjoint_set.find(1) == 2
+assert disjoint_set.find(2) == 2
+assert disjoint_set.find(3) == 2
+assert disjoint_set.find(4) == 2

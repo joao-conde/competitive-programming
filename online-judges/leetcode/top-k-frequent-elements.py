@@ -11,7 +11,7 @@ class Solution:
             counts[num] = counts.get(num, 0) + 1
 
         top = []
-        for (num, count) in counts.items():
+        for num, count in counts.items():
             heappush(top, (count, num))
             if len(top) > k:
                 heappop(top)

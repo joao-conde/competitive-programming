@@ -130,7 +130,6 @@ def make_trip(cars):
 
 def check_if_completed(cars):
     for car in cars:
-
         if car.origin and car.pos == car.rides[0].finish:
             car.occupied = False
             car.origin = False
