@@ -530,7 +530,7 @@ def heapsort(collection):
 
 **Open-Closed** - classes should be open for extension and closed for modifications
 
-**Liskov Substition** - classes should be substituted for parent classes or interfaces they implement
+**Liskov Substition** - classes should be substitutable for parent classes or interfaces they implement
 
 **Interface Segregation** - keep interfaces thin, split big ones into smaller contracts, each client implements what is needed
 
@@ -652,7 +652,7 @@ class Publisher:
     def __init__(self):
         self.subscribers = []
 
-    def subscribe(self, sub):
+    def subscribe(self, sub: Subscriber):
         self.subscribers.append(sub)
 
     def notify(self, event):
@@ -674,7 +674,7 @@ class FilterNegatives(FilterStrategy):
     def filter(self, val):
         return val < 0
 
-def filter_fn(values, strategy):
+def filter_fn(values, strategy: FilterStrategy):
     return [x for x in values if strategy.filter(x)]
 ```
 
@@ -688,31 +688,25 @@ class Vector:
 
   - **Adapter** - allow objects with incompatible interfaces to communicate
 ```python
-class UsbCable:
-    def __init__(self):
-        self.port = None
-    
-    def plugUsb(self, port):
-        self.port = port
+class SquarePeg:
+    def __init__(self, width: float):
+        self.width = width
 
-class UsbPort:
-    def plug(self, cable):
-        cable.plugUsb(self)
+class RoundPeg:
+    def __init__(self, radius: float):
+        self.radius = radius
 
-class MicroUsbCable:
-    def __init__(self):
-        self.port = None
-    
-    def plugMicroUsb(self, port):
-        self.port = port
+class RoundHole:
+    def __init__(self, radius: float):
+        self.radius = radius
 
-class MicroToUsbAdapter(UsbCable):
-    def __init__(self, microUsbCable):
-        self.microUsbCable = microUsbCable
+    def fits(self, peg: RoundPeg):
+        return self.radius >= peg.radius
 
-    def plugUsb(self, port):
-        super().plugUsb(port)
-        self.microUsbCable.plugMicroUsb(port)
+class SquarePegAdapter(RoundPeg):
+    def __init__(self, square_peg: SquarePeg):
+        self.square_peg = square_peg
+        self.radius = self.square_peg.width * math.sqrt(2) / 2
 ```
 
   - **Decorator** - wrap objects with additional functionality
