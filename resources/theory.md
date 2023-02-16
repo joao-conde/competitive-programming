@@ -104,26 +104,34 @@ class TrieNode:
 - keeps track of multiple sets of elements, disjoint at first
 - allows fast check of disjoint sets of elements
 - `union(x, y)` should set `x` and `y` to the same set
-- `find(x)` should return the set `x` belongs to (O(N))
-  - can be made O(log N) if we track the size and chain to the smallest, guaranteeing at max log N length of each chain
+- `find(x)` should return the set `x` belongs to
+- union-find by size has O(log N) complexity by tracking the size and chain to the smallest
 
 ```python
 class DisjointSet:
     def __init__(self):
         self.groups = dict()
+        self.sizes = dict()
 
     def find(self, x):
         if x not in self.groups:
             self.groups[x] = x
+            self.sizes[x] = 1
 
         while x != self.groups[x]:
             x = self.groups[x]
         return x
 
     def union(self, x, y):
-        root_x = self.find(x)
-        root_y = self.find(y)
-        self.groups[root_x] = root_y
+        x = self.find(x)
+        y = self.find(y)
+        if x == y:
+            return
+
+        shorter = x if self.sizes[x] < self.sizes[y] else y
+        longer = y if self.sizes[x] < self.sizes[y] else x
+        self.groups[shorter] = longer
+        self.sizes[longer] += self.sizes[shorter]
 ```
 
 ## Graph

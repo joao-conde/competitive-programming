@@ -1,19 +1,27 @@
 class DisjointSet:
     def __init__(self):
         self.groups = dict()
+        self.sizes = dict()
 
     def find(self, x):
         if x not in self.groups:
             self.groups[x] = x
+            self.sizes[x] = 1
 
         while x != self.groups[x]:
             x = self.groups[x]
         return x
 
     def union(self, x, y):
-        root_x = self.find(x)
-        root_y = self.find(y)
-        self.groups[root_x] = root_y
+        x = self.find(x)
+        y = self.find(y)
+        if x == y:
+            return
+
+        shorter = x if self.sizes[x] < self.sizes[y] else y
+        longer = y if self.sizes[x] < self.sizes[y] else x
+        self.groups[shorter] = longer
+        self.sizes[longer] += self.sizes[shorter]
 
 
 def has_cycle(edges):
@@ -36,22 +44,24 @@ assert disjoint_set.find(4) == 4
 
 disjoint_set.union(0, 1)
 disjoint_set.union(1, 4)
-assert disjoint_set.find(0) == 4
-assert disjoint_set.find(1) == 4
-assert disjoint_set.find(2) == 2
-assert disjoint_set.find(3) == 3
-assert disjoint_set.find(4) == 4
+assert disjoint_set.find(0) == disjoint_set.find(1) == disjoint_set.find(4)
+assert disjoint_set.find(0) != disjoint_set.find(2)
+assert disjoint_set.find(0) != disjoint_set.find(3)
 
 disjoint_set.union(4, 3)
-assert disjoint_set.find(0) == 3
-assert disjoint_set.find(1) == 3
-assert disjoint_set.find(2) == 2
-assert disjoint_set.find(3) == 3
-assert disjoint_set.find(4) == 3
+assert (
+    disjoint_set.find(0)
+    == disjoint_set.find(1)
+    == disjoint_set.find(3)
+    == disjoint_set.find(4)
+)
+assert disjoint_set.find(0) != disjoint_set.find(2)
 
 disjoint_set.union(3, 2)
-assert disjoint_set.find(0) == 2
-assert disjoint_set.find(1) == 2
-assert disjoint_set.find(2) == 2
-assert disjoint_set.find(3) == 2
-assert disjoint_set.find(4) == 2
+assert (
+    disjoint_set.find(0)
+    == disjoint_set.find(1)
+    == disjoint_set.find(2)
+    == disjoint_set.find(3)
+    == disjoint_set.find(4)
+)
