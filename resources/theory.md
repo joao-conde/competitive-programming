@@ -231,7 +231,6 @@ def bin_search(nums, target):
 ```python
 # recursive
 def dfs(root):
-    if root == None: return
     print(root)
     for child in root.children:
         dfs(child)
