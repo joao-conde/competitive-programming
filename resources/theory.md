@@ -193,6 +193,7 @@ def postorder(root):
 - select minimum cost edges that do not form a cycle
 - pop them one by one, using those that do not connect two already used vertices (disjoint set)
 - stop when all vertices are connected
+- O(E log V)
 
 ```python
 def kruskal(edges):
