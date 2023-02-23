@@ -44,11 +44,11 @@ Built-in python data structures and relevant notes:
 ## Balanced Binary Search Tree
 
 - a binary search tree where the height difference between subtrees is at most 1
+- insertions and deletions possibly make the tree unbalanced, self-balancing trees correct this through rotations (e.g. AVL)
 - the height H is balanced, hence with N nodes height is log N, thus:
   - O(log N) lookup
   - O(log N) insert
   - O(log N) delete
-- insertions and deletions possibly make the tree unbalanced, self-balancing trees correct this through rotations (e.g. AVL)
 
 ## Trie
 
@@ -56,7 +56,9 @@ Built-in python data structures and relevant notes:
 - terminal nodes (leaves) represent words
 - allows caching of current prefix and current node for efficient search
 - given the prefix length of K:
-    - O(K) lookup
+  - O(K) lookup
+  - O(K) insert
+  - O(K) delete
 
 ```python
 class TrieNode:
@@ -96,8 +98,9 @@ class TrieNode:
 - insertion is done by inserting new element in the last spot and bubbling it up, swapping with parent if needed
 - deletion is done by removing element and replacing by the last element added, swapping it down with the max child
 - balanced binary tree:
-  - O(log N) insertions/deletions
-  - O(1) query max
+  - O(1) max lookup
+  - O(log N) insert
+  - O(log N) delete
 
 ## Disjoint Set
 
@@ -193,7 +196,7 @@ def postorder(root):
 - select minimum cost edges that do not form a cycle
 - pop them one by one, using those that do not connect two already used vertices (disjoint set)
 - stop when all vertices are connected
-- O(E log V)
+- O(E * log V)
 
 ```python
 def kruskal(edges):
@@ -259,7 +262,6 @@ def dfs(root):
 
 - FIFO approach
 - explore all nodes in a "level" before going deeper
-- O(V)
 
 ```python
 from collections import deque
@@ -277,9 +279,7 @@ def bfs(root):
 
 - greedy algorithm to find the shortest path from one node to all others
 - no negative weight edges allowed
-- O((V + E) log V) with min-heap:
-  - heappush once per edge -> E log V
-  - heappop once per node -> V log V
+- O(E * log V)
 
 ```python
 from heapq import heappush, heappop
@@ -315,6 +315,7 @@ def dijkstra(graph, src):
 - relaxes edges V-1 times
 - can quit early if nothing improves
 - can detect negative cycles
+- O(VE)
 
 ```python
 def bellman_ford(graph, src):
@@ -511,8 +512,7 @@ def merge(left, right):
 
 - build an heap (heapify O(N))
 - keep popping the min element into a new array
-- O(N * log N):
-  - the popped top element will be replaced by a leaf and bubbled down
+- O(N * log N)
 
 ```python
 from heapq import heapify, heappush, heappop
