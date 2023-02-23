@@ -260,7 +260,6 @@ def dfs(root):
 - FIFO approach
 - explore all nodes in a "level" before going deeper
 - O(V)
-- example: A B C D E F G
 
 ```python
 from collections import deque
