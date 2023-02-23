@@ -108,7 +108,7 @@ class TrieNode:
 - allows fast check of disjoint sets of elements
 - `union(x, y)` should set `x` and `y` to the same set
 - `find(x)` should return the set `x` belongs to
-- union-find by size has O(log N) complexity by tracking the size and chain to the smallest
+- O(log N) union-find by tracking the size and chain to the smallest
 
 ```python
 class DisjointSet:
