@@ -33,6 +33,8 @@ Built-in python data structures and relevant notes:
   - O(H) insert
   - O(H) delete
 
+<div style="page-break-after: always;"></div>
+
 ## Binary Search Tree
 
 - a binary tree where left < root < right
@@ -93,6 +95,8 @@ class TrieNode:
         return cur.terminal
 ```
 
+<div style="page-break-after: always;"></div>
+
 ## Heap (Max)
 
 - balanced binary tree
@@ -138,6 +142,8 @@ class DisjointSet:
         self.groups[shorter] = longer
         self.sizes[longer] += self.sizes[shorter]
 ```
+
+<div style="page-break-after: always;"></div>
 
 ## Graph
 
