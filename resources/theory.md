@@ -50,6 +50,8 @@ Built-in python data structures and relevant notes:
   - O(log N) insert
   - O(log N) delete
 
+<div style="page-break-after: always;"></div>
+
 ## Trie
 
 - trees of characters
@@ -143,6 +145,8 @@ class DisjointSet:
 - adjacency matrix representation (good for dense graphs): V * V matrix with distances (0, inf, x)
 - adjacency list representation (good for sparse graphs): list of lists of neighbors
 
+<div style="page-break-after: always;"></div>
+
 # Algorithms
 
 Example tree:
@@ -186,6 +190,8 @@ def postorder(root):
     postorder(root.right)
     print(root)
 ```
+
+<div style="page-break-after: always;"></div>
 
 ## Minimum Spanning Tree (MST)
 
@@ -235,6 +241,8 @@ def bin_search(nums, target):
     return -1
 ```
 
+<div style="page-break-after: always;"></div>
+
 ## Depth-First Search (DFS)
 
 - LIFO approach
@@ -275,6 +283,8 @@ def bfs(root):
             queue.append(child)
 ```
 
+<div style="page-break-after: always;"></div>
+
 ## Dijkstra
 
 - greedy algorithm to find the shortest path from one node to all others
@@ -308,6 +318,8 @@ def dijkstra(graph, src):
     return dists
 ```
 
+<div style="page-break-after: always;"></div>
+
 ## Bellman-Ford
 
 - finds the shortest path from one node to all others
@@ -335,6 +347,8 @@ def bellman_ford(graph, src):
 
     return dists
 ```
+
+<div style="page-break-after: always;"></div>
 
 ## Floyd-Warshall
 
@@ -379,6 +393,8 @@ def has_cycle(root):
 
     return False
 ```
+
+<div style="page-break-after: always;"></div>
 
 - Disjoint Set: union nodes for each edge and quit if same set is found
 ```python
@@ -427,6 +443,8 @@ def has_cycle(root):
 - bottom-up: solve base cases and compound results
 - top-down: memoization, cache results and avoid recomputation, easily applied to recursive solutions
 
+<div style="page-break-after: always;"></div>
+
 ## Quick Sort
 
 - recursively sort halves, partitioned by a pivot
@@ -466,6 +484,8 @@ def partition(collection, left, right, pivot):
 
     return left
 ```
+
+<div style="page-break-after: always;"></div>
 
 ## Merge Sort
 
@@ -508,6 +528,8 @@ def merge(left, right):
     return merged
 ```
 
+<div style="page-break-after: always;"></div>
+
 ## Heap Sort
 
 - build an heap (heapify O(N))
@@ -522,9 +544,11 @@ def heapsort(collection):
     return [heappop(collection) for _ in range(len(collection))]
 ```
 
+<div style="page-break-after: always;"></div>
+
 # Object Oriented Programming (OOP)
 
-## SOLID
+## SOLID Principles
 
 **Single Responsibility** - classes should do one thing and do it well, having one reason to change
 
@@ -557,6 +581,8 @@ class BurgerFactory:
     def create_deluxe_burger(cls):
         return Burger(["bun", "cheese", "beef-patty", "tomatoe", "lettuce"])
 ```
+
+<div style="page-break-after: always;"></div>
 
   - **Builder** - construct complex objects step by step
 ```python
@@ -598,6 +624,8 @@ class Singleton:
             cls._instance = cls()
         return cls._instance
 ```
+
+<div style="page-break-after: always;"></div>
 
 **Behavioral** - objects' communication (events / state changes)
 
@@ -642,6 +670,8 @@ class RestartCommand(Command):
         self.program.restart()
 ```
 
+<div style="page-break-after: always;"></div>
+
   - **Observer** - subscription/notification of objects to events
 ```python
 class Subscriber:
@@ -685,6 +715,8 @@ def filter_fn(values, strategy: FilterStrategy):
 class VideoConverter:
     # inner workings and system interactions abstracted       
 ```
+
+<div style="page-break-after: always;"></div>
 
   - **Adapter** - allow objects with incompatible interfaces to communicate
 ```python
