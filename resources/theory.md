@@ -682,8 +682,8 @@ def filter_fn(values, strategy: FilterStrategy):
 
   - **Facade** - a wrapper used to abstract lower-level details
 ```python
-class Vector:
-    ...
+class VideoConverter:
+    # inner workings and system interactions abstracted       
 ```
 
   - **Adapter** - allow objects with incompatible interfaces to communicate
