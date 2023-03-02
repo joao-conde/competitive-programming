@@ -82,11 +82,11 @@ class TrieNode:
         cur = self
         for c in word:
             if c not in cur.children:
-                break
+                return
             cur = cur.children[c]
         cur.terminal = False
 
-    def search(self, word) -> bool:
+    def search(self, word):
         cur = self
         for c in word:
             if c not in cur.children:

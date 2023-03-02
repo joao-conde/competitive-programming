@@ -15,11 +15,11 @@ class TrieNode:
         cur = self
         for c in word:
             if c not in cur.children:
-                break
+                return
             cur = cur.children[c]
         cur.terminal = False
 
-    def search(self, word) -> bool:
+    def search(self, word):
         cur = self
         for c in word:
             if c not in cur.children:
@@ -77,3 +77,9 @@ assert trie.search("hello") == False
 assert trie.search("linkedlist") == False
 assert trie.search("tree") == False
 assert trie.search("trie") == False
+
+trie.insert("app")
+assert trie.search("app") == True
+
+trie.remove("apple")
+assert trie.search("app") == True
