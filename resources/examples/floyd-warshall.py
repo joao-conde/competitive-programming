@@ -1,10 +1,6 @@
 def floyd_warshall(graph):
     n_vertices = len(graph)
-
-    dists = [[float("inf") for _ in range(n_vertices)] for _ in range(n_vertices)]
-    for i in range(n_vertices):
-        for j in range(n_vertices):
-            dists[i][j] = graph[i][j]
+    dists = [[graph[i][j] for i in range(n_vertices)] for j in range(n_vertices)]
 
     for intermediate in range(n_vertices):
         for i in range(n_vertices):

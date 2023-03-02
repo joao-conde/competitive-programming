@@ -365,11 +365,7 @@ def bellman_ford(graph, src):
 ```python
 def floyd_warshall(graph):
     n_vertices = len(graph)
-
-    dists = [[float("inf") for _ in range(n_vertices)] for _ in range(n_vertices)]
-    for i in range(n_vertices):
-        for j in range(n_vertices):
-            dists[i][j] = graph[i][j]
+    dists = [[graph[i][j] for i in range(n_vertices)] for j in range(n_vertices)]
 
     for intermediate in range(n_vertices):
         for i in range(n_vertices):
@@ -442,12 +438,6 @@ def has_cycle(root):
             return True
     return False
 ```
-
-## Dynamic Programming
-
-- appliable when optimal solution depends on the optimal solution for subproblems
-- bottom-up: solve base cases and compound results
-- top-down: memoization, cache results and avoid recomputation, easily applied to recursive solutions
 
 <div style="page-break-after: always;"></div>
 
@@ -570,7 +560,7 @@ def heapsort(collection):
 
 Typical solutions for common software OOP design problems.
 
-**Creational** - objects' creation
+**Creational** - handle object creation
 
   - **Factory** - interface for creating objects, simplifying and centralizing logic
 ```python
@@ -633,46 +623,20 @@ class Singleton:
 
 <div style="page-break-after: always;"></div>
 
-**Behavioral** - objects' communication (events / state changes)
+**Behavioral** - handle objects' communication and state changes
 
-  - **Iterator** - defines how the values in a collection are iterated through
-```python
-class LinkedList:
-    def __init__(self):
-        self.head = None
-        self.cur = None
-
-    def __iter__(self):
-        self.cur = self.head
-        return self
-
-    def __next__(self):
-        if self.cur == None:
-            raise StopIteration
-
-        val = self.cur.val
-        self.cur = self.cur.next
-        return val
-``` 
-
-  - **Command** - turns actions into objects (e.g. useful for queues, delays, undo/redo, event sourcing, ...)
+  - **Command** - turns actions into objects (e.g. useful for command queues with delays, undo/redo, event sourcing, ...)
 ```python
 class Command:
-    def execute(self):
+    def execute(self, program):
         pass
 
 class KillCommand(Command):
-    def __init__(self, program):
-        self.program = program
-
-    def execute(self):
+    def execute(self, program):
         self.program.kill()
 
 class RestartCommand(Command):
-    def __init__(self, program):
-        self.program = program
-
-    def execute(self):
+    def execute(self, program):
         self.program.restart()
 ```
 
