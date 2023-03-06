@@ -2,67 +2,67 @@
 
 Built-in python data structures and relevant notes:
 
-| Structure      | Python                                         | Relevant Notes                                                       |
-| -------------- | ---------------------------------------------- | -------------------------------------------------------------------- |
-| Vector, Stack  | `list()`                                       | `append` `insert` `extend` `pop` `remove` `clear` `index`            |
-| HashMap        | `dict()`, `collections.defaultdict(lambda: 0)` | `d[k]` `d.pop`                                                       |
-| HashSet        | `set()`                                        | `add` `update` `remove` `clear` `union` `intersection`               |
-| Dequeue        | `collections.deque()`                          | `rotate` `append` `appendleft` `pop` `popleft` `extend` `extendleft` |
-| Priority Queue | `heapq`                                        | `heapify` `heappush` `heappop`                                       |
+| Structure      | Python                                             | Relevant Notes                                                           |
+| -------------- | -------------------------------------------------- | ------------------------------------------------------------------------ |
+| Vector, Stack  | **`list()`**                                       | **`append` `insert` `extend` `pop` `remove` `clear` `index`**            |
+| HashMap        | **`dict()`, `collections.defaultdict(lambda: 0)`** | **`[]` `pop`**                                                           |
+| HashSet        | **`set()`**                                        | **`add` `update` `remove` `clear` `union` `intersection`**               |
+| Dequeue        | **`collections.deque()`**                          | **`rotate` `append` `appendleft` `pop` `popleft` `extend` `extendleft`** |
+| Priority Queue | **`heapq`**                                        | **`heapify` `heappush` `heappop`**                                       |
 
 ## Graph
 
 - collection of vertices (V) and edges (E)
-- adjacency matrix representation (good for dense graphs): V² matrix with distances
-- adjacency list representation (good for sparse graphs): list of lists of neighbors
-- `E <= V²`
+- adjacency **matrix** representation (good for **dense graphs**): V² matrix with distances
+- adjacency **list** representation (good for **sparse graphs**): list of lists of neighbors
+- **`E <= V²`**
 
 ## Tree
 
 - acyclic graph (root + children)
 - given the height of tree as H:
-  - `O(H)` lookup
-  - `O(H)` insert
-  - `O(H)` delete
+  - **`O(H)`** lookup
+  - **`O(H)`** insert
+  - **`O(H)`** delete
 
 ## Binary Tree
 
 - a tree with at most 2 children
-- no certainty regarding tree height, hence:
-  - `O(H)` lookup
-  - `O(H)` insert
-  - `O(H)` delete
+- **unknown tree height**, hence:
+  - **`O(H)`** lookup
+  - **`O(H)`** insert
+  - **`O(H)`** delete
 
 <div style="page-break-after: always;"></div>
 
 ## Binary Search Tree
 
-- a binary tree where left < root < right
-- no certainty regarding tree height, hence:
-  - `O(H)` lookup
-  - `O(H)` insert
-  - `O(H)` delete
+- a binary tree where **left < root < right**
+- **unknown tree height**, hence:
+  - **`O(H)`** lookup
+  - **`O(H)`** insert
+  - **`O(H)`** delete
 
 ## Balanced Binary Search Tree
 
-- a binary search tree where the height difference between subtrees is at most 1
+- a binary search tree where the **height difference between subtrees is at most 1**
 - insertions and deletions possibly make the tree unbalanced, self-balancing trees correct this through rotations (e.g. AVL)
-- the height H is balanced, hence with N nodes height is log N, thus:
-  - `O(log N)` lookup
-  - `O(log N)` insert
-  - `O(log N)` delete
+- the height H is balanced, thus with N nodes **height is log N**, hence:
+  - **`O(log N)`** lookup
+  - **`O(log N)`** insert
+  - **`O(log N)`** delete
 
 <div style="page-break-after: always;"></div>
 
 ## Trie
 
 - trees of characters
-- terminal nodes (leaves) represent words
-- allows caching of current prefix and current node for efficient search
+- terminal nodes represent words
+- allows **caching of current prefix node** for efficient search
 - given the prefix length of K:
-  - `O(K)` lookup
-  - `O(K)` insert
-  - `O(K)` delete
+  - **`O(K)`** lookup
+  - **`O(K)`** insert
+  - **`O(K)`** delete
 
 ```python
 class TrieNode:
@@ -99,22 +99,20 @@ class TrieNode:
 
 ## Heap (Max)
 
-- balanced binary tree
-- root is bigger than children (recursive definition meaning maximum is at the top)
-- insertion is done by inserting new element in the last spot and bubbling it up, swapping with parent if needed
-- deletion is done by removing element and replacing by the last element added, swapping it down with the max child
+- **root is bigger** than children (recursive definition meaning **maximum is at the top**)
+- **insertion** is done by **inserting new element in the last spot and bubbling it up**, swapping with parent if needed
+- **deletion** is done by **removing element and replacing by the last element added, swapping it down** with the max child
 - balanced binary tree:
-  - `O(1)` max lookup
-  - `O(log N)` insert
-  - `O(log N)` delete
+  - **`O(1)`** max lookup
+  - **`O(log N)`** insert
+  - **`O(log N)`** delete
 
 ## Disjoint Set
 
 - keeps track of multiple sets of elements, disjoint at first
-- allows fast check of disjoint sets of elements
-- `union(x, y)` should set `x` and `y` to the same set
-- `find(x)` should return the set `x` belongs to
-- `O(log N)` union-find by tracking the size and chaining to the smallest
+- **`find(x)`** should return the set **`x`** belongs to
+- **`union(x, y)`** should set **`x`** and **`y`** to the same set
+- **`O(log N)`** union-find by tracking the size and **chaining to the smallest**
 
 ```python
 class DisjointSet:
@@ -191,8 +189,7 @@ def postorder(root):
 
 ## Depth-First Search (DFS)
 
-- LIFO approach
-- search leftmost first, backtracking when needed
+- **LIFO** approach
 
 ```python
 # recursive
@@ -214,8 +211,7 @@ def dfs(root):
 
 ## Breadth-First Search (BFS)
 
-- FIFO approach
-- explore all nodes in a "level" before going deeper
+- **FIFO** approach
 
 ```python
 from collections import deque
@@ -233,9 +229,9 @@ def bfs(root):
 
 ## Dijkstra
 
-- greedy algorithm to find the shortest path from one node to all others
-- no negative weight edges allowed
-- `O(E * log V)`
+- greedy algorithm to find the **shortest path from one node to all others**
+- **no negative weight** edges allowed
+- **`O(E * log V)`**
 
 ```python
 from heapq import heappush, heappop
@@ -268,12 +264,12 @@ def dijkstra(graph, src):
 
 ## Bellman-Ford
 
-- finds the shortest path from one node to all others
-- works for negative edges
-- relaxes edges V-1 times
-- can quit early if nothing improves
-- can detect negative cycles
-- `O(VE)`
+- finds the **shortest path from one node to all others**
+- **works for negative** edges
+- relaxes edges **V-1 times**
+- can **quit early** if nothing improves
+- can **detect negative cycles**
+- **`O(VE)`**
 
 ```python
 def bellman_ford(graph, src):
@@ -298,9 +294,9 @@ def bellman_ford(graph, src):
 
 ## Floyd-Warshall
 
-- shortest path between all nodes
-- works for negative edges
-- `O(V³)`
+- **shortest path between all nodes**
+- **works for negative** edges
+- **`O(V³)`**
 
 ```python
 def floyd_warshall(graph):
@@ -319,11 +315,11 @@ def floyd_warshall(graph):
 
 ## Kruskal
 
-- find an MST: tree that contains all nodes of the original one with a minimal sum of edge weights
-- select minimum cost edges that do not form a cycle
-- pop them one by one, using those that do not connect two already used vertices (disjoint set)
+- find an MST: tree that **contains all nodes** of the original one with a **minimal sum** of edge weights
+- **select minimum cost edges** that do not form a cycle
+- pop them one by one, using those **that do not connect two already used vertices (disjoint set)**
 - stop when all vertices are connected
-- `O(E * log V)`
+- **`O(E * log V)`**
 
 ```python
 def kruskal(edges):
@@ -345,9 +341,9 @@ def kruskal(edges):
 
 ## Quick Sort
 
-- recursively sort halves, partitioned by a pivot
-- swap left and right elements of the pivot and call quick sort on both halves
-- `O(N * log N)`
+- recursively sort halves, partitioned by a **pivot**
+- **swap left and right elements of the pivot** and call quick sort on both halves
+- **`O(N * log N)`**
 
 ```python
 def quicksort(collection):
@@ -388,8 +384,8 @@ def partition(collection, left, right, pivot):
 ## Merge Sort
 
 - recursively sort halves, call merge sort on each
-- copy elements in order to a new array
-- `O(N * log N)`
+- **copy elements in order to a new array**
+- **`O(N * log N)`**
 
 ```python
 def mergesort(collection):
@@ -432,7 +428,7 @@ def merge(left, right):
 
 - build an heap (heapify O(N))
 - keep popping the min element into a new array
-- `O(N * log N)`
+- **`O(N * log N)`**
 
 ```python
 from heapq import heapify, heappush, heappop
@@ -446,9 +442,9 @@ def heapsort(collection):
 
 ## Binary Search
 
-- cut the search space in half each iteration (logarithmic complexity)
-- requires a sorted collection
-- `O(log N)`
+- cut the search space in **half each iteration** (logarithmic complexity)
+- requires a **sorted collection**
+- **`O(log N)`**
 
 ```python
 def bin_search(nums, target):
@@ -466,7 +462,7 @@ def bin_search(nums, target):
 
 ## Cycle Detection
 
-- DFS: check if a node has been visited twice
+- DFS: check if a **node** has been **visited twice**
 ```python
 def has_cycle(root):
     visited = set()
@@ -485,7 +481,7 @@ def has_cycle(root):
 
 <div style="page-break-after: always;"></div>
 
-- Disjoint Set: union nodes for each edge and quit if same set is found
+- Disjoint Set: **union nodes** for each edge and **quit if same set** is found
 ```python
 def has_cycle(edges):
     disjoint_set = DisjointSet()
@@ -498,7 +494,7 @@ def has_cycle(edges):
     return False
 ```
 
-- Bellman-Ford: run an extra cycle and if it improves there is a cycle
+- Bellman-Ford: run an **extra cycle** and if it improves there is a cycle
 ```python
 def has_cycle(graph, src):
     n_vertices = len(graph)
@@ -514,7 +510,7 @@ def has_cycle(graph, src):
     return False
 ```
 
-- Tortoise & Hare: if both pointers meet, there is a cycle
+- Tortoise & Hare: if **both pointers meet**, there is a cycle
 ```python
 def has_cycle(root):
     slow, fast = root, root
