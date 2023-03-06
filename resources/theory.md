@@ -2,36 +2,36 @@
 
 Built-in python data structures and relevant notes:
 
-| Structure      | Python                                     | Relevant Notes                                                                             |
-| -------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| Vector         | list()                                     | `append`, `pop`, `insert`, `remove`, `extend`, `index`, `clear`                            |
-| HashMap        | dict(), collections.defaultdict(lambda: 0) | `d[k]=v`, `d.pop(k)`. CPython uses open addressing and random probing to solve collisions. |
-| HashSet        | set()                                      | `add`, `update`, `remove`, `clear`, `union`, `intersection`                                |
-| Stack          | list()                                     |                                                                                            |
-| Dequeue        | collections.deque                          | `rotate`, `append`, `appendleft`, `pop`, `popleft`, `extend`, `extendleft`                 |
-| Priority Queue | heapq                                      | `heapify`, `heappush`, `heappop`, `nlargest`, `nsmallest`                                  |
+| Structure      | Python                                     | Relevant Notes                                                                  |
+| -------------- | ------------------------------------------ | ------------------------------------------------------------------------------- |
+| Vector, Stack  | list()                                     | append(x) insert(idx, x) extend(iter) pop(idx) remove(x) clear() index(x)       |
+| HashMap        | dict(), collections.defaultdict(lambda: 0) | d[k]=v d.pop(k)                                                                 |
+| HashSet        | set()                                      | add(x) update(iter) remove(x) clear() union(iter) intersection(iter)            |
+| Dequeue        | collections.deque()                        | rotate(n) append(x) appendleft(x) pop() popleft() extend(iter) extendleft(iter) |
+| Priority Queue | heapq                                      | heapify([]) heappush(hp, x) heappop(hp)                                         |
 
-| Function (Python)                            | Relevant Notes                                    |
-| -------------------------------------------- | ------------------------------------------------- |
-| `sorted(iterable, key=key, reverse=reverse)` | Ascending sort of an iterable collection          |
-| `reversed(sequence)`                         | Reverses a sequence (lists, strings, tuples, ...) |
-| `bin(number)`                                | Binary string representation of a number          |
+## Graph
+
+- collection of vertices (V) and edges (E)
+- adjacency matrix representation (good for dense graphs): V * V matrix with distances
+- adjacency list representation (good for sparse graphs): list of lists of neighbors
+- E <= V²
 
 ## Tree
 
 - acyclic graph (root + children)
 - given the height of tree as H:
-  - O(H) lookup
-  - O(H) insert
-  - O(H) delete
+  - `O(H)` lookup
+  - `O(H)` insert
+  - `O(H)` delete
 
 ## Binary Tree
 
 - a tree with at most 2 children
 - no certainty regarding tree height, hence:
-  - O(H) lookup
-  - O(H) insert
-  - O(H) delete
+  - `O(H)` lookup
+  - `O(H)` insert
+  - `O(H)` delete
 
 <div style="page-break-after: always;"></div>
 
@@ -39,18 +39,18 @@ Built-in python data structures and relevant notes:
 
 - a binary tree where left < root < right
 - no certainty regarding tree height, hence:
-  - O(H) lookup
-  - O(H) insert
-  - O(H) delete
+  - `O(H)` lookup
+  - `O(H)` insert
+  - `O(H)` delete
 
 ## Balanced Binary Search Tree
 
 - a binary search tree where the height difference between subtrees is at most 1
 - insertions and deletions possibly make the tree unbalanced, self-balancing trees correct this through rotations (e.g. AVL)
 - the height H is balanced, hence with N nodes height is log N, thus:
-  - O(log N) lookup
-  - O(log N) insert
-  - O(log N) delete
+  - `O(log N)` lookup
+  - `O(log N)` insert
+  - `O(log N)` delete
 
 <div style="page-break-after: always;"></div>
 
@@ -60,9 +60,9 @@ Built-in python data structures and relevant notes:
 - terminal nodes (leaves) represent words
 - allows caching of current prefix and current node for efficient search
 - given the prefix length of K:
-  - O(K) lookup
-  - O(K) insert
-  - O(K) delete
+  - `O(K)` lookup
+  - `O(K)` insert
+  - `O(K)` delete
 
 ```python
 class TrieNode:
@@ -104,9 +104,9 @@ class TrieNode:
 - insertion is done by inserting new element in the last spot and bubbling it up, swapping with parent if needed
 - deletion is done by removing element and replacing by the last element added, swapping it down with the max child
 - balanced binary tree:
-  - O(1) max lookup
-  - O(log N) insert
-  - O(log N) delete
+  - `O(1)` max lookup
+  - `O(log N)` insert
+  - `O(log N)` delete
 
 ## Disjoint Set
 
@@ -114,7 +114,7 @@ class TrieNode:
 - allows fast check of disjoint sets of elements
 - `union(x, y)` should set `x` and `y` to the same set
 - `find(x)` should return the set `x` belongs to
-- O(log N) union-find by tracking the size and chain to the smallest
+- `O(log N)` union-find by tracking the size and chaining to the smallest
 
 ```python
 class DisjointSet:
@@ -145,15 +145,9 @@ class DisjointSet:
 
 <div style="page-break-after: always;"></div>
 
-## Graph
-
-- collection of vertices (V) and edges (E)
-- adjacency matrix representation (good for dense graphs): V * V matrix with distances (0, inf, x)
-- adjacency list representation (good for sparse graphs): list of lists of neighbors
-
-<div style="page-break-after: always;"></div>
-
 # Algorithms
+
+## Tree Traversal
 
 Example tree:
 
@@ -166,8 +160,6 @@ Example tree:
         /
        G 
 ```
-
-## Tree Traversal
 
 | Method    | Order               | Example       |
 | --------- | ------------------- | ------------- |
@@ -195,56 +187,6 @@ def postorder(root):
     postorder(root.left)
     postorder(root.right)
     print(root)
-```
-
-<div style="page-break-after: always;"></div>
-
-## Minimum Spanning Tree (MST)
-
-- a tree that contains all nodes of the original one with a minimal sum of edge weights
-
-### Kruskal's Algorithm
-
-- select minimum cost edges that do not form a cycle
-- pop them one by one, using those that do not connect two already used vertices (disjoint set)
-- stop when all vertices are connected
-- O(E * log V)
-
-```python
-def kruskal(edges):
-    edges.sort()
-
-    mst = []
-    disjoint_set = DisjointSet()
-    while len(edges) > 0:
-        cost, src, dst = edges.pop(0)
-
-        # disjoint set keeps track of connectivity
-        if disjoint_set.find(src) != disjoint_set.find(dst):
-            disjoint_set.union(src, dst)
-            mst.append((cost, src, dst))
-
-    return mst
-```
-
-## Binary Search
-
-- cut the search space in half each iteration (logarithmic complexity)
-- requires a sorted collection
-- O(log N)
-
-```python
-def bin_search(nums, target):
-    lb, ub = 0, len(nums) - 1
-    while lb <= ub:
-        mid = lb + (ub - lb) // 2
-        if nums[mid] < target:
-            lb = mid + 1
-        elif nums[mid] > target:
-            ub = mid - 1
-        else:
-            return mid
-    return -1
 ```
 
 <div style="page-break-after: always;"></div>
@@ -295,7 +237,7 @@ def bfs(root):
 
 - greedy algorithm to find the shortest path from one node to all others
 - no negative weight edges allowed
-- O(E * log V)
+- `O(E * log V)`
 
 ```python
 from heapq import heappush, heappop
@@ -333,7 +275,7 @@ def dijkstra(graph, src):
 - relaxes edges V-1 times
 - can quit early if nothing improves
 - can detect negative cycles
-- O(VE)
+- `O(VE)`
 
 ```python
 def bellman_ford(graph, src):
@@ -360,7 +302,7 @@ def bellman_ford(graph, src):
 
 - shortest path between all nodes
 - works for negative edges
-- O(V³)
+- `O(V³)`
 
 ```python
 def floyd_warshall(graph):
@@ -375,6 +317,154 @@ def floyd_warshall(graph):
                     dists[i][j] = alt
 
     return dists
+```
+
+## Kruskal
+
+- find an MST: tree that contains all nodes of the original one with a minimal sum of edge weights
+- select minimum cost edges that do not form a cycle
+- pop them one by one, using those that do not connect two already used vertices (disjoint set)
+- stop when all vertices are connected
+- `O(E * log V)`
+
+```python
+def kruskal(edges):
+    edges.sort()
+
+    mst = []
+    disjoint_set = DisjointSet()
+    while len(edges) > 0:
+        cost, src, dst = edges.pop(0)
+
+        # disjoint set keeps track of connectivity
+        if disjoint_set.find(src) != disjoint_set.find(dst):
+            disjoint_set.union(src, dst)
+            mst.append((cost, src, dst))
+
+    return mst
+```
+
+<div style="page-break-after: always;"></div>
+
+## Quick Sort
+
+- recursively sort halves, partitioned by a pivot
+- swap left and right elements of the pivot and call quick sort on both halves
+- `O(N * log N)`
+
+```python
+def quicksort(collection):
+    return _quicksort(collection, 0, len(collection) - 1)
+
+
+def _quicksort(collection, left, right):
+    if left >= right:
+        return
+
+    pivot = collection[(left + right) // 2]
+    split = partition(collection, left, right, pivot)
+    _quicksort(collection, left, split - 1)
+    _quicksort(collection, split, right)
+    return collection
+
+
+def partition(collection, left, right, pivot):
+    while left <= right:
+        while collection[left] < pivot:
+            left += 1
+
+        while collection[right] > pivot:
+            right -= 1
+
+        if left <= right:
+            tmp = collection[left]
+            collection[left] = collection[right]
+            collection[right] = tmp
+            left += 1
+            right -= 1
+
+    return left
+```
+
+<div style="page-break-after: always;"></div>
+
+## Merge Sort
+
+- recursively sort halves, call merge sort on each
+- copy elements in order to a new array
+- `O(N * log N)`
+
+```python
+def mergesort(collection):
+    if len(collection) <= 1:
+        return collection
+
+    middle = len(collection) // 2
+    left = mergesort(collection[:middle])
+    right = mergesort(collection[middle:])
+    merged = merge(left, right)
+    return merged
+
+
+def merge(left, right):
+    merged = []
+
+    l, r = 0, 0
+    while l < len(left) and r < len(right):
+        if left[l] < right[r]:
+            merged.append(left[l])
+            l += 1
+        else:
+            merged.append(right[r])
+            r += 1
+
+    while l < len(left):
+        merged.append(left[l])
+        l += 1
+
+    while r < len(right):
+        merged.append(right[r])
+        r += 1
+
+    return merged
+```
+
+<div style="page-break-after: always;"></div>
+
+## Heap Sort
+
+- build an heap (heapify O(N))
+- keep popping the min element into a new array
+- `O(N * log N)`
+
+```python
+from heapq import heapify, heappush, heappop
+
+def heapsort(collection):
+    heapify(collection)
+    return [heappop(collection) for _ in range(len(collection))]
+```
+
+<div style="page-break-after: always;"></div>
+
+## Binary Search
+
+- cut the search space in half each iteration (logarithmic complexity)
+- requires a sorted collection
+- `O(log N)`
+
+```python
+def bin_search(nums, target):
+    lb, ub = 0, len(nums) - 1
+    while lb <= ub:
+        mid = lb + (ub - lb) // 2
+        if nums[mid] < target:
+            lb = mid + 1
+        elif nums[mid] > target:
+            ub = mid - 1
+        else:
+            return mid
+    return -1
 ```
 
 ## Cycle Detection
@@ -437,107 +527,6 @@ def has_cycle(root):
         if slow == fast:
             return True
     return False
-```
-
-<div style="page-break-after: always;"></div>
-
-## Quick Sort
-
-- recursively sort halves, partitioned by a pivot
-- swap left and right elements of the pivot and call quick sort on both halves
-- O(N * log N)
-
-```python
-def quicksort(collection):
-    return _quicksort(collection, 0, len(collection) - 1)
-
-
-def _quicksort(collection, left, right):
-    if left >= right:
-        return
-
-    pivot = collection[(left + right) // 2]
-    split = partition(collection, left, right, pivot)
-    _quicksort(collection, left, split - 1)
-    _quicksort(collection, split, right)
-    return collection
-
-
-def partition(collection, left, right, pivot):
-    while left <= right:
-        while collection[left] < pivot:
-            left += 1
-
-        while collection[right] > pivot:
-            right -= 1
-
-        if left <= right:
-            tmp = collection[left]
-            collection[left] = collection[right]
-            collection[right] = tmp
-            left += 1
-            right -= 1
-
-    return left
-```
-
-<div style="page-break-after: always;"></div>
-
-## Merge Sort
-
-- recursively sort halves, call merge sort on each
-- copy elements in order to a new array
-- O(N * log N)
-
-```python
-def mergesort(collection):
-    if len(collection) <= 1:
-        return collection
-
-    middle = len(collection) // 2
-    left = mergesort(collection[:middle])
-    right = mergesort(collection[middle:])
-    merged = merge(left, right)
-    return merged
-
-
-def merge(left, right):
-    merged = []
-
-    l, r = 0, 0
-    while l < len(left) and r < len(right):
-        if left[l] < right[r]:
-            merged.append(left[l])
-            l += 1
-        else:
-            merged.append(right[r])
-            r += 1
-
-    while l < len(left):
-        merged.append(left[l])
-        l += 1
-
-    while r < len(right):
-        merged.append(right[r])
-        r += 1
-
-    return merged
-```
-
-<div style="page-break-after: always;"></div>
-
-## Heap Sort
-
-- build an heap (heapify O(N))
-- keep popping the min element into a new array
-- O(N * log N)
-
-```python
-from heapq import heapify, heappush, heappop
-
-def heapsort(collection):
-    heapify(collection)
-    return [heappop(collection) for _ in range(len(collection))]
 ```
 
 <div style="page-break-after: always;"></div>
@@ -642,7 +631,7 @@ class RestartCommand(Command):
 
 <div style="page-break-after: always;"></div>
 
-  - **Observer** - subscription/notification of objects to events
+  - **Observer** - subscription/notification (pub/sub) of objects to events
 ```python
 class Subscriber:
     def notify(self, event):
