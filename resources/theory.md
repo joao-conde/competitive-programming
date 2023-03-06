@@ -2,20 +2,20 @@
 
 Built-in python data structures and relevant notes:
 
-| Structure      | Python                                     | Relevant Notes                                                                  |
-| -------------- | ------------------------------------------ | ------------------------------------------------------------------------------- |
-| Vector, Stack  | list()                                     | append(x) insert(idx, x) extend(iter) pop(idx) remove(x) clear() index(x)       |
-| HashMap        | dict(), collections.defaultdict(lambda: 0) | d[k]=v d.pop(k)                                                                 |
-| HashSet        | set()                                      | add(x) update(iter) remove(x) clear() union(iter) intersection(iter)            |
-| Dequeue        | collections.deque()                        | rotate(n) append(x) appendleft(x) pop() popleft() extend(iter) extendleft(iter) |
-| Priority Queue | heapq                                      | heapify([]) heappush(hp, x) heappop(hp)                                         |
+| Structure      | Python                                         | Relevant Notes                                                       |
+| -------------- | ---------------------------------------------- | -------------------------------------------------------------------- |
+| Vector, Stack  | `list()`                                       | `append` `insert` `extend` `pop` `remove` `clear` `index`            |
+| HashMap        | `dict()`, `collections.defaultdict(lambda: 0)` | `d[k]` `d.pop`                                                       |
+| HashSet        | `set()`                                        | `add` `update` `remove` `clear` `union` `intersection`               |
+| Dequeue        | `collections.deque()`                          | `rotate` `append` `appendleft` `pop` `popleft` `extend` `extendleft` |
+| Priority Queue | `heapq`                                        | `heapify` `heappush` `heappop`                                       |
 
 ## Graph
 
 - collection of vertices (V) and edges (E)
-- adjacency matrix representation (good for dense graphs): V * V matrix with distances
+- adjacency matrix representation (good for dense graphs): V² matrix with distances
 - adjacency list representation (good for sparse graphs): list of lists of neighbors
-- E <= V²
+- `E <= V²`
 
 ## Tree
 
@@ -148,8 +148,6 @@ class DisjointSet:
 # Algorithms
 
 ## Tree Traversal
-
-Example tree:
 
 ```
         A
@@ -629,8 +627,6 @@ class RestartCommand(Command):
         self.program.restart()
 ```
 
-<div style="page-break-after: always;"></div>
-
   - **Observer** - subscription/notification (pub/sub) of objects to events
 ```python
 class Subscriber:
@@ -648,6 +644,8 @@ class Publisher:
         for sub in self.subscribers:
             sub.notify(event)
 ```
+
+<div style="page-break-after: always;"></div>
 
   - **Strategy** - define a family of interchangeable algorithms
 ```python
@@ -674,8 +672,6 @@ def filter_fn(values, strategy: FilterStrategy):
 class VideoConverter:
     # inner workings and system interactions abstracted       
 ```
-
-<div style="page-break-after: always;"></div>
 
   - **Adapter** - allow objects with incompatible interfaces to communicate
 ```python
