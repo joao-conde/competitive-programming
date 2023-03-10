@@ -30,12 +30,11 @@ class Solution:
                 ]
             )
 
+        # reverse string if the last character is less frequent to reduce branching
         freqs = dict()
         for i in range(len(board)):
             for j in range(len(board[i])):
                 freqs[board[i][j]] = freqs.get(board[i][j], 0) + 1
-
-        # reverse string if the last character is less frequent to reduce branching
         if freqs.get(word[0], 0) < freqs.get(word[-1], 0):
             word = word[::-1]
 
@@ -43,7 +42,6 @@ class Solution:
         word_freqs = dict()
         for c in word:
             word_freqs[c] = word_freqs.get(c, 0) + 1
-
         for k, v in word_freqs.items():
             if freqs.get(k, 0) < v:
                 return False
