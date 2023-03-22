@@ -143,6 +143,18 @@ class DisjointSet:
 
 <div style="page-break-after: always;"></div>
 
+## Monotonic Increasing Stack
+
+```python
+def monotonic_increasing_stack(nums):
+    stack = []
+    for n in nums::
+        while len(stack) > 0 and stack[-1] >= n:
+            stack.pop()
+        stack.append(n)
+    return stack
+```
+
 # Algorithms
 
 ## Tree Traversal
@@ -615,11 +627,11 @@ class Command:
 
 class KillCommand(Command):
     def execute(self, program):
-        self.program.kill()
+        program.kill()
 
 class RestartCommand(Command):
     def execute(self, program):
-        self.program.restart()
+        program.restart()
 ```
 
   - **Observer** - subscription/notification (pub/sub) of objects to events
