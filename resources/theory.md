@@ -143,18 +143,6 @@ class DisjointSet:
 
 <div style="page-break-after: always;"></div>
 
-## Monotonic Increasing Stack
-
-```python
-def monotonic_increasing_stack(nums):
-    stack = []
-    for n in nums::
-        while len(stack) > 0 and stack[-1] >= n:
-            stack.pop()
-        stack.append(n)
-    return stack
-```
-
 # Algorithms
 
 ## Tree Traversal
@@ -217,7 +205,7 @@ def dfs(root):
     while len(stack) > 0:
         top = stack.pop()
         print(top)
-        for child in reversed(top.children):
+        for child in top.children:
             stack.append(child)
 ```
 
@@ -485,7 +473,7 @@ def has_cycle(root):
         if top in visited:
             return True
 
-        for child in reversed(top.children):
+        for child in top.children:
             stack.append(child)
 
     return False

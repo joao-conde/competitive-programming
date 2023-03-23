@@ -11,7 +11,7 @@ def dfs(root):
     while len(stack) > 0:
         top = stack.pop()
         print(top)
-        for child in reversed(top.children):
+        for child in top.children:
             stack.append(child)
 
 
@@ -24,7 +24,7 @@ def has_cycle(root):
         if top in visited:
             return True
 
-        for child in reversed(top.children):
+        for child in top.children:
             stack.append(child)
 
     return False
