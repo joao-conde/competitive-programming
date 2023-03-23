@@ -489,9 +489,13 @@ def has_cycle(edges):
     disjoint_set = DisjointSet()
 
     for src, dst in edges:
-        if disjoint_set.find(src) == disjoint_set.find(dst):
+        root_src = disjoint_set.find(src)
+        root_dst = disjoint_set.find(dst)
+
+        if root_src == root_dst:
             return True
-        disjoint_set.union(src, dst)
+
+        disjoint_set.union(root_src, root_dst)
 
     return False
 ```
