@@ -574,12 +574,6 @@ class Burger:
     def __init__(self):
         self.buns = None
         self.patty = None
-    
-    def set_buns(self, buns):
-        self.buns = buns
-
-    def set_patty(self, patty):
-        self.patty = patty
 
 class BurgerBuilder:
     def __init__(self):
@@ -589,11 +583,11 @@ class BurgerBuilder:
         return self.burger
 
     def add_buns(self, buns):
-        self.burger.set_buns(buns)
+        self.burger.buns = buns
         return self
 
     def add_patty(self, patty):
-        self.burger.set_patty(patty)
+        self.burger.patty = patty
         return self
 ```
 
@@ -662,7 +656,7 @@ class FilterNegatives(FilterStrategy):
     def filter(self, val):
         return val < 0
 
-def filter_fn(values, strategy: FilterStrategy):
+def filter(values, strategy: FilterStrategy):
     return [x for x in values if strategy.filter(x)]
 ```
 
@@ -670,8 +664,8 @@ def filter_fn(values, strategy: FilterStrategy):
 
   - **Facade** - a wrapper used to abstract lower-level details
 ```python
-class VideoConverter:
-    # inner workings and system interactions abstracted       
+class NES:
+    # inner workings abstracted (CPU, PPU, RAM, ROM, ...)     
 ```
 
   - **Adapter** - allow objects with incompatible interfaces to communicate
@@ -702,7 +696,7 @@ class SquarePegAdapter(RoundPeg):
 class Text:
     def __init__(self, text):
         self.text = text
-    
+
     def render(self):
         return self.text
 
