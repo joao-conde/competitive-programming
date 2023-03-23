@@ -327,11 +327,13 @@ def kruskal(edges):
 
     mst = []
     disjoint_set = DisjointSet()
-    while len(edges) > 0:
-        cost, src, dst = edges.pop(0)
 
-        if disjoint_set.find(src) != disjoint_set.find(dst):
-            disjoint_set.union(src, dst)
+    for cost, src, dst in edges:
+        root_src = disjoint_set.find(src)
+        root_dst = disjoint_set.find(dst)
+    
+        if root_src != root_dst:
+            disjoint_set.union(root_src, root_dst)
             mst.append((cost, src, dst))
 
     return mst
