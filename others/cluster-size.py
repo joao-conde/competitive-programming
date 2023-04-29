@@ -4,7 +4,7 @@ def findMaximumSustainableClusterSize(processingPower, bootingPower, powerMax):
     pp = processingPower[0]
 
     while i < n and j < n:
-        # TODO: ran out of time but one has to keep the bootingPowers
+        # ran out of time but one has to keep the bootingPowers
         # as a sliding window aggregation computed on element
         # addition and eviction instead of recomputing in each cycle
         # otherwise this won't be fast enough for large inputs
