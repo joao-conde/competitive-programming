@@ -25,7 +25,6 @@ The solutions implemented are my own and they are often a product of quick think
 
 
 TODO: LEETCODE:
-# Making a Large Island (hard)
 # Employee Free Time (hard)
 # Alien Dictionary (hard)
 
