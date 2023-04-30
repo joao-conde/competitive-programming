@@ -10,53 +10,36 @@ class TreeNode(object):
 
 class Codec:
     def serialize(self, root: TreeNode) -> str:
-        nodes = dict()
+        tokens = []
 
-        stack = [(nodes, root, "root")]
-        while len(stack) > 0:
-            (parent, node, key) = stack.pop()
-
-            val = node.val if node != None else "None"
-            dict_key = f"{key};{val}"
-            parent[dict_key] = dict()
+        def preorder(node):
+            nonlocal tokens
 
             if node == None:
-                continue
+                tokens.append("N")
+                return
+            tokens.append(str(node.val))
+            preorder(node.left)
+            preorder(node.right)
 
-            stack.append((parent[dict_key], node.left, "left"))
-            stack.append((parent[dict_key], node.right, "right"))
-
-        return str(nodes)
+        preorder(root)
+        print(",".join(tokens))
+        return ",".join(tokens)
 
     def deserialize(self, data: str) -> TreeNode:
-        data = data.replace(",", "").replace(":", "").replace("'", "")
-        data = data.replace("{", "{ ").replace("}", "} ")
-        tokens = data.strip().split(" ")
+        tokens = data.split(",")
+        i = 0
 
-        dummy = TreeNode(0)
-        nodes = [("root", dummy)]
-        for token in tokens:
-            if token == "":
-                continue
-            elif token == "{":
-                pass
-            elif token == "}":
-                side, node = nodes.pop()
+        def preorder():
+            nonlocal i, tokens
 
-                if node.val == "None":
-                    continue
+            i += 1
+            if tokens[i - 1] == "N":
+                return None
+            node = TreeNode(int(tokens[i - 1]))
+            node.left = preorder()
+            node.right = preorder()
+            return node
 
-                if len(nodes) == 0:
-                    continue
-
-                _, root = nodes[-1]
-                if side == "left":
-                    root.left = node
-                else:
-                    root.right = node
-            else:
-                side, val = token.split(";")
-                node = TreeNode(val)
-                nodes.append((side, node))
-
-        return dummy.left if dummy.left != None else dummy.right
+        root = preorder()
+        return root
