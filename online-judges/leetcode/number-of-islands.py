@@ -1,11 +1,10 @@
 # https://leetcode.com/problems/number-of-islands/
 
 from collections import deque
-from typing import List, Set, Tuple
 
 
 class Solution:
-    def get_island(self, grid: List[List[str]], i: int, j: int) -> Set[Tuple[int, int]]:
+    def get_island(self, grid: list[list[str]], i: int, j: int) -> set[tuple[int, int]]:
         points, dq = set(), deque([(i, j)])
         while len(dq) > 0:
             (pi, pj) = dq.popleft()
@@ -25,7 +24,7 @@ class Solution:
 
         return points
 
-    def numIslands(self, grid: List[List[str]]) -> int:
+    def numIslands(self, grid: list[list[str]]) -> int:
         skip, islands = set(), 0
         for i in range(len(grid)):
             for j in range(len(grid[0])):

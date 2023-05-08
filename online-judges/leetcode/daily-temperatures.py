@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/daily-temperatures/
 
-from typing import List
-
 
 class Solution:
-    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+    def dailyTemperatures(self, temperatures: list[int]) -> list[int]:
         answer = [0] * len(temperatures)
         stack = []
         for i, temperature in enumerate(temperatures):

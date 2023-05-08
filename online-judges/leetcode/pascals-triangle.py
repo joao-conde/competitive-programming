@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/pascals-triangle/
 
-from typing import List
-
 
 class Solution:
-    def generate(self, numRows: int) -> List[List[int]]:
+    def generate(self, numRows: int) -> list[list[int]]:
         rows = []
         for r in range(numRows):
             row = [1] * (r + 1)

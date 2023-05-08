@@ -1,12 +1,10 @@
 # https://leetcode.com/problems/number-of-closed-islands/
 
-from typing import List, Set, Tuple
-
 
 class Solution:
     def get_island(
-        self, grid: List[List[int]], si: int, sj: int
-    ) -> Set[Tuple[int, int]]:
+        self, grid: list[list[int]], si: int, sj: int
+    ) -> set[tuple[int, int]]:
         stack, points = [(si, sj)], set([(si, sj)])
         while len(stack) > 0:
             (i, j) = stack.pop()
@@ -26,7 +24,7 @@ class Solution:
 
         return points
 
-    def is_closed(self, grid: List[List[int]], island: Set[Tuple[int, int]]) -> bool:
+    def is_closed(self, grid: list[list[int]], island: set[tuple[int, int]]) -> bool:
         for i, j in island:
             if i <= 0 or j <= 0:
                 return False
@@ -36,7 +34,7 @@ class Solution:
 
         return True
 
-    def closedIsland(self, grid: List[List[int]]) -> int:
+    def closedIsland(self, grid: list[list[int]]) -> int:
         closed, visited = 0, set()
         for i in range(len(grid)):
             for j in range(len(grid[i])):

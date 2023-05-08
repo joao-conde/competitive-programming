@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/house-robber/
 
-from typing import List
-
 
 class Solution:
-    def rob(self, nums: List[int]) -> int:
+    def rob(self, nums: list[int]) -> int:
         sum1, sum2 = 0, 0
         for num in nums:
             tmp = sum1

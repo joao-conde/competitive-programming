@@ -1,7 +1,5 @@
 # https://leetcode.com/problems/letter-combinations-of-a-phone-number/
 
-from typing import List
-
 
 class Solution:
     KEYS = {
@@ -15,7 +13,7 @@ class Solution:
         "9": "wxyz",
     }
 
-    def letterCombinations(self, digits: str) -> List[str]:
+    def letterCombinations(self, digits: str) -> list[str]:
         if len(digits) == 0:
             return []
 

@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/combinations/
 
-from typing import List
-
 
 class Solution:
-    def combine(self, n: int, k: int) -> List[List[int]]:
+    def combine(self, n: int, k: int) -> list[list[int]]:
         if k == 0:
             return [[]]
 

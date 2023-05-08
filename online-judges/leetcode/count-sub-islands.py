@@ -1,7 +1,5 @@
 # https://leetcode.com/problems/count-sub-islands/
 
-from typing import List
-
 
 class Solution:
     def get_island(self, grid, si, sj):
@@ -33,7 +31,7 @@ class Solution:
             stack.extend(neighbors)
         return points
 
-    def countSubIslands(self, grid1: List[List[int]], grid2: List[List[int]]) -> int:
+    def countSubIslands(self, grid1: list[list[int]], grid2: list[list[int]]) -> int:
         cnt, seen = 0, set()
         for i in range(len(grid2)):
             for j in range(len(grid2[0])):

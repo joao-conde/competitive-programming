@@ -30,10 +30,9 @@ class Solution:
 
 
 # Tests
-from typing import List
 
 
-def buildListNums(head: ListNode) -> List[int]:
+def buildListNums(head: ListNode) -> list[int]:
     nums = []
     while head:
         nums.append(head.val)
@@ -41,7 +40,7 @@ def buildListNums(head: ListNode) -> List[int]:
     return nums
 
 
-def buildList(nums: List[int]) -> ListNode:
+def buildList(nums: list[int]) -> ListNode:
     nodes = [ListNode(val=n) for n in nums]
     for i, node in enumerate(nodes[:-1]):
         node.next = nodes[i + 1]

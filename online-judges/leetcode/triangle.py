@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/triangle/
 
-from typing import List
-
 
 class Solution:
-    def minimumTotal(self, triangle: List[List[int]]) -> int:
+    def minimumTotal(self, triangle: list[list[int]]) -> int:
         mins = triangle[-1]
         for row in reversed(triangle[:-1]):
             for i in range(len(row)):

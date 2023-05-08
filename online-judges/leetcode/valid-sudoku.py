@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/valid-sudoku/
 
-from typing import List
-
 
 class Solution:
-    def isValidSudoku(self, board: List[List[str]]) -> bool:
+    def isValidSudoku(self, board: list[list[str]]) -> bool:
         row_cnts = [set() for _ in range(9)]
         col_cnts = [set() for _ in range(9)]
         box_cnts = [set() for _ in range(9)]

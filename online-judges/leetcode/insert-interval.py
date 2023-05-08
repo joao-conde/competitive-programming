@@ -1,7 +1,5 @@
 # https://leetcode.com/problems/insert-interval/
 
-from typing import List
-
 
 class Solution:
     def overlaps(self, i1, i2):
@@ -20,8 +18,8 @@ class Solution:
         return s1 < s2
 
     def insert(
-        self, intervals: List[List[int]], newInterval: List[int]
-    ) -> List[List[int]]:
+        self, intervals: list[list[int]], newInterval: list[int]
+    ) -> list[list[int]]:
         i = 0
         new = []
         merged = newInterval

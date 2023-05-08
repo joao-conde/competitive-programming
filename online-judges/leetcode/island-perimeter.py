@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/island-perimeter/
 
-from typing import List
-
 
 class Solution:
-    def islandPerimeter(self, grid: List[List[int]]) -> int:
+    def islandPerimeter(self, grid: list[list[int]]) -> int:
         nrows = len(grid)
         ncols = len(grid[0])
 

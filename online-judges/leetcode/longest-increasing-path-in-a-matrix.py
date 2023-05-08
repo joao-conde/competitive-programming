@@ -1,7 +1,5 @@
 # https://leetcode.com/problems/longest-increasing-path-in-a-matrix/
 
-from typing import List
-
 
 class Solution:
     def longest_from(self, matrix, i, j, cache):
@@ -29,7 +27,7 @@ class Solution:
         cache[(i, j)] = longest
         return cache[(i, j)]
 
-    def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
+    def longestIncreasingPath(self, matrix: list[list[int]]) -> int:
         longest = 1
         cache = dict()
         for i in range(len(matrix)):

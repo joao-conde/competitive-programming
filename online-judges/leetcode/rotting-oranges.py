@@ -1,11 +1,10 @@
 # https://leetcode.com/problems/rotting-oranges/
 
 from collections import deque
-from typing import List
 
 
 class Solution:
-    def orangesRotting(self, grid: List[List[int]]) -> int:
+    def orangesRotting(self, grid: list[list[int]]) -> int:
         m, n = len(grid), len(grid[0])
 
         fresh, rotten = 0, deque()

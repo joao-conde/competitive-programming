@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/number-of-enclaves/
 
-from typing import List
-
 
 class Solution:
-    def is_trapped(self, grid: List[List[int]], si: int, sj: int) -> bool:
+    def is_trapped(self, grid: list[list[int]], si: int, sj: int) -> bool:
         m, n = len(grid), len(grid[0])
         deltas = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 
@@ -31,7 +29,7 @@ class Solution:
 
         return True, visited
 
-    def numEnclaves(self, grid: List[List[int]]) -> int:
+    def numEnclaves(self, grid: list[list[int]]) -> int:
         out, trapped = set(), set()
         for i in range(len(grid)):
             for j in range(len(grid[0])):

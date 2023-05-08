@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/min-cost-climbing-stairs/
 
-from typing import List
-
 
 class Solution:
-    def minCostClimbingStairs(self, cost: List[int]) -> int:
+    def minCostClimbingStairs(self, cost: list[int]) -> int:
         cache = dict()
 
         def min_cost(cur):

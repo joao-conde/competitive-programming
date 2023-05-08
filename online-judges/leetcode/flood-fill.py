@@ -1,12 +1,10 @@
 # https://leetcode.com/problems/flood-fill/
 
-from typing import List
-
 
 class Solution:
     def floodFill(
-        self, image: List[List[int]], sr: int, sc: int, color: int
-    ) -> List[List[int]]:
+        self, image: list[list[int]], sr: int, sc: int, color: int
+    ) -> list[list[int]]:
         # if current pixel is correctly colored just return
         if image[sr][sc] == color:
             return image

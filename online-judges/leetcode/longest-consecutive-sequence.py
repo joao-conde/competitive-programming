@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/longest-consecutive-sequence/
 
-from typing import List
-
 
 class Solution:
-    def longestConsecutive(self, nums: List[int]) -> int:
+    def longestConsecutive(self, nums: list[int]) -> int:
         nums = set(nums)
         if len(nums) == 0:
             return 0

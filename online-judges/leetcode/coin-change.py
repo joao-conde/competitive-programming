@@ -1,7 +1,5 @@
 # https://leetcode.com/problems/coin-change/
 
-from typing import List
-
 
 class Solution:
     def change(self, coins, amount, cache):
@@ -29,7 +27,7 @@ class Solution:
         cache[amount] = ncoins if ncoins != float("inf") else -1
         return cache[amount]
 
-    def coinChange(self, coins: List[int], amount: int) -> int:
+    def coinChange(self, coins: list[int], amount: int) -> int:
         return self.change(coins, amount, dict())
 
 

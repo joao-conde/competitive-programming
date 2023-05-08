@@ -1,11 +1,9 @@
 # https://leetcode.com/problems/generate-parentheses/
 
-from typing import List
-
 
 class Solution:
-    def generateParenthesis(self, n: int) -> List[str]:
-        def helper(n: int, open: int, closed: int, state: str) -> List[str]:
+    def generateParenthesis(self, n: int) -> list[str]:
+        def helper(n: int, open: int, closed: int, state: str) -> list[str]:
             if open + closed == 2 * n:
                 return [state]
 

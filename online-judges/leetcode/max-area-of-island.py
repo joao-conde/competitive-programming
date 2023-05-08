@@ -1,12 +1,10 @@
 # https://leetcode.com/problems/max-area-of-island/
 
-from typing import List, Set, Tuple
-
 
 class Solution:
     def area(
-        self, grid: List[List[int]], i: int, j: int, points: Set[Tuple[int, int]]
-    ) -> Set[Tuple[int, int]]:
+        self, grid: list[list[int]], i: int, j: int, points: set[tuple[int, int]]
+    ) -> set[tuple[int, int]]:
         if (i, j) in points:
             return points
 
@@ -26,7 +24,7 @@ class Solution:
 
         return points
 
-    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+    def maxAreaOfIsland(self, grid: list[list[int]]) -> int:
         max, explored = 0, set()
         for i in range(len(grid)):
             for j in range(len(grid[0])):

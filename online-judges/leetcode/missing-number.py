@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/missing-number/
 
-from typing import List
-
 
 class Solution:
-    def missingNumber(self, nums: List[int]) -> int:
+    def missingNumber(self, nums: list[int]) -> int:
         missing = nums[0]
         for num in nums[1:]:
             missing ^= num

@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/longest-palindromic-substring/
 
-from typing import Tuple
-
 
 class Solution:
-    def expand(self, s: str, l: int, r: int) -> Tuple[int, int]:
+    def expand(self, s: str, l: int, r: int) -> tuple[int, int]:
         x, y = l, r
         while x >= 0 and y < len(s) and s[x] == s[y]:
             x -= 1

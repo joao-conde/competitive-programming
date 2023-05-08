@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/concatenation-of-array/
 
-from typing import List
-
 
 class Solution:
-    def getConcatenation(self, nums: List[int]) -> List[int]:
+    def getConcatenation(self, nums: list[int]) -> list[int]:
         return nums + nums
 
 

@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/squares-of-a-sorted-array/
 
-from typing import List
-
 
 class Solution:
-    def sortedSquares(self, nums: List[int]) -> List[int]:
+    def sortedSquares(self, nums: list[int]) -> list[int]:
         sorted = [None] * len(nums)
 
         i, j, e = 0, len(nums) - 1, len(nums) - 1

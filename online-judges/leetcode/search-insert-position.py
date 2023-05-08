@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/search-insert-position/
 
-from typing import List
-
 
 class Solution:
-    def searchInsert(self, nums: List[int], target: int) -> int:
+    def searchInsert(self, nums: list[int], target: int) -> int:
         lb, ub = 0, len(nums)
         mid = lb + (ub - lb) // 2
         while lb < ub:

@@ -1,6 +1,6 @@
 # https://leetcode.com/problems/binary-tree-level-order-traversal/
 
-from typing import List, Optional
+from typing import Optional
 from collections import deque
 
 
@@ -12,7 +12,7 @@ class TreeNode:
 
 
 class Solution:
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+    def levelOrder(self, root: Optional[TreeNode]) -> list[list[int]]:
         if root == None:
             return []
 

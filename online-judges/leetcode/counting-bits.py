@@ -1,7 +1,5 @@
 # https://leetcode.com/problems/counting-bits/
 
-from typing import List
-
 
 class Solution:
     def countOnes(self, x: int) -> int:
@@ -11,7 +9,7 @@ class Solution:
             x >>= 1
         return ones
 
-    def countBits(self, n: int) -> List[int]:
+    def countBits(self, n: int) -> list[int]:
         return [self.countOnes(x) for x in range(n + 1)]
 
 

@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/letter-case-permutation/
 
-from typing import List
-
 
 class Solution:
-    def letterCasePermutation(self, s: str) -> List[str]:
+    def letterCasePermutation(self, s: str) -> list[str]:
         if len(s) == 1:
             return [s.upper(), s.lower()] if s.isalpha() else [s]
 

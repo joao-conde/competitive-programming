@@ -1,6 +1,6 @@
 # https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
 
-from typing import List, Optional
+from typing import Optional
 
 
 class TreeNode:
@@ -11,7 +11,7 @@ class TreeNode:
 
 
 class Solution:
-    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+    def buildTree(self, preorder: list[int], inorder: list[int]) -> Optional[TreeNode]:
         if len(preorder) == 0 or len(inorder) == 0:
             return None
 

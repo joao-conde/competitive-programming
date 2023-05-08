@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/house-robber-ii/
 
-from typing import List
-
 
 class Solution:
-    def rob(self, nums: List[int]) -> int:
+    def rob(self, nums: list[int]) -> int:
         if len(nums) == 1:
             return nums[0]
 

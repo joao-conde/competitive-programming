@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/01-matrix/
 
-from typing import List
-
 
 class Solution:
-    def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
+    def updateMatrix(self, mat: list[list[int]]) -> list[list[int]]:
         for i in range(len(mat)):
             for j in range(len(mat[0])):
                 if mat[i][j] == 0:

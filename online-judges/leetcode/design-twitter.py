@@ -1,6 +1,6 @@
 # https://leetcode.com/problems/design-twitter/
 
-from typing import List
+
 from datetime import datetime
 from collections import defaultdict
 from heapq import heappush, heappop, nlargest
@@ -14,7 +14,7 @@ class Twitter:
     def postTweet(self, userId: int, tweetId: int) -> None:
         self.posts[userId].append((datetime.now(), tweetId))
 
-    def getNewsFeed(self, userId: int) -> List[int]:
+    def getNewsFeed(self, userId: int) -> list[int]:
         feed = []
 
         for p in self.posts[userId]:

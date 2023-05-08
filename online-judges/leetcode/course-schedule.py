@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/course-schedule/
 
-from typing import List
-
 
 class Solution:
-    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+    def canFinish(self, numCourses: int, prerequisites: list[list[int]]) -> bool:
         # build the dependency graph
         graph = [[] for i in range(numCourses)]
         indegrees = {i: 0 for i in range(numCourses)}

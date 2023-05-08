@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/binary-search/
 
-from typing import List
-
 
 class Solution:
-    def search(self, nums: List[int], target: int) -> int:
+    def search(self, nums: list[int], target: int) -> int:
         lb, ub = 0, len(nums) - 1
         while lb <= ub:
             mid = lb + (ub - lb) // 2

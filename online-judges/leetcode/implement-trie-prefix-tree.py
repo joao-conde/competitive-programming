@@ -1,7 +1,5 @@
 # https://leetcode.com/problems/implement-trie-prefix-tree/
 
-from typing import Tuple
-
 
 class TrieNode:
     def __init__(self, val, terminal=False):
@@ -30,7 +28,7 @@ class Trie:
         i, last = self._find(prefix)
         return i == len(prefix)
 
-    def _find(self, word: str) -> Tuple[int, TrieNode]:
+    def _find(self, word: str) -> tuple[int, TrieNode]:
         i, cur = 0, self.root
         while i < len(word) and cur:
             possible = [c for c in cur.children if c.val == word[i]]

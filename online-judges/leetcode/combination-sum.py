@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/combination-sum/
 
-from typing import List
-
 
 class Solution:
-    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+    def combinationSum(self, candidates: list[int], target: int) -> list[list[int]]:
         combinations = []
         for i, candidate in enumerate(candidates):
             if candidate > target:

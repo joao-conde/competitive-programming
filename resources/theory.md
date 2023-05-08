@@ -107,7 +107,7 @@ class TrieNode:
   - **`O(log N)`** insert
   - **`O(log N)`** delete
 
-## Disjoint Set
+## Disjoint set
 
 - keeps track of multiple sets of elements, disjoint at first
 - **`find(x)`** should return the set **`x`** belongs to
@@ -483,7 +483,7 @@ def has_cycle(root):
 
 <div style="page-break-after: always;"></div>
 
-- Disjoint Set: **union nodes** for each edge and **quit if same set** is found
+- Disjoint set: **union nodes** for each edge and **quit if same set** is found
 ```python
 def has_cycle(edges):
     disjoint_set = DisjointSet()

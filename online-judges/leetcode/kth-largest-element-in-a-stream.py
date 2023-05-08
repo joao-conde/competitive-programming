@@ -1,11 +1,11 @@
 # https://leetcode.com/problems/kth-largest-element-in-a-stream/
 
-from typing import List
+
 from heapq import heapify, heappush, heappop
 
 
 class KthLargest:
-    def __init__(self, k: int, nums: List[int]):
+    def __init__(self, k: int, nums: list[int]):
         self.k = k
         self.heap = nums
         heapify(self.heap)

@@ -1,10 +1,8 @@
 # https://leetcode.com/problems/maximum-subarray/
 
-from typing import List
-
 
 class Solution:
-    def maxSubArray(self, nums: List[int]) -> int:
+    def maxSubArray(self, nums: list[int]) -> int:
         max_sub = nums[0]
 
         cur_sum = 0

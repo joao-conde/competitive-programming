@@ -1,7 +1,5 @@
 # https://leetcode.com/problems/reverse-words-in-a-string-iii/
 
-from typing import List
-
 
 class Solution:
     def reverseWord(self, s: str) -> str:

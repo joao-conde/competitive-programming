@@ -1,15 +1,13 @@
 # https://leetcode.com/problems/move-zeroes/
 
-from typing import List
-
 
 class Solution:
-    def swap(self, nums: List[int], i: int, j: int) -> None:
+    def swap(self, nums: list[int], i: int, j: int) -> None:
         tmp = nums[i]
         nums[i] = nums[j]
         nums[j] = tmp
 
-    def moveZeroes(self, nums: List[int]) -> None:
+    def moveZeroes(self, nums: list[int]) -> None:
         """
         Do not return anything, modify nums in-place instead.
         """

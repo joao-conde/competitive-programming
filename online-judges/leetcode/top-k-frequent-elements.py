@@ -1,11 +1,11 @@
 # https://leetcode.com/problems/top-k-frequent-elements/
 
-from typing import List
+
 from heapq import heappush, heappop
 
 
 class Solution:
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+    def topKFrequent(self, nums: list[int], k: int) -> list[int]:
         counts = dict()
         for num in nums:
             counts[num] = counts.get(num, 0) + 1
