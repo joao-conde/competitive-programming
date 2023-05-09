@@ -22,9 +22,3 @@ The solutions implemented are my own and they are often a product of quick think
 │
 └── resources               --- Useful Resources
 ```
-
-
-TODO:
-- https://towardsdatascience.com/graph-data-structure-cheat-sheet-for-coding-interviews-a38aadf8aa87
-- https://medium.com/@nhudinhtuan/15-days-cheat-sheet-for-hacking-technical-interviews-at-big-tech-companies-d780717dcec1
-- https://www.freecodecamp.org/news/the-top-data-structures-you-should-know-for-your-next-coding-interview-36af0831f5e3/
