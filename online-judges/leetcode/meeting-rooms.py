@@ -5,11 +5,12 @@ class Solution:
     def can_attend_meetings(self, intervals: list[tuple[int, int]]) -> bool:
         intervals.sort()
 
-        last = intervals[0][1]
-        for s, e in intervals[1:]:
-            if s < last:
+        for i in range(1, len(intervals)):
+            i1 = intervals[i - 1]
+            i2 = intervals[i]
+
+            if i1[1] >= i2[0]:
                 return False
-            last = e
 
         return True
 
