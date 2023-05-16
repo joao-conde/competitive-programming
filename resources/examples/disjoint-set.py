@@ -18,10 +18,10 @@ class DisjointSet:
         if x == y:
             return
 
-        shorter = x if self.sizes[x] < self.sizes[y] else y
-        longer = y if self.sizes[x] < self.sizes[y] else x
-        self.groups[shorter] = longer
-        self.sizes[longer] += self.sizes[shorter]
+        small = x if self.sizes[x] < self.sizes[y] else y
+        large = y if self.sizes[x] < self.sizes[y] else x
+        self.groups[small] = large
+        self.sizes[large] += self.sizes[small]
 
 
 def has_cycle(edges):
