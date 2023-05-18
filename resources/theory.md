@@ -538,7 +538,7 @@ def has_cycle(root):
 
 **Open-Closed** - classes should be open for extension and closed for modifications
 
-**Liskov Substition** - classes should be substitutable for parent classes or interfaces they implement
+**Liskov Substitution** - classes should be substitutable for parent classes or interfaces they implement
 
 **Interface Segregation** - keep interfaces thin, split big ones into smaller contracts, each client implements what is needed
 
