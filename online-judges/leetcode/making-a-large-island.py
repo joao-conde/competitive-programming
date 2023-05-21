@@ -36,7 +36,7 @@ class Solution:
             for j in range(len(grid)):
                 island = self.find_island(grid, i, j, seen)
                 largest = max(largest, len(island))
-                for (si, sj) in island:
+                for si, sj in island:
                     islands[(si, sj)] = island
 
         for i in range(len(grid)):
