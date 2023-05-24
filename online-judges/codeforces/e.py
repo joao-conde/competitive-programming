@@ -1,20 +1,17 @@
 s = input()
 modulo = 10**9 + 7
 
-i = 1
-ways = 1
-while i < len(s) - 1:
+dp = [1] * len(s)
+
+for i in range(1, len(s)):
     if s[i] == "m" or s[i] == "w":
-        ways = 0
+        dp[-1] = 0
         break
+    if s[i] == "u" and s[i - 1] == "u":
+        dp[i] = dp[i - 2] + dp[i - 1]
+    elif s[i] == "n" and s[i - 1] == "n":
+        dp[i] = dp[i - 2] + dp[i - 1]
+    else:
+        dp[i] = dp[i - 1]
 
-    if s[i - 1] == "u" and s[i] == "u":
-        ways = 2 * ways
-
-    if s[i - 1] == "n" and s[i] == "n":
-        ways = 2 * ways
-
-    ways %= modulo
-    i += 1
-
-print(ways)
+print(dp[-1])
