@@ -6,9 +6,9 @@ for _ in range(t):
 
     found.sort()
 
-    i = 1
+    i = 0
     added = 0
-    prev = found[0]
+    prev = 0
     while i < len(found):
         if found[i] != prev + 1:
             added += prev + 1
